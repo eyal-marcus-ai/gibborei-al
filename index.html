@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>גיבורי על — סיפורי המקור | נועם ואייל מרקוס</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Bangers&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #FBF0D9;
+      --ink: #111111;
+      --red: #E63946;
+      --yellow: #FFD166;
+      --blue: #1D3557;
+      --cyan: #3A86FF;
+      --green: #06D6A0;
+      --orange: #F4A261;
+      --purple: #8338EC;
+      --dark: #1B1B2F;
+      --b: 4px solid #111;
+      --sh: 6px 6px 0 #111;
+      --sh-sm: 3px 3px 0 #111;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--paper);
+      background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1.5px, transparent 1.5px);
+      background-size: 18px 18px;
+      direction: rtl;
+      color: var(--ink);
+    }
+
+    /* ──────── HEADER ──────── */
+    .hdr {
+      background: var(--ink);
+      border-bottom: 5px solid #111;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .hdr-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+    .hdr-brand img {
+      height: 80px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(255,209,102,0.3));
+    }
+    .hdr-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .hdr-name {
+      font-family: 'Bangers', cursive;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: var(--yellow);
+    }
+    .hdr-sub {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+    }
+    .hdr-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .hdr-nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: all .15s;
+    }
+    .hdr-nav a:hover {
+      color: var(--yellow);
+      background: rgba(255,255,255,0.07);
+    }
+    .hdr-nav .hdr-cta {
+      background: var(--red);
+      color: #fff;
+      border-radius: 4px;
+      border: 2px solid rgba(255,255,255,0.15);
+    }
+    .hdr-nav .hdr-cta:hover { background: #c7303b; color: #fff; }
+
+    /* ──────── PAGE ──────── */
+    .page { max-width: 1200px; margin: 0 auto; padding: 14px 14px 0; }
+
+    /* ──────── PANEL ──────── */
+    .panel { border: var(--b); box-shadow: var(--sh); overflow: hidden; position: relative; }
+
+    /* ──────── SPLASH ──────── */
+    .splash {
+      position: relative;
+      min-height: 540px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+    }
+    .splash-art {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .splash-art img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: left center;
+      display: block;
+      filter: brightness(0.7) saturate(0.85);
+    }
+    .splash-art::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(27,27,47,0.05) 0%,
+        rgba(27,27,47,0.4)  30%,
+        rgba(27,27,47,0.88) 58%,
+        rgba(27,27,47,1)    75%
+      );
+    }
+    .splash-text {
+      position: relative;
+      z-index: 1;
+      padding: 56px 56px 56px 0;
+      width: 56%;
+      margin-right: 0;
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .action-zap {
+      font-family: 'Bangers', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 10px;
+      color: var(--yellow);
+      line-height: 1;
+      display: block;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      opacity: 1;
+    }
+    .splash-h1 {
+      font-size: clamp(2.8rem, 5vw, 4.6rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 10px;
+    }
+    .splash-h1 em { font-style: normal; color: var(--yellow); }
+    .splash-by {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+    .splash-by strong { color: rgba(255,255,255,0.8); }
+    .bubble {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.75);
+      max-width: 420px;
+      margin-bottom: 32px;
+      border-right: 3px solid var(--yellow);
+      padding-right: 16px;
+    }
+    .splash-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cbtn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px;
+      font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 0.9rem;
+      border-radius: 6px; letter-spacing: 0.3px;
+      cursor: pointer; text-decoration: none;
+      transition: opacity .15s, transform .1s;
+      border: none;
+    }
+    .cbtn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .cbtn-spotify { background: #1DB954; color: #fff; }
+    .cbtn-apple   { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .splash-art-badge {
+      position: absolute; bottom: 20px; left: 20px; z-index: 2;
+      background: var(--yellow);
+      border: 3px solid var(--ink);
+      border-radius: 50%;
+      width: 72px; height: 72px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Bangers', cursive;
+      font-size: 0.85rem; letter-spacing: 0.5px;
+      line-height: 1.2; text-align: center;
+      box-shadow: 4px 4px 0 #111;
+    }
+
+    /* ──────── STATS ──────── */
+    .stats {
+      background: var(--dark);
+      border: var(--b); box-shadow: var(--sh);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 14px;
+    }
+    .stat-panel {
+      padding: 22px 20px; text-align: center;
+      border-left: 3px solid rgba(255,255,255,0.1);
+    }
+    .stat-panel:last-child { border-left: none; }
+    .stat-n {
+      font-family: 'Bangers', cursive;
+      font-size: 3.2rem; letter-spacing: 2px;
+      line-height: 1; display: block;
+      color: var(--yellow);
+    }
+    .stat-l { font-size: 0.78rem; font-weight: 700; margin-top: 5px; display: block; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; text-transform: uppercase; }
+    .stats-note {
+      text-align: center; font-size: 0.72rem; font-weight: 700;
+      color: #999; letter-spacing: 0.5px;
+      padding: 6px 0 12px;
+    }
+
+    /* ──────── SECTION LABEL ──────── */
+    .sec-label {
+      background: var(--ink);
+      border: var(--b); box-shadow: var(--sh);
+      padding: 12px 20px;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .sec-label-tag {
+      font-family: 'Bangers', cursive;
+      font-size: 0.75rem; letter-spacing: 3px;
+      color: var(--ink);
+      background: var(--yellow);
+      padding: 3px 10px 2px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .sec-label-tag.tag-red { background: var(--red); color: #fff; }
+    .sec-label-tag.tag-purple { background: var(--purple); color: #fff; }
+    .sec-label-tag.tag-green { background: var(--green); color: var(--ink); }
+    .sec-label h2 {
+      font-family: 'Bangers', cursive;
+      font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; letter-spacing: 2px;
+    }
+    .sec-label p { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 600; margin-top: 2px; }
+    .sec-divider { display: none; }
+
+    /* ──────── CAPTION BOX (comics element) ──────── */
+    .caption-box {
+      font-family: 'Bangers', cursive;
+      font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+      background: var(--yellow); color: var(--ink);
+      display: inline-block; padding: 3px 10px;
+      border: 2px solid #111; margin-bottom: 8px;
+    }
+
+    /* ──────── SIGNUP ──────── */
+    #signup { margin-bottom: 14px; }
+    .signup-wrap {
+      background: var(--yellow); border: var(--b); box-shadow: var(--sh);
+      padding: 22px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
+    }
+    .signup-left h2 { font-size: 1.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+    .signup-left p { font-size: 1rem; color: #444; line-height: 1.6; }
+    .signup-box {
+      background: #fff; border: var(--b); border-radius: 8px;
+      padding: 24px; box-shadow: 5px 5px 0 #111;
+    }
+    .signup-box input {
+      width: 100%; padding: 12px 14px;
+      border: var(--b); border-radius: 6px;
+      font-family: 'Heebo', sans-serif; font-size: 1rem;
+      margin-bottom: 10px; direction: rtl;
+      background: var(--paper);
+    }
+    .signup-box input:focus { outline: none; border-color: var(--red); background: #fff; }
+    .signup-sub {
+      width: 100%; background: var(--red); color: #fff;
+      border: var(--b); border-radius: 6px;
+      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1.05rem;
+      padding: 13px; cursor: pointer;
+      box-shadow: 4px 4px 0 #111; transition: all .1s;
+    }
+    .signup-sub:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #111; }
+    .signup-priv { font-size: 0.76rem; color: #999; text-align: center; margin-top: 8px; }
+    .signup-ok { display: none; text-align: center; padding: 20px; }
+    .signup-ok .big { font-size: 3rem; display: block; margin-bottom: 8px; }
+    .signup-ok p { font-weight: 700; font-size: 1.1rem; }
+
+    /* ──────── REQUEST FORM ──────── */
+    #request { margin-bottom: 14px; }
+    .req-wrap {
+      background: var(--cyan); border: var(--b); box-shadow: var(--sh);
+      padding: 22px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
+    }
+    .req-left h2 { font-size: 1.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+    .req-left p { font-size: 1rem; color: #333; line-height: 1.6; }
+    .req-box {
+      background: #fff; border: var(--b); border-radius: 8px;
+      padding: 24px; box-shadow: 5px 5px 0 #111;
+    }
+    .req-box input {
+      width: 100%; padding: 12px 14px;
+      border: var(--b); border-radius: 6px;
+      font-family: 'Heebo', sans-serif; font-size: 1rem;
+      margin-bottom: 10px; direction: rtl;
+      background: var(--paper);
+    }
+    .req-box input:focus { outline: none; border-color: var(--purple); background: #fff; }
+    .req-sub {
+      width: 100%; background: var(--purple); color: #fff;
+      border: var(--b); border-radius: 6px;
+      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1.05rem;
+      padding: 13px; cursor: pointer;
+      box-shadow: 4px 4px 0 #111; transition: all .1s;
+    }
+    .req-sub:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #111; }
+    .req-note { font-size: 0.76rem; color: #555; text-align: center; margin-top: 8px; }
+    .req-ok { display: none; text-align: center; padding: 20px; }
+    .req-ok .big { font-size: 3rem; display: block; margin-bottom: 8px; }
+    .req-ok p { font-weight: 700; font-size: 1.1rem; }
+    @media(max-width:700px) {
+      .req-wrap { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
+    }
+
+    /* ──────── VOTE ──────── */
+    #vote { margin-bottom: 14px; }
+    .vote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .vc {
+      border: var(--b); box-shadow: var(--sh);
+      background: var(--dark);
+      position: relative;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      text-align: right;
+    }
+    .vc-accent { height: 5px; flex-shrink: 0; }
+    .vc-watermark {
+      font-family: 'Bangers', cursive;
+      font-size: 9rem; line-height: 1;
+      position: absolute; top: -6px; left: 10px;
+      pointer-events: none; user-select: none;
+      opacity: 0.08; color: #fff;
+    }
+    .vc-body { padding: 26px 22px; flex: 1; display: flex; flex-direction: column; }
+    .vc-leader {
+      display: none;
+      font-family: 'Bangers', cursive; font-size: 0.72rem; letter-spacing: 3px;
+      background: var(--yellow); color: var(--ink);
+      border: 2px solid rgba(255,255,255,0.2); border-radius: 3px;
+      padding: 2px 8px; width: fit-content; margin-bottom: 12px;
+    }
+    .vc-leader.show { display: block; }
+    .vc-name { font-size: 2.1rem; font-weight: 900; line-height: 1.05; margin-bottom: 8px; color: #fff; }
+    .vc-req { display: inline-block; font-family: 'Bangers', cursive; font-size: 0.82rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.65); padding: 2px 9px; border-radius: 3px; margin-bottom: 14px; background: transparent; }
+    .vc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.48); line-height: 1.55; margin-bottom: 20px; flex: 1; }
+    .vote-btn {
+      width: 100%; color: #fff;
+      border: var(--b); border-radius: 5px;
+      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1rem;
+      padding: 14px; cursor: pointer;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.5); transition: transform .1s, box-shadow .1s;
+      letter-spacing: 0.5px;
+    }
+    .vote-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 rgba(0,0,0,0.5); }
+    .voted-label {
+      font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 3px;
+      color: rgba(255,255,255,0.35); padding: 14px 0; text-align: center;
+    }
+    .vbar-wrap { width: 100%; margin-top: 12px; }
+    .vbar-track { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; height: 10px; overflow: hidden; margin-bottom: 6px; }
+    .vbar-fill { height: 100%; transition: width 1s cubic-bezier(.4,0,.2,1); width: 0%; border-radius: 2px; }
+    .vbar-pct { font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 1px; color: rgba(255,255,255,0.45); }
+    .vote-total { text-align: center; font-size: 0.85rem; font-weight: 700; color: #666; padding: 6px; display: none; margin-bottom: 14px; }
+    .vote-total.show { display: block; }
+
+    /* ──────── TICKER ──────── */
+    .ticker {
+      background: var(--ink); border-top: var(--b); border-bottom: var(--b);
+      padding: 8px 0; overflow: hidden; white-space: nowrap; margin-bottom: 14px;
+    }
+    .ticker-in { display: inline-block; animation: tick 34s linear infinite; }
+    .ticker:hover .ticker-in { animation-play-state: paused; }
+    @keyframes tick { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+    .ti { display: inline-block; color: rgba(255,255,255,.8); font-size: .85rem; font-weight: 700; margin: 0 14px; }
+    .ts { color: var(--yellow); }
+
+    /* ──────── EPISODES ──────── */
+    #episodes { margin-bottom: 14px; }
+    .ep-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .ep {
+      border: var(--b); box-shadow: var(--sh); background: #fff; overflow: hidden;
+      transition: transform .15s, box-shadow .15s; display: flex; flex-direction: column;
+    }
+    .ep:hover { transform: translate(-3px,-4px); box-shadow: 9px 10px 0 #111; }
+    .ep.big { grid-column: span 2; }
+    .ep-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-bottom: var(--b); display: block; }
+    .ep.big .ep-img { aspect-ratio: 2/1; }
+    .ep-noimg {
+      width: 100%; aspect-ratio: 1/1; border-bottom: var(--b);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; font-weight: 900;
+    }
+    .ep.big .ep-noimg { aspect-ratio: 2/1; }
+    .ep-body { padding: 10px 13px 14px; flex: 1; display: flex; flex-direction: column; }
+    .ep-n { font-family: 'Bangers', cursive; font-size: 0.82rem; letter-spacing: 2px; color: #aaa; text-transform: uppercase; }
+    .ep-t { font-size: 1.05rem; font-weight: 900; line-height: 1.2; margin: 3px 0 6px; }
+    .ep.big .ep-t { font-size: 1.3rem; }
+    .ep-m { font-size: 0.75rem; color: #999; margin-bottom: 9px; flex: 1; }
+    .ep-l { display: flex; gap: 6px; flex-wrap: wrap; }
+    .elink {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 5px 10px; font-size: 0.75rem; font-weight: 700;
+      border: 2px solid #111; border-radius: 4px;
+      text-decoration: none; box-shadow: 2px 2px 0 #111; transition: transform .1s;
+    }
+    .elink:hover { transform: translate(-1px,-1px); }
+    .elink.sp { background: #1DB954; color: #fff; }
+    .elink.soon { background: var(--orange); color: #fff; }
+    .elink.coming { background: var(--purple); color: #fff; }
+    .ep-badge {
+      display: inline-block;
+      font-family: 'Bangers', cursive; font-size: 0.7rem; letter-spacing: 1px;
+      padding: 2px 6px; border-radius: 3px; border: 2px solid #111;
+      position: absolute; top: 8px; left: 8px;
+    }
+
+    /* ──────── ABOUT ──────── */
+    #about { margin-bottom: 14px; }
+    .about-story {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 0;
+      border: var(--b);
+      box-shadow: var(--sh);
+      background: #fff;
+    }
+    .about-photo {
+      position: relative;
+      border-left: var(--b);
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .about-photo-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(17,17,17,0.85);
+      padding: 10px 14px;
+      border-top: 3px solid #111;
+    }
+    .about-photo-caption .name { font-weight: 900; color: var(--yellow); font-size: 0.9rem; }
+    .about-photo-caption .role { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+    .about-panels {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .origin-panel {
+      padding: 28px 32px;
+      border-bottom: var(--b);
+      flex: 1;
+    }
+    .origin-panel:last-child { border-bottom: none; flex: 0; }
+    .origin-panel h3 {
+      font-family: 'Bangers', cursive;
+      font-size: 2rem; letter-spacing: 3px;
+      margin-bottom: 14px; color: var(--ink);
+    }
+    .origin-panel .o-text {
+      font-size: 0.95rem; line-height: 1.65; color: #333;
+    }
+    .origin-panel .o-text strong { font-weight: 900; color: var(--ink); }
+    .cast-row {
+      display: flex; gap: 20px; padding: 20px 32px;
+      border-bottom: var(--b);
+      background: var(--paper);
+    }
+    .cast-card {
+      background: #fff; border: var(--b); border-radius: 6px;
+      padding: 14px 18px; flex: 1; box-shadow: var(--sh-sm);
+    }
+    .cast-card .cast-name { font-size: 1.1rem; font-weight: 900; margin-bottom: 2px; }
+    .cast-card .cast-title { font-family: 'Bangers', cursive; font-size: 0.95rem; letter-spacing: 1px; color: var(--red); margin-bottom: 6px; }
+    .cast-card .cast-bio { font-size: 0.82rem; color: #555; line-height: 1.5; }
+    .contact-panel {
+      padding: 18px 32px;
+      background: var(--dark);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .contact-panel p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+    .contact-panel a {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--yellow); color: var(--ink);
+      font-weight: 900; font-size: 0.9rem;
+      padding: 8px 16px; border-radius: 4px;
+      border: 2px solid #111; text-decoration: none;
+      box-shadow: 2px 2px 0 #111; white-space: nowrap;
+    }
+
+    /* ──────── FOOTER ──────── */
+    footer {
+      background: var(--ink); border: var(--b); box-shadow: var(--sh);
+      padding: 16px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .flogo { display: flex; align-items: center; gap: 10px; }
+    .flogo img { height: 36px; width: auto; filter: brightness(0) invert(1) opacity(0.7); }
+    .flogo-name { font-family: 'Bangers', cursive; font-size: 1.1rem; letter-spacing: 2px; color: var(--yellow); }
+    footer a { color: rgba(255,255,255,.55); text-decoration: none; font-size: .82rem; font-weight: 700; margin-right: 14px; transition: color .2s; }
+    footer a:hover { color: var(--yellow); }
+    .fcopy { font-size: .75rem; color: rgba(255,255,255,.3); }
+
+    /* ──────── RESPONSIVE ──────── */
+    @media(max-width:960px){
+      .splash { grid-template-columns: 1fr; }
+      .splash-art { height: 260px; border-right: none; border-top: var(--b); }
+      .ep-grid { grid-template-columns: repeat(2,1fr); }
+      .ep.big { grid-column: span 2; }
+      .vote-grid { grid-template-columns: 1fr; }
+      .about-story { grid-template-columns: 1fr; }
+      .about-photo { height: 280px; border-left: none; border-bottom: var(--b); }
+      .signup-wrap { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+    }
+    @media(max-width:600px){
+      .ep-grid { grid-template-columns: 1fr; }
+      .ep.big { grid-column: span 1; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .hdr-nav a:not(.hdr-cta) { display: none; }
+      .cast-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header class="hdr">
+  <a class="hdr-brand" href="#top">
+    <img src="images/logo.png" alt="גיבורי על">
+    <div class="hdr-brand-text">
+      <span class="hdr-name">גיבורי על</span>
+      <span class="hdr-sub">סיפורי המקור</span>
+    </div>
+  </a>
+  <nav class="hdr-nav">
+    <a href="#vote">הצבעה</a>
+    <a href="#episodes">כל הפרקים</a>
+    <a href="#about">מי אנחנו</a>
+    <a href="#signup" class="hdr-cta">התראות</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <!-- ══ SPLASH ══ -->
+  <div class="panel splash" id="top">
+    <div class="splash-text">
+      <span class="action-zap" dir="ltr">POW!</span>
+      <h1 class="splash-h1">גיבורי על —<br><em>סיפורי המקור</em></h1>
+      <div class="splash-by">
+        <strong>נועם פיטר מרקוס</strong>, בן&nbsp;<span class="noam-age">7.5</span> &amp; <strong>אייל מרקוס</strong> (הידוע בכינויו ״אבא״)
+      </div>
+      <div class="bubble">
+        גיבור-על אחד בכל פרק — הסיפור האמיתי שמאחוריו, מאיפה הגיע, מה עשה אותו למי שהוא,
+        ושלושה דברים שכל אחד יכול ללמוד ממנו.
+      </div>
+      <div class="splash-btns">
+        <a class="cbtn cbtn-spotify" href="https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          האזן בספוטיפיי
+        </a>
+        <a class="cbtn cbtn-apple" href="https://podcasts.apple.com/us/podcast/%D7%92%D7%99%D7%91%D7%95%D7%A8%D7%99-%D7%A2%D7%9C-%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99-%D7%94%D7%9E%D7%A7%D7%95%D7%A8/id1719448853" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 814 1000" fill="currentColor"><path d="M407 0C183.3 0 0 183.3 0 407c0 223.7 183.3 407 407 407s407-183.3 407-407C814 183.3 630.7 0 407 0zm0 733.5c-181.1 0-327.5-146.4-327.5-326.5S225.9 80.5 407 80.5c181.1 0 327.5 146.4 327.5 326.5S588.1 733.5 407 733.5zm0-507.8c-100 0-181.3 81.3-181.3 181.3S307 588.3 407 588.3c100 0 181.3-81.3 181.3-181.3S507 225.7 407 225.7zm0 281.3c-55 0-100-45-100-100s45-100 100-100 100 45 100 100-45 100-100 100z"/></svg>
+          Apple Podcasts
+        </a>
+      </div>
+    </div>
+    <div class="splash-art">
+      <img src="images/eyal-noam.jpg" alt="נועם ואייל מרקוס">
+      <div class="splash-art-badge">54<br>פרקים!</div>
+    </div>
+  </div>
+
+  <!-- ══ STATS ══ -->
+  <div class="stats">
+    <div class="stat-panel">
+      <span class="stat-n spotify-count" style="color:var(--yellow)">52</span>
+      <span class="stat-l">פרקים בספוטיפיי</span>
+    </div>
+    <div class="stat-panel">
+      <span class="stat-n" style="color:var(--red)">60+</span>
+      <span class="stat-l">בקשות מילדים</span>
+    </div>
+    <div class="stat-panel">
+      <span class="stat-n noam-age" style="color:var(--cyan)">7.5</span>
+      <span class="stat-l">גיל נועם</span>
+    </div>
+    <div class="stat-panel">
+      <span class="stat-n">2023</span>
+      <span class="stat-l">שנת ההשקה</span>
+    </div>
+  </div>
+  <div class="stats-note">עדכני: <span class="stats-current-date">יוני 2026</span></div>
+
+  <!-- ══ VOTE ══ -->
+  <section id="vote">
+    <div class="sec-label">
+      <span class="sec-label-tag tag-red">VOTE</span>
+      <div><h2>מה הפרק הבא שלנו?</h2><p>הצביעו — ה-podcast הבא הוא שלכם</p></div>
+    </div>
+    <hr class="sec-divider">
+    <div class="vote-grid" id="vote-grid"></div>
+    <div class="vote-total" id="vote-total"></div>
+  </section>
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker">
+    <div class="ticker-in" id="ticker-content"></div>
+  </div>
+
+  <!-- ══ SIGNUP (above episodes) ══ -->
+  <section id="signup" style="margin-top:28px;">
+    <div class="sec-label">
+      <span class="sec-label-tag tag-green">NOTIFY</span>
+      <div><h2>תישארו בלופ</h2><p>עדכון ברגע שיוצא פרק חדש — בלי ספאם</p></div>
+    </div>
+    <hr class="sec-divider">
+    <div class="signup-wrap panel">
+      <div class="signup-left">
+        <h2>פרק חדש? תדעו ראשונים.</h2>
+        <p>השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש של גיבורי על. מבטיחים — רק עדכונים על פרקים.</p>
+      </div>
+      <div class="signup-box">
+        <div class="signup-ok" id="ok">
+          <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">נרשמתם.</p>
+          <p>נעדכן כשהפרק הבא יוצא.</p>
+        </div>
+        <form id="sform" action="https://formspree.io/f/REPLACE_ME" method="POST" onsubmit="doSignup(event)">
+          <input type="text" name="name" placeholder="שם" required>
+          <input type="email" name="email" placeholder="כתובת מייל" required>
+          <button type="submit" class="signup-sub">קבלו עדכונים</button>
+          <p class="signup-priv">לא מוכרים. לא מציקים. רק עדכון כשיוצא פרק חדש.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REQUEST ══ -->
+  <section id="request" style="margin-top:28px;">
+    <div class="sec-label">
+      <span class="sec-label-tag tag-purple">REQUEST</span>
+      <div><h2>בקשו פרק</h2><p>הגיבור שאתם רוצים לשמוע עליו — שלחו לנו</p></div>
+    </div>
+    <hr class="sec-divider">
+    <div class="req-wrap panel">
+      <div class="req-left">
+        <h2>איזה גיבור הבא?</h2>
+        <p>הבקשות שלכם הן מה שמניע אותנו. כתבו לנו מה הגיבור או נבל-העל שהכי תרצו לשמוע עליו — ונשתדל להפתיע אתכם בפרק הבא.</p>
+      </div>
+      <div class="req-box">
+        <div class="req-ok" id="req-ok">
+          <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">הבקשה התקבלה.</p>
+          <p>נעדכן אותך כשהפרק יוצא.</p>
+        </div>
+        <form id="rform" action="https://formspree.io/f/REPLACE_REQUEST" method="POST" onsubmit="doRequest(event)">
+          <input type="hidden" name="_subject" value="בקשת פרק חדש - גיבורי על">
+          <input type="text" name="character" placeholder="שם הגיבור או נבל-העל" required>
+          <input type="text" name="child_name" placeholder="שם מלא של הילד המבקש" required>
+          <input type="email" name="email" placeholder="מייל לעדכון כשהפרק יוצא" required>
+          <button type="submit" class="req-sub">שלחו את הבקשה</button>
+          <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק — מבטיחים להתחשב.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EPISODES ══ -->
+  <section id="episodes" style="margin-top:28px;">
+    <div class="sec-label">
+      <span class="sec-label-tag">EPISODES</span>
+      <div><h2>כל הפרקים</h2><p>54 פרקים · לחצו על פרק להאזנה</p></div>
+    </div>
+    <hr class="sec-divider">
+
+    <div class="ep-grid" id="ep-grid"></div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about" style="margin-top:28px;margin-bottom:28px;">
+    <div class="sec-label">
+      <span class="sec-label-tag tag-purple">ABOUT</span>
+      <div><h2>מי אנחנו?</h2><p>הסיפור מאחורי הסיפורים</p></div>
+    </div>
+    <hr class="sec-divider">
+
+    <div class="about-story">
+      <div class="about-photo">
+        <img src="images/eyal-noam.jpg" alt="נועם פיטר מרקוס ואייל מרקוס">
+        <div class="about-photo-caption">
+          <div class="name">נועם פיטר מרקוס &amp; אייל מרקוס</div>
+          <div class="role">הסטודיו שלנו — תל אביב</div>
+        </div>
+      </div>
+      <div class="about-panels">
+        <div class="origin-panel" style="background:var(--paper);">
+          <div class="caption-box">תאילנד · גיל 3</div>
+          <h3>הכל התחיל בתאילנד</h3>
+          <div class="o-text">
+            היה זה לילה בתאילנד. נועם בן שלוש וחצי, לא מוכן לישון, דורש סיפור.
+            <br><br>
+            אייל, שכבר סיפר את אותם הסיפורים מאה פעם, החליט לנסות משהו אחר:
+            <strong>גיבורי על.</strong>
+            <br><br>
+            וכך, על ספה בבנגקוק, נולד פרק אחד. אחר כך עוד אחד. עד שנועם ביקש להקליט, כדי שגם חברים יוכלו לשמוע.
+          </div>
+        </div>
+        <div class="cast-row">
+          <div class="cast-card">
+            <div class="cast-name">נועם פיטר מרקוס</div>
+            <div class="cast-title">בן <span class="noam-age">7.5</span> · מומחה ראשי</div>
+            <div class="cast-bio">ביקורת חדה. שאלות שאייל לא תמיד יודע לענות עליהן. יודע לזהות אם הסיפור לא מדויק מגיל שלוש. אוהב: גרוט, פאוור ריינג'רס, כל מי שמשנה צורה.</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-name">אייל מרקוס</div>
+            <div class="cast-title">הידוע בכינויו ״אבא״</div>
+            <div class="cast-bio">מחקר, כתיבה, הקלטה — ושלושה ימים לפני כל פרק שוקע בוויקיפדיה. מאמין שגיבורי על מלמדים על חיים הרבה יותר מכל שיעור מוסר. אוהב: גולש הכסף, שאזאם, כל מי עם אוריג'ין טוב.</div>
+          </div>
+        </div>
+        <div class="contact-panel">
+          <p>רוצים לבקש גיבור? לשלוח הקדשה? לשמוע עוד?</p>
+          <a href="mailto:themarcuss@gmail.com">כתבו לנו</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="panel">
+    <div class="flogo">
+      <img src="images/logo.png" alt="גיבורי על">
+      <span class="flogo-name">גיבורי על — סיפורי המקור</span>
+    </div>
+    <div>
+      <a href="https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U" target="_blank">ספוטיפיי</a>
+      <a href="mailto:themarcuss@gmail.com">צרו קשר</a>
+      <a href="#top">למעלה ↑</a>
+    </div>
+    <div class="fcopy">© 2026 נועם ואייל מרקוס</div>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+const SHOW  = "https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U";
+const APPLE = "https://podcasts.apple.com/us/podcast/%D7%92%D7%99%D7%91%D7%95%D7%A8%D7%99-%D7%A2%D7%9C-%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99-%D7%94%D7%9E%D7%A7%D7%95%D7%A8/id1719448853";
+
+/* ── EPISODES ── */
+const CDN = "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/39898654/";
+const episodes = [
+  /* offline */ { num:54, t:"בן 10",              img:null, d:"בקרוב",   u:"Cartoon Network", spotify:false, status:"script" },
+  /* offline */ { num:53, t:"נינג'גו",            img:null, d:"הוקלט",   u:"LEGO Ninjago",    spotify:false, status:"soon",  dedications:["אהרן רחימי","דניאל משרי","אוריה מלונדון"] },
+  /* #52 */ { num:52, t:"הלטאה",               img:CDN+"39898654-1780428688312-d663960bd5d66.jpg",  d:"16 דק׳", date:"יוני 2026",     u:"Marvel",         spotify:true, big:true  },
+  /* #51 */ { num:51, t:"איש החול",            img:CDN+"39898654-1780318766751-0f6ced1597b2a.jpg",  d:"16 דק׳", date:"יוני 2026",     u:"Marvel",         spotify:true, big:true  },
+  /* #50 */ { num:50, t:"שאזאם",               img:CDN+"39898654-1779174073929-03dd97a77d1de.jpg",  d:"16 דק׳", date:"מאי 2026",      u:"DC",             spotify:true },
+  /* #49 */ { num:49, t:"הארי פוטר",           img:CDN+"39898654-1778838513273-5b19abd8b0aef.jpg",  d:"23 דק׳", date:"מאי 2026",      u:"Wizarding World",spotify:true },
+  /* #48 */ { num:48, t:"הפינגווין",           img:CDN+"39898654-1775907953098-051931d20f67c.jpg",  d:"19 דק׳", date:"אפריל 2026",    u:"DC",             spotify:true },
+  /* #47 */ { num:47, t:"פאוור ריינג'רס",     img:CDN+"39898654-1775120902828-0afd27f0cf25b.jpg",  d:"24 דק׳", date:"אפריל 2026",    u:"Power Rangers",  spotify:true },
+  /* #46 */ { num:46, t:"שומרי הגלקסיה",      img:CDN+"39898654-1774693348136-57e40b430ede5.jpg",  d:"27 דק׳", date:"מרץ 2026",      u:"Marvel",         spotify:true },
+  /* #45 */ { num:45, t:"גולש הכסף",          img:CDN+"39898654-1773762076137-dde24c2987051.jpg",  d:"17 דק׳", date:"מרץ 2026",      u:"Marvel",         spotify:true },
+  /* #44 */ { num:44, t:'קפטן ממ"ד ומיס מקלט',img:CDN+"39898654-1773575734195-7a2c3180639bb.jpg",  d:"15 דק׳", date:"מרץ 2026",      u:"ישראלי",         spotify:true },
+  /* #43 */ { num:43, t:"קריפטו הכלב",        img:CDN+"39898654-1773149100455-b2dc221bb8421.jpg",  d:"12 דק׳", date:"מרץ 2026",      u:"DC",             spotify:true },
+  /* #42 */ { num:42, t:"גרוט",               img:CDN+"39898654-1772892116363-7dc88a4ebb68d.jpg",  d:"18 דק׳", date:"מרץ 2026",      u:"Marvel",         spotify:true },
+  /* #41 */ { num:41, t:"דוקטור סטריינג'",   img:CDN+"39898654-1771684974958-7ea119ade9d3.jpg",   d:"17 דק׳", date:"פברואר 2026",   u:"Marvel",         spotify:true },
+  /* #40 */ { num:40, t:"מואנה",              img:CDN+"39898654-1770891685652-d3479f0985022.jpg",  d:"16 דק׳", date:"פברואר 2026",   u:"Disney",         spotify:true },
+  /* #39 */ { num:39, t:"ניק פיורי",          img:CDN+"39898654-1769699108163-2aeac49e2d15a.jpg",  d:"15 דק׳", date:"ינואר 2026",    u:"Marvel",         spotify:true },
+  /* #38 */ { num:38, t:"פאלקון",             img:CDN+"39898654-1769616863934-5a52481ecf1e9.jpg",  d:"18 דק׳", date:"ינואר 2026",    u:"Marvel",         spotify:true },
+  /* #37 */ { num:37, t:"גרין לאנטרן",        img:CDN+"39898654-1768765183937-fb3a5bc21d1de.jpg",  d:"15 דק׳", date:"ינואר 2026",    u:"DC",             spotify:true },
+  /* #36 */ { num:36, t:"צבי הנינג'ה",        img:CDN+"39898654-1768340972225-32e6bfbfb4c67.jpg",  d:"14 דק׳", date:"ינואר 2026",    u:"TMNT",           spotify:true },
+  /* #35 */ { num:35, t:"ספין",               img:CDN+"39898654-1768334618193-ab92981539fbc.jpg",  d:"13 דק׳", date:"ינואר 2026",    u:"ישראלי",         spotify:true },
+  /* #34 */ { num:34, t:"מגנטו",              img:CDN+"39898654-1767706332333-0aa3296731563.jpg",  d:"12 דק׳", date:"ינואר 2026",    u:"Marvel",         spotify:true },
+  /* #33 */ { num:33, t:"האקסמן",             img:CDN+"39898654-1767705966404-9243b651b55cc.jpg",  d:"15 דק׳", date:"ינואר 2026",    u:"Marvel",         spotify:true },
+  /* #32 */ { num:32, t:"הארלי קווין",        img:CDN+"39898654-1765832289237-b924e3eec1d37.jpg",  d:"13 דק׳", date:"דצמבר 2025",   u:"DC",             spotify:true },
+  /* #31 */ { num:31, t:"פיקאצ'ו",            img:CDN+"39898654-1765140037151-457d3817e7778.jpg",  d:"18 דק׳", date:"דצמבר 2025",   u:"Pokémon",        spotify:true },
+  /* #30 */ { num:30, t:"הג'וקר",             img:CDN+"39898654-1765362122036-da1ed2d8fa14.jpg",   d:"11 דק׳", date:"דצמבר 2025",   u:"DC",             spotify:true },
+  /* #29 */ { num:29, t:"סוניק",              img:CDN+"39898654-1765746669052-6175013fda9b1.jpg",  d:"11 דק׳", date:"דצמבר 2025",   u:"Sega",           spotify:true },
+  /* #28 */ { num:28, t:"הוקאיי",             img:CDN+"39898654-1763759308793-a75d96c624d43.jpg",  d:"11 דק׳", date:"נובמבר 2025",  u:"Marvel",         spotify:true },
+  /* #27 */ { num:27, t:"תאנוס",              img:CDN+"39898654-1762440702206-d7b7453f80488.jpg",  d:"47 דק׳", date:"אוקטובר 2025", u:"Marvel",         spotify:true },
+  /* #26 */ { num:26, t:"סברה",               img:CDN+"39898654-1759779038349-02e2a0b8c70cb.jpg",  d:"15 דק׳", date:"ספטמבר 2025",  u:"Marvel",         spotify:true },
+  /* #25 */ { num:25, t:"האוונג'רס",          img:CDN+"39898654-1758317378281-fe7e8dffbefa8.jpg",  d:"21 דק׳", date:"ספטמבר 2025",  u:"Marvel",         spotify:true },
+  /* #24 */ { num:24, t:"גוסט ספיידר",        img:CDN+"39898654-1756845785917-331384b3cc0c5.jpg",  d:"15 דק׳", date:"אוגוסט 2025",  u:"Marvel",         spotify:true },
+  /* #23 */ { num:23, t:"ליידיבאג",           img:CDN+"39898654-1755080111600-0a9245f11befa.jpg",  d:"16 דק׳", date:"יולי 2025",     u:"Miraculous",     spotify:true },
+  /* #22 */ { num:22, t:"אקוואמן",            img:CDN+"39898654-1752316373998-db4893e08133b.jpg",  d:"19 דק׳", date:"יוני 2025",     u:"DC",             spotify:true },
+  /* #21 */ { num:21, t:"איש הנמלה",          img:CDN+"39898654-1751221800776-eb6ff5372c58c.jpg",  d:"17 דק׳", date:"יוני 2025",     u:"Marvel",         spotify:true },
+  /* #20 */ { num:20, t:"הקרנף",              img:CDN+"39898654-1749235505261-7493c16d1e8d4.jpg",  d:"20 דק׳", date:"יוני 2025",     u:"Marvel",         spotify:true },
+  /* #19 */ { num:19, t:"לוקי",               img:CDN+"39898654-1745581778241-30ca65d52f254.jpg",  d:"13 דק׳", date:"אפריל 2025",   u:"Marvel",         spotify:true },
+  /* #18 */ { num:18, t:"לקס לותור",          img:CDN+"39898654-1745088250282-f5671ce95ef08.jpg",  d:"17 דק׳", date:"אפריל 2025",   u:"DC",             spotify:true },
+  /* #17 */ { num:17, t:"וולברין",            img:CDN+"39898654-1740428079628-9990bbd208546.jpg",  d:"13 דק׳", date:"פברואר 2025",  u:"Marvel",         spotify:true },
+  /* #16 */ { num:16, t:"דדפול",              img:CDN+"39898654-1739900276289-e36447eb2cf88.jpg",  d:"14 דק׳", date:"פברואר 2025",  u:"Marvel",         spotify:true },
+  /* #15 */ { num:15, t:"קפטן אמריקה",       img:CDN+"39898654-1737316134601-9a586c03cdb9f.jpg",  d:"13 דק׳", date:"ינואר 2025",   u:"Marvel",         spotify:true },
+  /* #14 */ { num:14, t:"דוקטור אוקטופוס",   img:CDN+"39898654-1736973167030-7750424d74ee9.jpg",  d:"11 דק׳", date:"ינואר 2025",   u:"Marvel",         spotify:true },
+  /* #13 */ { num:13, t:"הפנתר השחור",        img:CDN+"39898654-1736713278658-26338b3d75a73.jpg",  d:"14 דק׳", date:"ינואר 2025",   u:"Marvel",         spotify:true },
+  /* #12 */ { num:12, t:"הגרין גובלין",       img:CDN+"39898654-1735759787010-00f82f2c936f6.jpg",  d:"14 דק׳", date:"דצמבר 2024",  u:"Marvel",         spotify:true },
+  /* #11 */ { num:11, t:"סופרמן",             img:CDN+"39898654-1734453723092-229ade0acd62f.jpg",  d:"15 דק׳", date:"נובמבר 2024",  u:"DC",             spotify:true },
+  /* #10 */ { num:10, t:"ונום",               img:CDN+"39898654-1731872012009-bdebfe8814d76.jpg",  d:"12 דק׳", date:"נובמבר 2024",  u:"Marvel",         spotify:true },
+  /*  #9 */ { num:9,  t:"ת'ור",               img:CDN+"39898654-1731871627518-1940bc7a3de87.jpg",  d:"16 דק׳", date:"נובמבר 2024",  u:"Marvel",         spotify:true },
+  /*  #8 */ { num:8,  t:"האלמנה השחורה",      img:CDN+"39898654-1731871373597-9cdb0ca7dc5ba.jpg",  d:"13 דק׳", date:"נובמבר 2024",  u:"Marvel",         spotify:true },
+  /*  #7 */ { num:7,  t:"הפנטסטיק פור",       img:CDN+"39898654-1730747215892-a2f51096be7fb.jpg",  d:"16 דק׳", date:"אוקטובר 2024", u:"Marvel",         spotify:true },
+  /*  #6 */ { num:6,  t:"איירון-מן",          img:CDN+"39898654-1729243091895-46d3295b63e9b.jpg",  d:"13 דק׳", date:"אוקטובר 2024", u:"Marvel",         spotify:true },
+  /*  #5 */ { num:5,  t:"וונדר-וומן",         img:CDN+"39898654-1722796721736-a64260d81682e.jpg",  d:"10 דק׳", date:"אוגוסט 2024",  u:"DC",             spotify:true },
+  /*  #4 */ { num:4,  t:"באטמן",              img:CDN+"39898654-1722794500321-fc652dba161c3.jpg",  d:"14 דק׳", date:"אוגוסט 2024",  u:"DC",             spotify:true },
+  /*  #3 */ { num:3,  t:"הענק הירוק",         img:CDN+"39898654-1719676363254-6e8b694f3b866.jpg",  d:"14 דק׳", date:"יוני 2024",    u:"Marvel",         spotify:true },
+  /*  #2 */ { num:2,  t:"פלאש",               img:CDN+"39898654-1719676420446-2bce6ebe7d98.jpg",   d:"14 דק׳", date:"דצמבר 2023",  u:"DC",             spotify:true },
+  /*  #1 */ { num:1,  t:"ספיידרמן",           img:CDN+"39898654-1719676522731-28193979a4093.jpg",  d:"14 דק׳", date:"דצמבר 2023",  u:"Marvel",         spotify:true },
+];
+
+/* ── DYNAMIC STATS ── */
+const MONTHS_HE = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+const _now = new Date();
+
+function calcNoamAge() {
+  const ny = _now.getFullYear(), nm = _now.getMonth()+1, nd = _now.getDate();
+  // DOB: 10 November 2018
+  let years = ny - 2018;
+  if (nm < 11 || (nm === 11 && nd < 10)) years--;
+  // Half-birthday: 10 May each year
+  const pastHalf = nm > 5 || (nm === 5 && nd >= 10);
+  const pastBday = nm > 11 || (nm === 11 && nd >= 10);
+  if (pastBday) return String(years);
+  if (pastHalf) return years + '.5';
+  return String(years);
+}
+
+const _age = calcNoamAge();
+const _spotifyCount = episodes.filter(e => e.spotify).length;
+const _totalCount   = episodes.length;
+const _dateStr = MONTHS_HE[_now.getMonth()] + ' ' + _now.getFullYear();
+
+document.querySelectorAll('.noam-age').forEach(el => el.textContent = _age);
+document.querySelectorAll('.spotify-count').forEach(el => el.textContent = _spotifyCount);
+document.querySelectorAll('.stats-current-date').forEach(el => el.textContent = _dateStr);
+// update hero badge + section subtitle
+const _badge = document.querySelector('.splash-art-badge');
+if (_badge) _badge.innerHTML = _totalCount + '<br>פרקים!';
+const _epSubtitle = document.querySelector('#episodes .sec-label p');
+if (_epSubtitle) _epSubtitle.textContent = _totalCount + ' פרקים · לחצו על פרק להאזנה';
+
+const PUB = {
+  'Marvel':'#E63946','DC':'#3A86FF','Disney':'#9B5DE5','Pokémon':'#FFD166',
+  'Sega':'#06D6A0','TMNT':'#3A86FF','Miraculous':'#FF6B9D','Wizarding World':'#8338EC',
+  'Power Rangers':'#E63946','ישראלי':'#FFD166','LEGO Ninjago':'#F4A261','Cartoon Network':'#06D6A0'
+};
+
+document.getElementById("ep-grid").innerHTML = episodes.map((e) => {
+  const pubColor = PUB[e.u] || '#111';
+  const img = e.img
+    ? `<img class="ep-img" src="${e.img}" alt="${e.t}" loading="lazy">`
+    : `<div class="ep-noimg" style="background:${e.status==='script'?'#f0e8ff':'#e8f4e8'};font-family:'Bangers',cursive;font-size:1.6rem;letter-spacing:2px;color:rgba(0,0,0,0.25)">${e.t}</div>`;
+
+  let links = '';
+  if (e.spotify) {
+    links = `<a class="elink sp" href="${SHOW}" target="_blank">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      ספוטיפיי</a>
+    <a class="elink ap" href="${APPLE}" target="_blank">Apple</a>`;
+  } else if (e.status === 'soon') {
+    links = `<span class="elink soon">בדרך לספוטיפיי</span>`;
+  } else {
+    links = `<span class="elink coming">בכתיבה</span>`;
+  }
+
+  const dedStr = e.dedications ? `<div class="ep-m" style="color:var(--purple);font-weight:700;">${e.dedications.join(', ')}</div>` : '';
+
+  return `
+    <div class="ep${e.big?' big':''}">
+      <div style="height:3px;background:${pubColor};flex-shrink:0;"></div>
+      ${img}
+      <div class="ep-body">
+        <div class="ep-n">פרק #${e.num}</div>
+        <div class="ep-t">${e.t}</div>
+        <div class="ep-m">${e.d} &nbsp;·&nbsp; ${e.u}</div>
+        ${dedStr}
+        <div class="ep-l">${links}</div>
+      </div>
+    </div>`;
+}).join("");
+
+/* ── TICKER ── */
+const reqs = ["Spin (6 בקשות)","גוקו / Dragon Ball (4)","הרקולס (4)","איש הכלב (4)","אלקטרו (3)","רפאית / Ghost-Spider (3)","חתול שחור (2)","מיס מארוול (2)","דוקטור דום (2)","הענק האדום (2)","וור משין (2)","תאנוס (2)","קרנאג' (2)","רובין (2)","נייטווינג (2)","Jedi (2)","גלקטוס (2)","X-Men (2)","קפטן מארוול (2)","Winter Soldier","הפאנישר","אנטמן","טאסקמאסטר","אוואטר אנג","פרסי ג'קסון","פרופסור X","מגנטו","ויז'ן","גוסט ריידר","סופה","Darth Vader","שר הטבעות"];
+const html = reqs.map(r=>`<span class="ti"><span class="ts">✦</span> ${r}</span>`).join("");
+document.getElementById("ticker-content").innerHTML = html+html;
+
+/* ── VOTE ── */
+const candidates = [
+  { id:"spin",  name:"ספין",              req:"6 בקשות", desc:"הספינר המהיר מהסדרה הישראלית הכי אהובה", accent:"#E63946", seeds:43 },
+  { id:"herc",  name:"הרקולס",            req:"4 בקשות", desc:"בן של זאוס — חצי אדם, חצי אלוהות",       accent:"#F4A261", seeds:31 },
+  { id:"goku",  name:"גוקו / Dragon Ball", req:"4 בקשות", desc:"הלוחם מכוכב ונפוס שנהיה גיבור כדור הארץ", accent:"#3A86FF", seeds:28 },
+];
+
+const VKEY = "shp_vote_v2";
+const CKEY = "shp_cnts_v2";
+
+function getCounts(){ try { const r=localStorage.getItem(CKEY); if(r) return JSON.parse(r); } catch(e){} const o={}; candidates.forEach(c=>o[c.id]=c.seeds); return o; }
+function getVote(){ return localStorage.getItem(VKEY)||null; }
+function save(c){ localStorage.setItem(CKEY,JSON.stringify(c)); }
+
+function renderVote(){
+  const counts=getCounts(), myVote=getVote(), total=Object.values(counts).reduce((a,b)=>a+b,0), voted=!!myVote;
+  const maxC=Math.max(...Object.values(counts));
+  document.getElementById("vote-grid").innerHTML = candidates.map((c,i)=>`
+    <div class="vc">
+      <div class="vc-accent" style="background:${c.accent}"></div>
+      <div class="vc-watermark">${i+1}</div>
+      <div class="vc-body">
+        ${voted && counts[c.id]===maxC ? `<div class="vc-leader show">מוביל</div>` : `<div class="vc-leader"></div>`}
+        <div class="vc-name">${c.name}</div>
+        <div class="vc-req">${c.req}</div>
+        <div class="vc-desc">${c.desc}</div>
+        ${!voted
+          ? `<button class="vote-btn" style="background:${c.accent}" onclick="castVote('${c.id}')">אני רוצה את הפרק הזה</button>`
+          : `<div class="voted-label">${myVote===c.id ? 'הצבעתי' : ''}</div>`
+        }
+        <div class="vbar-wrap" style="${voted?'':'display:none'}">
+          <div class="vbar-track"><div class="vbar-fill" id="fill-${c.id}" style="background:${c.accent};width:${voted?Math.round(counts[c.id]/total*100)+'%':'0%'}"></div></div>
+          <div class="vbar-pct">${Math.round(counts[c.id]/total*100)}% — ${counts[c.id]} הצבעות</div>
+        </div>
+      </div>
+    </div>
+  `).join("");
+  const tot=document.getElementById("vote-total");
+  if(voted){ tot.classList.add("show"); tot.textContent=`סה"כ ${total} הצבעות · הצבעת עבור: ${candidates.find(c=>c.id===myVote)?.name}`; }
+  else { tot.classList.remove("show"); }
+}
+
+function castVote(id){
+  const c=getCounts(); c[id]++; save(c); localStorage.setItem(VKEY,id);
+  renderVote();
+  setTimeout(()=>{
+    const tot=Object.values(c).reduce((a,b)=>a+b,0);
+    candidates.forEach(cv=>{ const f=document.getElementById("fill-"+cv.id); if(f) f.style.width=Math.round(c[cv.id]/tot*100)+"%"; });
+  },50);
+}
+
+renderVote();
+
+/* ── SIGNUP ── */
+function doSignup(e){
+  e.preventDefault();
+  const f=document.getElementById("sform"), ok=document.getElementById("ok");
+  fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
+    .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
+}
+function doRequest(e){
+  e.preventDefault();
+  const f=document.getElementById("rform"), ok=document.getElementById("req-ok");
+  fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
+    .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
+}
+</script>
+</body>
+</html>
