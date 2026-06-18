@@ -29,8 +29,8 @@
     body {
       font-family: 'Heebo', sans-serif;
       background: var(--paper);
-      background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1.5px, transparent 1.5px);
-      background-size: 18px 18px;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.085) 1.8px, transparent 1.8px);
+      background-size: 14px 14px;
       direction: rtl;
       color: var(--ink);
     }
@@ -40,158 +40,130 @@
       background: var(--ink);
       border-bottom: 5px solid #111;
       padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      position: sticky; top: 0; z-index: 100;
     }
-    .hdr-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 10px 0;
-      text-decoration: none;
-    }
-    .hdr-brand img {
-      height: 80px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 0 8px rgba(255,209,102,0.3));
-    }
-    .hdr-brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
-    .hdr-name {
-      font-family: 'Bangers', cursive;
-      font-size: 1.3rem;
-      letter-spacing: 2px;
-      color: var(--yellow);
-    }
-    .hdr-sub {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 1px;
-    }
-    .hdr-nav {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .hdr-nav a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: all .15s;
-    }
-    .hdr-nav a:hover {
-      color: var(--yellow);
-      background: rgba(255,255,255,0.07);
-    }
-    .hdr-nav .hdr-cta {
-      background: var(--red);
-      color: #fff;
-      border-radius: 4px;
-      border: 2px solid rgba(255,255,255,0.15);
-    }
+    .hdr-brand { display: flex; align-items: center; gap: 14px; padding: 10px 0; text-decoration: none; }
+    .hdr-brand img { height: 80px; width: auto; display: block; filter: drop-shadow(0 0 8px rgba(255,209,102,0.3)); }
+    .hdr-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .hdr-name { font-family: 'Bangers', cursive; font-size: 1.3rem; letter-spacing: 2px; color: var(--yellow); }
+    .hdr-sub { font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+    .hdr-nav { display: flex; align-items: center; gap: 4px; }
+    .hdr-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.82rem; font-weight: 700; padding: 6px 12px; border-radius: 4px; transition: all .15s; }
+    .hdr-nav a:hover { color: var(--yellow); background: rgba(255,255,255,0.07); }
+    .hdr-nav .hdr-cta { background: var(--red); color: #fff; border-radius: 4px; border: 2px solid rgba(255,255,255,0.15); }
     .hdr-nav .hdr-cta:hover { background: #c7303b; color: #fff; }
 
     /* ──────── PAGE ──────── */
     .page { max-width: 1200px; margin: 0 auto; padding: 14px 14px 0; }
 
-    /* ──────── PANEL ──────── */
+    /* ──────── PANEL BASE ──────── */
     .panel { border: var(--b); box-shadow: var(--sh); overflow: hidden; position: relative; }
+
+    /* ──────── SECTION HEADER (comic caption style) ──────── */
+    .sec-head {
+      display: flex; align-items: center;
+      margin-bottom: 18px; direction: rtl;
+    }
+    .sec-head::after {
+      content: ''; flex: 1;
+      height: 4px; background: var(--ink);
+      display: block; margin-right: -1px;
+    }
+    .sec-head-box {
+      background: var(--yellow);
+      border: 4px solid var(--ink);
+      box-shadow: 5px 5px 0 var(--ink);
+      padding: 10px 22px 12px;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .sec-head-box.red  { background: var(--red); }
+    .sec-head-box.cyan { background: var(--cyan); }
+    .sec-head-box.purple { background: var(--purple); }
+    .sec-head-box.green { background: var(--green); }
+    .sec-head-box.dark { background: var(--dark); }
+    .sec-cap {
+      font-family: 'Bangers', cursive; font-size: 0.65rem;
+      letter-spacing: 4px; color: rgba(0,0,0,0.45);
+      display: block; margin-bottom: 1px; text-transform: uppercase;
+    }
+    .sec-head-box.red .sec-cap,
+    .sec-head-box.cyan .sec-cap,
+    .sec-head-box.purple .sec-cap,
+    .sec-head-box.dark .sec-cap { color: rgba(255,255,255,0.5); }
+    .sec-head-box h2 {
+      font-family: 'Bangers', cursive; font-size: 2.4rem; letter-spacing: 2px;
+      line-height: 1; color: var(--ink); margin: 0;
+    }
+    .sec-head-box.red h2,
+    .sec-head-box.cyan h2,
+    .sec-head-box.purple h2,
+    .sec-head-box.dark h2 { color: #fff; }
+    .sec-head-box p { font-size: 0.76rem; color: rgba(0,0,0,0.55); font-weight: 700; margin: 4px 0 0; }
+    .sec-head-box.red p,
+    .sec-head-box.cyan p,
+    .sec-head-box.purple p,
+    .sec-head-box.dark p { color: rgba(255,255,255,0.6); }
 
     /* ──────── SPLASH ──────── */
     .splash {
-      position: relative;
-      min-height: 540px;
-      overflow: hidden;
-      margin-bottom: 14px;
-      background: var(--dark);
-      display: flex;
-      align-items: center;
+      position: relative; min-height: 540px;
+      overflow: hidden; margin-bottom: 14px;
+      background: var(--dark); display: flex; align-items: center;
+    }
+    /* speed lines */
+    .splash-lines {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: repeating-conic-gradient(
+        from 0deg at 22% 50%,
+        rgba(255,255,255,0.013) 0deg, rgba(255,255,255,0.013) 1.2deg,
+        transparent 1.2deg, transparent 6deg
+      );
     }
     .splash-art {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
     }
     .splash-art img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: left center;
-      display: block;
-      filter: brightness(0.7) saturate(0.85);
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: left center; display: block;
+      filter: brightness(0.68) saturate(0.8);
     }
     .splash-art::after {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(
         to right,
-        rgba(27,27,47,0.05) 0%,
-        rgba(27,27,47,0.4)  30%,
-        rgba(27,27,47,0.88) 58%,
-        rgba(27,27,47,1)    75%
+        rgba(27,27,47,0.05) 0%, rgba(27,27,47,0.4) 30%,
+        rgba(27,27,47,0.88) 58%, rgba(27,27,47,1) 75%
       );
     }
     .splash-text {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 2;
       padding: 56px 56px 56px 0;
-      width: 56%;
-      margin-right: 0;
-      margin-left: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      width: 56%; margin-right: 0; margin-left: auto;
+      display: flex; flex-direction: column; justify-content: center;
     }
     .action-zap {
-      font-family: 'Bangers', cursive;
-      font-size: 1.4rem;
-      letter-spacing: 10px;
-      color: var(--yellow);
-      line-height: 1;
-      display: block;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      opacity: 1;
+      font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 10px;
+      color: var(--yellow); line-height: 1; display: block;
+      margin-bottom: 16px; text-transform: uppercase;
     }
     .splash-h1 {
-      font-size: clamp(2.8rem, 5vw, 4.6rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.0;
-      margin-bottom: 10px;
+      font-size: clamp(2.8rem, 5vw, 4.6rem); font-weight: 900;
+      color: #fff; line-height: 1.0; margin-bottom: 10px;
     }
     .splash-h1 em { font-style: normal; color: var(--yellow); }
     .splash-by {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 28px;
-      letter-spacing: 0.3px;
+      font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.45);
+      margin-bottom: 28px; letter-spacing: 0.3px;
     }
     .splash-by strong { color: rgba(255,255,255,0.8); }
-    .bubble {
-      font-size: 0.95rem;
-      font-weight: 600;
-      line-height: 1.65;
-      color: rgba(255,255,255,0.75);
-      max-width: 420px;
-      margin-bottom: 32px;
-      border-right: 3px solid var(--yellow);
-      padding-right: 16px;
+    .speech-bubble {
+      font-size: 0.95rem; font-weight: 600; line-height: 1.65;
+      color: rgba(255,255,255,0.8); max-width: 420px; margin-bottom: 32px;
+      background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.18);
+      border-right: 4px solid var(--yellow);
+      border-radius: 0 8px 8px 0; padding: 14px 18px 14px 14px;
+      position: relative;
     }
     .splash-btns { display: flex; gap: 10px; flex-wrap: wrap; }
     .cbtn {
@@ -200,193 +172,184 @@
       font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 0.9rem;
       border-radius: 6px; letter-spacing: 0.3px;
       cursor: pointer; text-decoration: none;
-      transition: opacity .15s, transform .1s;
-      border: none;
+      transition: opacity .15s, transform .1s; border: none;
     }
     .cbtn:hover { opacity: 0.88; transform: translateY(-1px); }
     .cbtn-spotify { background: #1DB954; color: #fff; }
     .cbtn-apple   { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
     .splash-art-badge {
-      position: absolute; bottom: 20px; left: 20px; z-index: 2;
-      background: var(--yellow);
-      border: 3px solid var(--ink);
-      border-radius: 50%;
-      width: 72px; height: 72px;
-      display: flex; flex-direction: column;
+      position: absolute; bottom: 20px; left: 20px; z-index: 3;
+      background: var(--yellow); border: 3px solid var(--ink); border-radius: 50%;
+      width: 76px; height: 76px; display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      font-family: 'Bangers', cursive;
-      font-size: 0.85rem; letter-spacing: 0.5px;
-      line-height: 1.2; text-align: center;
-      box-shadow: 4px 4px 0 #111;
+      font-family: 'Bangers', cursive; font-size: 0.88rem; letter-spacing: 0.5px;
+      line-height: 1.2; text-align: center; box-shadow: 4px 4px 0 #111;
     }
 
-    /* ──────── STATS ──────── */
+    /* ──────── STATS (starburst) ──────── */
     .stats {
-      background: var(--dark);
+      background: var(--paper);
       border: var(--b); box-shadow: var(--sh);
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      margin-bottom: 14px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 6px;
     }
     .stat-panel {
-      padding: 22px 20px; text-align: center;
-      border-left: 3px solid rgba(255,255,255,0.1);
+      padding: 32px 12px; text-align: center;
+      border-left: 3px solid rgba(0,0,0,0.12);
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 170px;
     }
     .stat-panel:last-child { border-left: none; }
+    /* starburst behind each stat */
+    .stat-panel::before {
+      content: '';
+      position: absolute;
+      width: 148px; height: 148px;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--sc, var(--yellow));
+      clip-path: polygon(50% 0%, 57% 25%, 75% 8%, 70% 33%, 96% 20%, 81% 43%, 100% 50%, 81% 57%, 96% 80%, 70% 67%, 75% 92%, 57% 75%, 50% 100%, 43% 75%, 25% 92%, 30% 67%, 4% 80%, 19% 57%, 0% 50%, 19% 43%, 4% 20%, 30% 33%, 25% 8%, 43% 25%);
+      z-index: 0;
+    }
     .stat-n {
       font-family: 'Bangers', cursive;
-      font-size: 3.2rem; letter-spacing: 2px;
+      font-size: 3.5rem; letter-spacing: 2px;
       line-height: 1; display: block;
-      color: var(--yellow);
+      color: var(--ink);
+      position: relative; z-index: 1;
     }
-    .stat-l { font-size: 0.78rem; font-weight: 700; margin-top: 5px; display: block; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; text-transform: uppercase; }
+    .stat-l {
+      font-size: 0.72rem; font-weight: 900; margin-top: 4px; display: block;
+      color: rgba(0,0,0,0.6); letter-spacing: 0.5px; text-transform: uppercase;
+      position: relative; z-index: 1; line-height: 1.2;
+    }
     .stats-note {
       text-align: center; font-size: 0.72rem; font-weight: 700;
-      color: #999; letter-spacing: 0.5px;
-      padding: 6px 0 12px;
+      color: #999; letter-spacing: 0.5px; padding: 6px 0 14px;
     }
 
-    /* ──────── SECTION LABEL ──────── */
-    .sec-label {
-      background: var(--ink);
-      border: var(--b); box-shadow: var(--sh);
-      padding: 12px 20px;
-      margin-bottom: 14px;
-      display: flex; align-items: center; gap: 14px;
+    /* ──────── FORMS 2-COLUMN GRID ──────── */
+    .forms-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-bottom: 14px; margin-top: 28px;
     }
-    .sec-label-tag {
-      font-family: 'Bangers', cursive;
-      font-size: 0.75rem; letter-spacing: 3px;
-      color: var(--ink);
-      background: var(--yellow);
-      padding: 3px 10px 2px;
-      border-radius: 3px;
-      flex-shrink: 0;
-    }
-    .sec-label-tag.tag-red { background: var(--red); color: #fff; }
-    .sec-label-tag.tag-purple { background: var(--purple); color: #fff; }
-    .sec-label-tag.tag-green { background: var(--green); color: var(--ink); }
-    .sec-label h2 {
-      font-family: 'Bangers', cursive;
-      font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; letter-spacing: 2px;
-    }
-    .sec-label p { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 600; margin-top: 2px; }
-    .sec-divider { display: none; }
-
-    /* ──────── CAPTION BOX (comics element) ──────── */
-    .caption-box {
-      font-family: 'Bangers', cursive;
-      font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
-      background: var(--yellow); color: var(--ink);
-      display: inline-block; padding: 3px 10px;
-      border: 2px solid #111; margin-bottom: 8px;
-    }
+    .forms-grid section { margin: 0 !important; }
 
     /* ──────── SIGNUP ──────── */
-    #signup { margin-bottom: 14px; }
     .signup-wrap {
       background: var(--yellow); border: var(--b); box-shadow: var(--sh);
-      padding: 22px 32px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
+      padding: 24px 26px;
     }
-    .signup-left h2 { font-size: 1.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
-    .signup-left p { font-size: 1rem; color: #444; line-height: 1.6; }
+    .signup-wrap h2 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
+    .signup-wrap > p { font-size: 0.9rem; color: #444; line-height: 1.55; margin-bottom: 16px; }
     .signup-box {
-      background: #fff; border: var(--b); border-radius: 8px;
-      padding: 24px; box-shadow: 5px 5px 0 #111;
+      background: #fff; border: var(--b); border-radius: 6px;
+      padding: 20px; box-shadow: 4px 4px 0 #111;
     }
-    .signup-box input {
-      width: 100%; padding: 12px 14px;
-      border: var(--b); border-radius: 6px;
-      font-family: 'Heebo', sans-serif; font-size: 1rem;
+    .signup-box input, .req-box input {
+      width: 100%; padding: 11px 14px;
+      border: var(--b); border-radius: 5px;
+      font-family: 'Heebo', sans-serif; font-size: 0.95rem;
       margin-bottom: 10px; direction: rtl;
       background: var(--paper);
     }
     .signup-box input:focus { outline: none; border-color: var(--red); background: #fff; }
     .signup-sub {
       width: 100%; background: var(--red); color: #fff;
-      border: var(--b); border-radius: 6px;
-      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1.05rem;
-      padding: 13px; cursor: pointer;
+      border: var(--b); border-radius: 5px;
+      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1rem;
+      padding: 12px; cursor: pointer;
       box-shadow: 4px 4px 0 #111; transition: all .1s;
     }
     .signup-sub:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #111; }
-    .signup-priv { font-size: 0.76rem; color: #999; text-align: center; margin-top: 8px; }
+    .signup-priv { font-size: 0.72rem; color: #999; text-align: center; margin-top: 8px; }
     .signup-ok { display: none; text-align: center; padding: 20px; }
     .signup-ok .big { font-size: 3rem; display: block; margin-bottom: 8px; }
     .signup-ok p { font-weight: 700; font-size: 1.1rem; }
 
     /* ──────── REQUEST FORM ──────── */
-    #request { margin-bottom: 14px; }
     .req-wrap {
       background: var(--cyan); border: var(--b); box-shadow: var(--sh);
-      padding: 22px 32px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
+      padding: 24px 26px;
     }
-    .req-left h2 { font-size: 1.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
-    .req-left p { font-size: 1rem; color: #333; line-height: 1.6; }
+    .req-wrap h2 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
+    .req-wrap > p { font-size: 0.9rem; color: #333; line-height: 1.55; margin-bottom: 16px; }
     .req-box {
-      background: #fff; border: var(--b); border-radius: 8px;
-      padding: 24px; box-shadow: 5px 5px 0 #111;
-    }
-    .req-box input {
-      width: 100%; padding: 12px 14px;
-      border: var(--b); border-radius: 6px;
-      font-family: 'Heebo', sans-serif; font-size: 1rem;
-      margin-bottom: 10px; direction: rtl;
-      background: var(--paper);
+      background: #fff; border: var(--b); border-radius: 6px;
+      padding: 20px; box-shadow: 4px 4px 0 #111;
     }
     .req-box input:focus { outline: none; border-color: var(--purple); background: #fff; }
     .req-sub {
       width: 100%; background: var(--purple); color: #fff;
-      border: var(--b); border-radius: 6px;
-      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1.05rem;
-      padding: 13px; cursor: pointer;
+      border: var(--b); border-radius: 5px;
+      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1rem;
+      padding: 12px; cursor: pointer;
       box-shadow: 4px 4px 0 #111; transition: all .1s;
     }
     .req-sub:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #111; }
-    .req-note { font-size: 0.76rem; color: #555; text-align: center; margin-top: 8px; }
+    .req-note { font-size: 0.72rem; color: #555; text-align: center; margin-top: 8px; }
     .req-ok { display: none; text-align: center; padding: 20px; }
     .req-ok .big { font-size: 3rem; display: block; margin-bottom: 8px; }
     .req-ok p { font-weight: 700; font-size: 1.1rem; }
-    @media(max-width:700px) {
-      .req-wrap { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
-    }
 
     /* ──────── VOTE ──────── */
     #vote { margin-bottom: 14px; }
+    /* battle header */
+    .vote-battle-head {
+      background: var(--red); border: var(--b); box-shadow: var(--sh);
+      padding: 14px 24px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 20px; overflow: hidden;
+      position: relative;
+    }
+    .vote-battle-head::before {
+      content: 'BATTLE!';
+      font-family: 'Bangers', cursive; font-size: 9rem;
+      color: rgba(255,255,255,0.07); position: absolute;
+      right: 20px; top: -10px; line-height: 1; letter-spacing: 4px;
+      pointer-events: none; user-select: none;
+    }
+    .vote-battle-tag {
+      font-family: 'Bangers', cursive; font-size: 0.75rem; letter-spacing: 4px;
+      background: var(--yellow); color: var(--ink);
+      border: 3px solid rgba(255,255,255,0.3); padding: 3px 12px;
+      display: inline-block; flex-shrink: 0;
+    }
+    .vote-battle-head h2 {
+      font-family: 'Bangers', cursive; font-size: 2.2rem; letter-spacing: 2px;
+      color: #fff; line-height: 1; margin: 0;
+    }
+    .vote-battle-head p { font-size: 0.78rem; color: rgba(255,255,255,0.65); font-weight: 700; margin: 3px 0 0; }
     .vote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .vc {
       border: var(--b); box-shadow: var(--sh);
-      background: var(--dark);
-      position: relative;
+      background: var(--dark); position: relative;
       display: flex; flex-direction: column;
-      overflow: hidden;
-      text-align: right;
+      overflow: hidden; text-align: right;
+      transition: transform .12s, box-shadow .12s;
     }
-    .vc-accent { height: 5px; flex-shrink: 0; }
+    .vc:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 #111; }
+    .vc-accent { height: 6px; flex-shrink: 0; }
     .vc-watermark {
-      font-family: 'Bangers', cursive;
-      font-size: 9rem; line-height: 1;
+      font-family: 'Bangers', cursive; font-size: 9rem; line-height: 1;
       position: absolute; top: -6px; left: 10px;
       pointer-events: none; user-select: none;
-      opacity: 0.08; color: #fff;
+      opacity: 0.1; color: #fff;
     }
     .vc-body { padding: 26px 22px; flex: 1; display: flex; flex-direction: column; }
     .vc-leader {
-      display: none;
-      font-family: 'Bangers', cursive; font-size: 0.72rem; letter-spacing: 3px;
+      display: none; font-family: 'Bangers', cursive; font-size: 0.72rem; letter-spacing: 3px;
       background: var(--yellow); color: var(--ink);
       border: 2px solid rgba(255,255,255,0.2); border-radius: 3px;
       padding: 2px 8px; width: fit-content; margin-bottom: 12px;
     }
     .vc-leader.show { display: block; }
-    .vc-name { font-size: 2.1rem; font-weight: 900; line-height: 1.05; margin-bottom: 8px; color: #fff; }
+    .vc-name { font-size: 2.2rem; font-weight: 900; line-height: 1.05; margin-bottom: 8px; color: #fff; }
     .vc-req { display: inline-block; font-family: 'Bangers', cursive; font-size: 0.82rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.65); padding: 2px 9px; border-radius: 3px; margin-bottom: 14px; background: transparent; }
-    .vc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.48); line-height: 1.55; margin-bottom: 20px; flex: 1; }
+    .vc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.55; margin-bottom: 20px; flex: 1; }
     .vote-btn {
-      width: 100%; color: #fff;
-      border: var(--b); border-radius: 5px;
+      width: 100%; color: #fff; border: var(--b); border-radius: 5px;
       font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1rem;
       padding: 14px; cursor: pointer;
       box-shadow: 3px 3px 0 rgba(0,0,0,0.5); transition: transform .1s, box-shadow .1s;
@@ -446,78 +409,53 @@
     }
     .elink:hover { transform: translate(-1px,-1px); }
     .elink.sp { background: #1DB954; color: #fff; }
+    .elink.ap { background: rgba(0,0,0,0.05); color: #111; }
     .elink.soon { background: var(--orange); color: #fff; }
     .elink.coming { background: var(--purple); color: #fff; }
-    .ep-badge {
-      display: inline-block;
-      font-family: 'Bangers', cursive; font-size: 0.7rem; letter-spacing: 1px;
-      padding: 2px 6px; border-radius: 3px; border: 2px solid #111;
-      position: absolute; top: 8px; left: 8px;
-    }
 
     /* ──────── ABOUT ──────── */
     #about { margin-bottom: 14px; }
     .about-story {
-      display: grid;
-      grid-template-columns: 400px 1fr;
-      gap: 0;
-      border: var(--b);
-      box-shadow: var(--sh);
+      display: grid; grid-template-columns: 380px 1fr;
+      gap: 0; border: var(--b); box-shadow: var(--sh);
       background: #fff;
     }
-    .about-photo {
-      position: relative;
-      border-left: var(--b);
-      overflow: hidden;
-    }
-    .about-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-    }
+    .about-photo { position: relative; border-left: var(--b); overflow: hidden; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .about-photo-caption {
       position: absolute; bottom: 0; left: 0; right: 0;
-      background: rgba(17,17,17,0.85);
-      padding: 10px 14px;
-      border-top: 3px solid #111;
+      background: rgba(17,17,17,0.88); padding: 10px 14px; border-top: 3px solid #111;
     }
     .about-photo-caption .name { font-weight: 900; color: var(--yellow); font-size: 0.9rem; }
     .about-photo-caption .role { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
-    .about-panels {
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .origin-panel {
-      padding: 28px 32px;
-      border-bottom: var(--b);
-      flex: 1;
-    }
+    .about-panels { padding: 0; display: flex; flex-direction: column; }
+    .origin-panel { padding: 28px 32px; border-bottom: var(--b); flex: 1; }
     .origin-panel:last-child { border-bottom: none; flex: 0; }
     .origin-panel h3 {
-      font-family: 'Bangers', cursive;
-      font-size: 2rem; letter-spacing: 3px;
+      font-family: 'Bangers', cursive; font-size: 2rem; letter-spacing: 3px;
       margin-bottom: 14px; color: var(--ink);
     }
-    .origin-panel .o-text {
-      font-size: 0.95rem; line-height: 1.65; color: #333;
+    .caption-box {
+      font-family: 'Bangers', cursive; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+      background: var(--yellow); color: var(--ink);
+      display: inline-block; padding: 3px 10px;
+      border: 2px solid #111; margin-bottom: 8px;
     }
+    .origin-panel .o-text { font-size: 0.95rem; line-height: 1.65; color: #333; }
     .origin-panel .o-text strong { font-weight: 900; color: var(--ink); }
     .cast-row {
-      display: flex; gap: 20px; padding: 20px 32px;
-      border-bottom: var(--b);
-      background: var(--paper);
+      display: flex; gap: 16px; padding: 20px 28px;
+      border-bottom: var(--b); background: var(--paper);
     }
     .cast-card {
-      background: #fff; border: var(--b); border-radius: 6px;
+      background: #fff; border: var(--b); border-radius: 5px;
       padding: 14px 18px; flex: 1; box-shadow: var(--sh-sm);
     }
     .cast-card .cast-name { font-size: 1.1rem; font-weight: 900; margin-bottom: 2px; }
     .cast-card .cast-title { font-family: 'Bangers', cursive; font-size: 0.95rem; letter-spacing: 1px; color: var(--red); margin-bottom: 6px; }
     .cast-card .cast-bio { font-size: 0.82rem; color: #555; line-height: 1.5; }
     .contact-panel {
-      padding: 18px 32px;
-      background: var(--dark);
+      padding: 18px 28px; background: var(--dark);
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
     .contact-panel p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
@@ -544,25 +482,35 @@
     footer a:hover { color: var(--yellow); }
     .fcopy { font-size: .75rem; color: rgba(255,255,255,.3); }
 
+    /* ──────── SCROLL REVEAL ──────── */
+    [data-reveal] {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    [data-reveal].revealed {
+      opacity: 1; transform: none;
+    }
+
     /* ──────── RESPONSIVE ──────── */
     @media(max-width:960px){
-      .splash { grid-template-columns: 1fr; }
-      .splash-art { height: 260px; border-right: none; border-top: var(--b); }
+      .splash-text { padding: 40px 32px 40px 0; width: 65%; }
       .ep-grid { grid-template-columns: repeat(2,1fr); }
       .ep.big { grid-column: span 2; }
       .vote-grid { grid-template-columns: 1fr; }
       .about-story { grid-template-columns: 1fr; }
       .about-photo { height: 280px; border-left: none; border-bottom: var(--b); }
-      .signup-wrap { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
+      .forms-grid { grid-template-columns: 1fr; }
       .stats { grid-template-columns: repeat(2,1fr); }
     }
     @media(max-width:600px){
       .ep-grid { grid-template-columns: 1fr; }
       .ep.big { grid-column: span 1; }
-      .stats { grid-template-columns: repeat(2,1fr); }
       footer { flex-direction: column; gap: 12px; text-align: center; }
       .hdr-nav a:not(.hdr-cta) { display: none; }
       .cast-row { flex-direction: column; }
+      .splash-text { width: 100%; padding: 40px 20px; }
+      .splash-art { opacity: 0.3; }
+      .splash-art::after { background: rgba(27,27,47,0.5); }
     }
 
     /* ══ REVIEW SYSTEM ══ */
@@ -571,8 +519,7 @@
       background: var(--yellow); color: var(--ink);
       border: 3px solid #111; box-shadow: 4px 4px 0 #111;
       font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 2px;
-      padding: 10px 18px; cursor: pointer; border-radius: 6px;
-      transition: transform .1s;
+      padding: 10px 18px; cursor: pointer; border-radius: 6px; transition: transform .1s;
     }
     #rv-toggle:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #111; }
     #rv-bar {
@@ -625,25 +572,10 @@
       font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 0.82rem;
       cursor: pointer; border-radius: 4px; flex-shrink: 0;
     }
-    /* hoverable elements */
-    body.rv-on [data-rv] {
-      cursor: pointer; outline: 2px dashed transparent;
-      transition: outline .1s, background .1s;
-    }
-    body.rv-on [data-rv]:hover {
-      outline: 2px dashed rgba(255,209,102,.8);
-      background: rgba(255,209,102,.08);
-    }
-    body.rv-on.rv-edit [data-rv]:hover {
-      outline: 2px dashed rgba(58,134,255,.8);
-      background: rgba(58,134,255,.06);
-      cursor: text;
-    }
-    [data-rv][contenteditable="true"] {
-      outline: 2px solid var(--cyan) !important;
-      background: rgba(58,134,255,.07) !important;
-      min-height: 1em;
-    }
+    body.rv-on [data-rv] { cursor: pointer; outline: 2px dashed transparent; transition: outline .1s, background .1s; }
+    body.rv-on [data-rv]:hover { outline: 2px dashed rgba(255,209,102,.8); background: rgba(255,209,102,.08); }
+    body.rv-on.rv-edit [data-rv]:hover { outline: 2px dashed rgba(58,134,255,.8); background: rgba(58,134,255,.06); cursor: text; }
+    [data-rv][contenteditable="true"] { outline: 2px solid var(--cyan) !important; background: rgba(58,134,255,.07) !important; min-height: 1em; }
     .rv-mk {
       display: inline-flex; align-items: center; justify-content: center;
       background: var(--yellow); color: #111; border: 2px solid #111;
@@ -651,16 +583,13 @@
       font-size: 10px; font-weight: 900; font-family: 'Heebo', sans-serif;
       vertical-align: super; margin-right: 3px; cursor: pointer; flex-shrink: 0;
     }
-    /* popup */
     #rv-popup {
       position: fixed; z-index: 999999; display: none;
       background: #fff; border: 3px solid #111; border-radius: 8px;
       box-shadow: 6px 6px 0 #111; padding: 14px; width: 290px;
       font-family: 'Heebo', sans-serif;
     }
-    #rv-pp-path {
-      font-size: 0.68rem; color: #999; margin-bottom: 7px; direction: rtl; line-height: 1.4;
-    }
+    #rv-pp-path { font-size: 0.68rem; color: #999; margin-bottom: 7px; direction: rtl; line-height: 1.4; }
     #rv-pp-ta {
       width: 100%; box-sizing: border-box; border: 2px solid #111; border-radius: 4px;
       font-family: 'Heebo', sans-serif; font-size: 0.88rem; padding: 8px;
@@ -673,10 +602,7 @@
       padding: 8px; cursor: pointer;
     }
     .rv-pp-save:hover { background: #333; }
-    .rv-pp-cancel {
-      background: #f5f5f5; border: 2px solid #ccc; border-radius: 4px;
-      font-family: 'Heebo', sans-serif; font-size: 0.85rem; padding: 8px 12px; cursor: pointer;
-    }
+    .rv-pp-cancel { background: #f5f5f5; border: 2px solid #ccc; border-radius: 4px; font-family: 'Heebo', sans-serif; font-size: 0.85rem; padding: 8px 12px; cursor: pointer; }
     #rv-ovl { position: fixed; inset: 0; z-index: 999998; display: none; }
   </style>
 </head>
@@ -703,13 +629,14 @@
 
   <!-- ══ SPLASH ══ -->
   <div class="panel splash" id="top">
+    <div class="splash-lines"></div>
     <div class="splash-text">
       <span class="action-zap" dir="ltr">POW!</span>
       <h1 class="splash-h1">גיבורי על —<br><em>סיפורי המקור</em></h1>
       <div class="splash-by">
         <strong>נועם פיטר מרקוס</strong>, בן&nbsp;<span class="noam-age">7.5</span> &amp; <strong>אייל מרקוס</strong> (הידוע בכינויו ״אבא״)
       </div>
-      <div class="bubble">
+      <div class="speech-bubble">
         גיבור-על אחד בכל פרק — הסיפור האמיתי שמאחוריו, מאיפה הגיע, מה עשה אותו למי שהוא,
         ושלושה דברים שכל אחד יכול ללמוד ממנו.
       </div>
@@ -730,34 +657,36 @@
     </div>
   </div>
 
-  <!-- ══ STATS ══ -->
-  <div class="stats">
-    <div class="stat-panel">
-      <span class="stat-n spotify-count" style="color:var(--yellow)">52</span>
-      <span class="stat-l">פרקים בספוטיפיי</span>
+  <!-- ══ STATS (starbursts) ══ -->
+  <div class="stats" data-reveal>
+    <div class="stat-panel" style="--sc:var(--yellow)">
+      <span class="stat-n spotify-count">52</span>
+      <span class="stat-l">פרקים<br>בספוטיפיי</span>
     </div>
-    <div class="stat-panel">
-      <span class="stat-n" style="color:var(--red)">60+</span>
-      <span class="stat-l">בקשות מילדים</span>
+    <div class="stat-panel" style="--sc:var(--red)">
+      <span class="stat-n">60+</span>
+      <span class="stat-l">בקשות<br>מילדים</span>
     </div>
-    <div class="stat-panel">
-      <span class="stat-n noam-age" style="color:var(--cyan)">7.5</span>
-      <span class="stat-l">גיל נועם</span>
+    <div class="stat-panel" style="--sc:var(--cyan)">
+      <span class="stat-n noam-age">7.5</span>
+      <span class="stat-l">גיל<br>נועם</span>
     </div>
-    <div class="stat-panel">
+    <div class="stat-panel" style="--sc:var(--green)">
       <span class="stat-n">2023</span>
-      <span class="stat-l">שנת ההשקה</span>
+      <span class="stat-l">שנת<br>ההשקה</span>
     </div>
   </div>
   <div class="stats-note">עדכני: <span class="stats-current-date">יוני 2026</span></div>
 
   <!-- ══ VOTE ══ -->
-  <section id="vote">
-    <div class="sec-label">
-      <span class="sec-label-tag tag-red">VOTE</span>
-      <div><h2>מה הפרק הבא שלנו?</h2><p>הצביעו — ה-podcast הבא הוא שלכם</p></div>
+  <section id="vote" data-reveal>
+    <div class="vote-battle-head">
+      <span class="vote-battle-tag">VOTE</span>
+      <div>
+        <h2>מה הפרק הבא שלנו?</h2>
+        <p>הצביעו — ה-podcast הבא הוא שלכם</p>
+      </div>
     </div>
-    <hr class="sec-divider">
     <div class="vote-grid" id="vote-grid"></div>
     <div class="vote-total" id="vote-total"></div>
   </section>
@@ -767,85 +696,93 @@
     <div class="ticker-in" id="ticker-content"></div>
   </div>
 
-  <!-- ══ SIGNUP (above episodes) ══ -->
-  <section id="signup" style="margin-top:28px;">
-    <div class="sec-label">
-      <span class="sec-label-tag tag-green">NOTIFY</span>
-      <div><h2>תישארו בלופ</h2><p>עדכון ברגע שיוצא פרק חדש — בלי ספאם</p></div>
-    </div>
-    <hr class="sec-divider">
-    <div class="signup-wrap panel">
-      <div class="signup-left">
+  <!-- ══ FORMS SIDE BY SIDE ══ -->
+  <div class="forms-grid">
+
+    <!-- SIGNUP -->
+    <section id="signup">
+      <div class="sec-head">
+        <div class="sec-head-box green">
+          <span class="sec-cap">NOTIFY</span>
+          <h2>תישארו בלופ</h2>
+          <p>עדכון ברגע שיוצא פרק חדש — בלי ספאם</p>
+        </div>
+      </div>
+      <div class="signup-wrap panel">
         <h2>פרק חדש? תדעו ראשונים.</h2>
         <p>השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש של גיבורי על. מבטיחים — רק עדכונים על פרקים.</p>
-      </div>
-      <div class="signup-box">
-        <div class="signup-ok" id="ok">
-          <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">נרשמתם.</p>
-          <p>נעדכן כשהפרק הבא יוצא.</p>
+        <div class="signup-box">
+          <div class="signup-ok" id="ok">
+            <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">נרשמתם.</p>
+            <p>נעדכן כשהפרק הבא יוצא.</p>
+          </div>
+          <form id="sform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doSignup(event)">
+            <input type="hidden" name="_subject" value="הרשמה חדשה — גיבורי על">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="name" placeholder="שם" required>
+            <input type="email" name="email" placeholder="כתובת מייל" required>
+            <button type="submit" class="signup-sub">קבלו עדכונים</button>
+            <p class="signup-priv">לא מוכרים. לא מציקים. רק עדכון כשיוצא פרק חדש.</p>
+          </form>
         </div>
-        <form id="sform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doSignup(event)">
-          <input type="hidden" name="_subject" value="הרשמה חדשה — גיבורי על">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="name" placeholder="שם" required>
-          <input type="email" name="email" placeholder="כתובת מייל" required>
-          <button type="submit" class="signup-sub">קבלו עדכונים</button>
-          <p class="signup-priv">לא מוכרים. לא מציקים. רק עדכון כשיוצא פרק חדש.</p>
-        </form>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ══ REQUEST ══ -->
-  <section id="request" style="margin-top:28px;">
-    <div class="sec-label">
-      <span class="sec-label-tag tag-purple">REQUEST</span>
-      <div><h2>בקשו פרק</h2><p>הגיבור שאתם רוצים לשמוע עליו — שלחו לנו</p></div>
-    </div>
-    <hr class="sec-divider">
-    <div class="req-wrap panel">
-      <div class="req-left">
+    <!-- REQUEST -->
+    <section id="request">
+      <div class="sec-head">
+        <div class="sec-head-box purple">
+          <span class="sec-cap">REQUEST</span>
+          <h2>בקשו פרק</h2>
+          <p>הגיבור שאתם רוצים לשמוע עליו — שלחו לנו</p>
+        </div>
+      </div>
+      <div class="req-wrap panel">
         <h2>איזה גיבור הבא?</h2>
         <p>הבקשות שלכם הן מה שמניע אותנו. כתבו לנו מה הגיבור או נבל-העל שהכי תרצו לשמוע עליו — ונשתדל להפתיע אתכם בפרק הבא.</p>
-      </div>
-      <div class="req-box">
-        <div class="req-ok" id="req-ok">
-          <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">הבקשה התקבלה.</p>
-          <p>נעדכן אותך כשהפרק יוצא.</p>
+        <div class="req-box">
+          <div class="req-ok" id="req-ok">
+            <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">הבקשה התקבלה.</p>
+            <p>נעדכן אותך כשהפרק יוצא.</p>
+          </div>
+          <form id="rform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doRequest(event)">
+            <input type="hidden" name="_subject" value="בקשת פרק חדש — גיבורי על">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="character" placeholder="שם הגיבור או נבל-העל" required>
+            <input type="text" name="child_name" placeholder="שם מלא של הילד המבקש" required>
+            <input type="email" name="email" placeholder="מייל לעדכון כשהפרק יוצא" required>
+            <button type="submit" class="req-sub">שלחו את הבקשה</button>
+            <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק — מבטיחים להתחשב.</p>
+          </form>
         </div>
-        <form id="rform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doRequest(event)">
-          <input type="hidden" name="_subject" value="בקשת פרק חדש — גיבורי על">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="character" placeholder="שם הגיבור או נבל-העל" required>
-          <input type="text" name="child_name" placeholder="שם מלא של הילד המבקש" required>
-          <input type="email" name="email" placeholder="מייל לעדכון כשהפרק יוצא" required>
-          <button type="submit" class="req-sub">שלחו את הבקשה</button>
-          <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק — מבטיחים להתחשב.</p>
-        </form>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </div><!-- /forms-grid -->
 
   <!-- ══ EPISODES ══ -->
-  <section id="episodes" style="margin-top:28px;">
-    <div class="sec-label">
-      <span class="sec-label-tag">EPISODES</span>
-      <div><h2>כל הפרקים</h2><p>54 פרקים · לחצו על פרק להאזנה</p></div>
+  <section id="episodes" style="margin-bottom:14px;" data-reveal>
+    <div class="sec-head">
+      <div class="sec-head-box">
+        <span class="sec-cap">EPISODES</span>
+        <h2>כל הפרקים</h2>
+        <p>54 פרקים · לחצו על פרק להאזנה</p>
+      </div>
     </div>
-    <hr class="sec-divider">
-
     <div class="ep-grid" id="ep-grid"></div>
   </section>
 
   <!-- ══ ABOUT ══ -->
-  <section id="about" style="margin-top:28px;margin-bottom:28px;">
-    <div class="sec-label">
-      <span class="sec-label-tag tag-purple">ABOUT</span>
-      <div><h2>מי אנחנו?</h2><p>הסיפור מאחורי הסיפורים</p></div>
+  <section id="about" style="margin-bottom:14px;" data-reveal>
+    <div class="sec-head">
+      <div class="sec-head-box purple">
+        <span class="sec-cap">ABOUT</span>
+        <h2>מי אנחנו?</h2>
+        <p>הסיפור מאחורי הסיפורים</p>
+      </div>
     </div>
-    <hr class="sec-divider">
 
     <div class="about-story">
       <div class="about-photo">
@@ -973,10 +910,8 @@ const _now = new Date();
 
 function calcNoamAge() {
   const ny = _now.getFullYear(), nm = _now.getMonth()+1, nd = _now.getDate();
-  // DOB: 10 November 2018
   let years = ny - 2018;
   if (nm < 11 || (nm === 11 && nd < 10)) years--;
-  // Half-birthday: 10 May each year
   const pastHalf = nm > 5 || (nm === 5 && nd >= 10);
   const pastBday = nm > 11 || (nm === 11 && nd >= 10);
   if (pastBday) return String(years);
@@ -992,10 +927,9 @@ const _dateStr = MONTHS_HE[_now.getMonth()] + ' ' + _now.getFullYear();
 document.querySelectorAll('.noam-age').forEach(el => el.textContent = _age);
 document.querySelectorAll('.spotify-count').forEach(el => el.textContent = _spotifyCount);
 document.querySelectorAll('.stats-current-date').forEach(el => el.textContent = _dateStr);
-// update hero badge + section subtitle
 const _badge = document.querySelector('.splash-art-badge');
 if (_badge) _badge.innerHTML = _totalCount + '<br>פרקים!';
-const _epSubtitle = document.querySelector('#episodes .sec-label p');
+const _epSubtitle = document.querySelector('#episodes .sec-head-box p');
 if (_epSubtitle) _epSubtitle.textContent = _totalCount + ' פרקים · לחצו על פרק להאזנה';
 
 const PUB = {
@@ -1026,7 +960,7 @@ document.getElementById("ep-grid").innerHTML = episodes.map((e) => {
 
   return `
     <div class="ep${e.big?' big':''}">
-      <div style="height:3px;background:${pubColor};flex-shrink:0;"></div>
+      <div style="height:4px;background:${pubColor};flex-shrink:0;"></div>
       ${img}
       <div class="ep-body">
         <div class="ep-n">פרק #${e.num}</div>
@@ -1118,6 +1052,12 @@ function doRequest(e){
     .catch(()=>{ f.style.display="none"; ok.style.display="block"; })
     .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
+
+/* ── SCROLL REVEAL ── */
+const _ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); _ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('[data-reveal]').forEach(el => _ro.observe(el));
 </script>
 
 <!-- ══ REVIEW SYSTEM ══ -->
@@ -1156,7 +1096,7 @@ function doRequest(e){
 /* ══ REVIEW SYSTEM ══ */
 (function(){
   const STORE = 'rv_v1';
-  const SEL = 'h1,h2,h3,h4,p,.bubble,.stat-n,.stat-l,.vc-name,.vc-desc,.vc-req,.ep-t,.ep-m,.ep-n,.origin-panel .o-text,.cast-name,.cast-title,.cast-bio,.signup-left h2,.signup-left p,.req-left h2,.req-left p,.sec-label h2,.sec-label p,.contact-panel p,.splash-by,.splash-h1,.hdr-name,.flogo-name,.caption-box,.stats-note,.splash-art-badge';
+  const SEL = 'h1,h2,h3,h4,p,.speech-bubble,.stat-n,.stat-l,.vc-name,.vc-desc,.vc-req,.ep-t,.ep-m,.ep-n,.origin-panel .o-text,.cast-name,.cast-title,.cast-bio,.signup-wrap h2,.signup-wrap>p,.req-wrap h2,.req-wrap>p,.sec-head-box h2,.sec-head-box p,.contact-panel p,.splash-by,.splash-h1,.hdr-name,.flogo-name,.caption-box,.stats-note,.splash-art-badge';
   let data = {}, editOn = false, sbOn = false, curId = null, curEl = null;
 
   function load(){ try{ const s=localStorage.getItem(STORE); if(s) data=JSON.parse(s); }catch(e){} }
@@ -1300,59 +1240,52 @@ function doRequest(e){
           pp.style.display = 'block';
           document.getElementById('rv-ovl').style.display = 'block';
         });
-        el.insertBefore(mk, el.firstChild);
+        el.appendChild(mk);
       }
-      const ci = document.createElement('div');
-      ci.className = 'rv-ci';
-      ci.innerHTML = '<div class="rv-ci-num">'+n+'</div><div style="flex:1"><div class="rv-ci-path">'+
-        (d.label||id)+'</div><div class="rv-ci-text">'+d.comment+'</div></div>';
-      ci.addEventListener('click', () => el?.scrollIntoView({behavior:'smooth',block:'center'}));
-      cl.appendChild(ci);
+      const item = document.createElement('div');
+      item.className = 'rv-ci';
+      item.innerHTML = `<div class="rv-ci-num">${n}</div><div><div class="rv-ci-path">${d.label||id}</div><div class="rv-ci-text">${d.comment}</div></div>`;
+      item.addEventListener('click', () => {
+        curEl = el; curId = id;
+        document.getElementById('rv-pp-ta').value = d.comment;
+        document.getElementById('rv-pp-path').textContent = d.label || id;
+        const pp = document.getElementById('rv-popup');
+        const rect = el ? el.getBoundingClientRect() : {left:200,top:200};
+        pp.style.left = Math.max(10, Math.min(rect.left+20, window.innerWidth-310))+'px';
+        pp.style.top = Math.max(60, Math.min(rect.top, window.innerHeight-230))+'px';
+        pp.style.display = 'block';
+        document.getElementById('rv-ovl').style.display = 'block';
+        el?.scrollIntoView({ behavior:'smooth', block:'center' });
+      });
+      cl.appendChild(item);
     });
-    document.getElementById('rv-cnt').textContent = n;
-    document.getElementById('rv-sb-cnt').textContent = n;
+    const cnt = document.getElementById('rv-cnt');
+    const sbcnt = document.getElementById('rv-sb-cnt');
+    if (cnt) cnt.textContent = n;
+    if (sbcnt) sbcnt.textContent = n;
   }
 
   window.rvExport = function(){
-    let txt = '# הערות סקירה — גיבורי על · ' + new Date().toLocaleDateString('he-IL') + '\n\n';
+    load();
+    const lines = ['# סקירה — גיבורי על', ''];
     let n = 0;
     Object.entries(data).forEach(([id, d]) => {
-      if (!d.comment) return;
-      n++;
-      txt += '['+n+'] '+( d.label||id )+'\n→ '+d.comment+'\n\n';
+      if (d.edit) lines.push(`## עריכה: ${d.label||id}\n\`\`\`\n${d.edit}\n\`\`\``);
+      if (d.comment) { n++; lines.push(`## הערה ${n}: ${d.label||id}\n${d.comment}`); }
     });
-    const edits = Object.entries(data).filter(([,d]) => d.edit);
-    if (edits.length) {
-      txt += '---\n# עריכות טקסט\n\n';
-      edits.forEach(([id,d]) => {
-        txt += '[עריכה] '+(d.label||id)+'\n'+d.edit+'\n\n';
-      });
-    }
-    if (!n && !edits.length) txt += '(אין הערות עדיין)\n';
-    navigator.clipboard.writeText(txt).then(() => {
-      const btn = document.activeElement;
-      if (btn && btn.textContent.includes('ייצוא')) {
-        const orig = btn.textContent; btn.textContent = '✓ הועתק!';
-        setTimeout(()=>btn.textContent=orig, 2200);
-      }
-    }).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = txt; document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); ta.remove(); alert('הועתק ללוח ✓');
-    });
+    if (!lines.length || lines.length <= 2) { alert('אין הערות לייצא'); return; }
+    const blob = new Blob([lines.join('\n\n')], {type:'text/markdown'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-gibborei-al.md';
+    a.click();
+    URL.revokeObjectURL(a.href);
   };
 
   window.rvClear = function(){
-    if (!confirm('למחוק את כל ההערות?')) return;
+    if (!confirm('מחק את כל ההערות?')) return;
     data = {}; persist(); render();
-    document.querySelectorAll('[contenteditable="true"]').forEach(el => {
-      el.contentEditable = 'false'; el.style.outline = '';
-    });
   };
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { rvClosePP(); }
-  });
 })();
 </script>
 </body>
