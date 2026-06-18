@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>גיבורי על — סיפורי המקור | נועם ואייל מרקוס</title>
+  <title>גיבורי על: סיפורי המקור | נועם ואייל מרקוס</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Bangers&display=swap" rel="stylesheet">
   <style>
@@ -44,7 +44,9 @@
       position: sticky; top: 0; z-index: 100;
     }
     .hdr-brand { display: flex; align-items: center; gap: 14px; padding: 10px 0; text-decoration: none; }
-    .hdr-brand img { height: 80px; width: auto; display: block; filter: drop-shadow(0 0 8px rgba(255,209,102,0.3)); }
+    .hdr-brand img { height: 240px; width: auto; display: block; filter: drop-shadow(0 0 8px rgba(255,209,102,0.3)); transition: height 0.35s ease; }
+    .hdr.scrolled .hdr-brand img { height: 52px; }
+    .hdr { transition: padding 0.2s ease; }
     .hdr-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
     .hdr-name { font-family: 'Bangers', cursive; font-size: 1.3rem; letter-spacing: 2px; color: var(--yellow); }
     .hdr-sub { font-size: 0.65rem; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
@@ -99,7 +101,7 @@
     .sec-head-box.cyan h2,
     .sec-head-box.purple h2,
     .sec-head-box.dark h2 { color: #fff; }
-    .sec-head-box p { font-size: 0.76rem; color: rgba(0,0,0,0.55); font-weight: 700; margin: 4px 0 0; }
+    .sec-head-box p { font-size: 0.95rem; color: rgba(0,0,0,0.55); font-weight: 700; margin: 4px 0 0; }
     .sec-head-box.red p,
     .sec-head-box.cyan p,
     .sec-head-box.purple p,
@@ -190,7 +192,7 @@
     .stats {
       background: var(--paper);
       border: var(--b); box-shadow: var(--sh);
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       margin-bottom: 6px;
     }
     .stat-panel {
@@ -214,8 +216,9 @@
       z-index: 0;
     }
     .stat-n {
-      font-family: 'Bangers', cursive;
-      font-size: 3.5rem; letter-spacing: 2px;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 900;
+      font-size: 3.2rem; letter-spacing: -1px;
       line-height: 1; display: block;
       color: var(--ink);
       position: relative; z-index: 1;
@@ -240,16 +243,16 @@
     /* ──────── SIGNUP ──────── */
     .signup-wrap {
       background: var(--yellow); border: var(--b); box-shadow: var(--sh);
-      padding: 24px 26px;
+      padding: 14px 16px;
     }
-    .signup-wrap h2 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
-    .signup-wrap > p { font-size: 0.9rem; color: #444; line-height: 1.55; margin-bottom: 16px; }
+    .signup-wrap h2 { font-size: 1.2rem; font-weight: 900; line-height: 1.15; margin-bottom: 6px; }
+    .signup-wrap > p { font-size: 0.82rem; color: #444; line-height: 1.5; margin-bottom: 12px; }
     .signup-box {
       background: #fff; border: var(--b); border-radius: 6px;
-      padding: 20px; box-shadow: 4px 4px 0 #111;
+      padding: 12px; box-shadow: 3px 3px 0 #111;
     }
     .signup-box input, .req-box input {
-      width: 100%; padding: 11px 14px;
+      width: 100%; padding: 8px 11px;
       border: var(--b); border-radius: 5px;
       font-family: 'Heebo', sans-serif; font-size: 0.95rem;
       margin-bottom: 10px; direction: rtl;
@@ -272,13 +275,13 @@
     /* ──────── REQUEST FORM ──────── */
     .req-wrap {
       background: var(--cyan); border: var(--b); box-shadow: var(--sh);
-      padding: 24px 26px;
+      padding: 14px 16px;
     }
-    .req-wrap h2 { font-size: 1.6rem; font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
-    .req-wrap > p { font-size: 0.9rem; color: #333; line-height: 1.55; margin-bottom: 16px; }
+    .req-wrap h2 { font-size: 1.2rem; font-weight: 900; line-height: 1.15; margin-bottom: 6px; }
+    .req-wrap > p { font-size: 0.82rem; color: #333; line-height: 1.5; margin-bottom: 12px; }
     .req-box {
       background: #fff; border: var(--b); border-radius: 6px;
-      padding: 20px; box-shadow: 4px 4px 0 #111;
+      padding: 12px; box-shadow: 3px 3px 0 #111;
     }
     .req-box input:focus { outline: none; border-color: var(--purple); background: #fff; }
     .req-sub {
@@ -317,10 +320,10 @@
       display: inline-block; flex-shrink: 0;
     }
     .vote-battle-head h2 {
-      font-family: 'Bangers', cursive; font-size: 2.2rem; letter-spacing: 2px;
+      font-family: 'Bangers', cursive; font-size: 3.4rem; letter-spacing: 3px;
       color: #fff; line-height: 1; margin: 0;
     }
-    .vote-battle-head p { font-size: 0.78rem; color: rgba(255,255,255,0.65); font-weight: 700; margin: 3px 0 0; }
+    .vote-battle-head p { font-size: 1rem; color: rgba(255,255,255,0.75); font-weight: 700; margin: 5px 0 0; }
     .vote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .vc {
       border: var(--b); box-shadow: var(--sh);
@@ -332,12 +335,12 @@
     .vc:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 #111; }
     .vc-accent { height: 6px; flex-shrink: 0; }
     .vc-watermark {
-      font-family: 'Bangers', cursive; font-size: 9rem; line-height: 1;
-      position: absolute; top: -6px; left: 10px;
+      font-family: 'Bangers', cursive; font-size: 5rem; line-height: 1;
+      position: absolute; top: -4px; left: 8px;
       pointer-events: none; user-select: none;
       opacity: 0.1; color: #fff;
     }
-    .vc-body { padding: 26px 22px; flex: 1; display: flex; flex-direction: column; }
+    .vc-body { padding: 14px 14px; flex: 1; display: flex; flex-direction: column; }
     .vc-leader {
       display: none; font-family: 'Bangers', cursive; font-size: 0.72rem; letter-spacing: 3px;
       background: var(--yellow); color: var(--ink);
@@ -345,13 +348,13 @@
       padding: 2px 8px; width: fit-content; margin-bottom: 12px;
     }
     .vc-leader.show { display: block; }
-    .vc-name { font-size: 2.2rem; font-weight: 900; line-height: 1.05; margin-bottom: 8px; color: #fff; }
-    .vc-req { display: inline-block; font-family: 'Bangers', cursive; font-size: 0.82rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.65); padding: 2px 9px; border-radius: 3px; margin-bottom: 14px; background: transparent; }
-    .vc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.55; margin-bottom: 20px; flex: 1; }
+    .vc-name { font-size: 1.3rem; font-weight: 900; line-height: 1.05; margin-bottom: 5px; color: #fff; }
+    .vc-req { display: inline-block; font-family: 'Bangers', cursive; font-size: 0.75rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.65); padding: 1px 7px; border-radius: 3px; margin-bottom: 8px; background: transparent; }
+    .vc-desc { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.45; margin-bottom: 12px; flex: 1; }
     .vote-btn {
       width: 100%; color: #fff; border: var(--b); border-radius: 5px;
-      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1rem;
-      padding: 14px; cursor: pointer;
+      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 0.85rem;
+      padding: 9px; cursor: pointer;
       box-shadow: 3px 3px 0 rgba(0,0,0,0.5); transition: transform .1s, box-shadow .1s;
       letter-spacing: 0.5px;
     }
@@ -500,7 +503,7 @@
       .about-story { grid-template-columns: 1fr; }
       .about-photo { height: 280px; border-left: none; border-bottom: var(--b); }
       .forms-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: repeat(2,1fr); }
+      .stats { grid-template-columns: repeat(3,1fr); }
     }
     @media(max-width:600px){
       .ep-grid { grid-template-columns: 1fr; }
@@ -632,12 +635,12 @@
     <div class="splash-lines"></div>
     <div class="splash-text">
       <span class="action-zap" dir="ltr">POW!</span>
-      <h1 class="splash-h1">גיבורי על —<br><em>סיפורי המקור</em></h1>
+      <h1 class="splash-h1">גיבורי על -<br><em>סיפורי המקור</em></h1>
       <div class="splash-by">
         <strong>נועם פיטר מרקוס</strong>, בן&nbsp;<span class="noam-age">7.5</span> &amp; <strong>אייל מרקוס</strong> (הידוע בכינויו ״אבא״)
       </div>
       <div class="speech-bubble">
-        גיבור-על אחד בכל פרק — הסיפור האמיתי שמאחוריו, מאיפה הגיע, מה עשה אותו למי שהוא,
+        גיבור-על אחד בכל פרק: הסיפור האמיתי שמאחוריו, מאיפה הגיע, מה עשה אותו למי שהוא,
         ושלושה דברים שכל אחד יכול ללמוד ממנו.
       </div>
       <div class="splash-btns">
@@ -663,10 +666,6 @@
       <span class="stat-n spotify-count">52</span>
       <span class="stat-l">פרקים<br>בספוטיפיי</span>
     </div>
-    <div class="stat-panel" style="--sc:var(--red)">
-      <span class="stat-n">60+</span>
-      <span class="stat-l">בקשות<br>מילדים</span>
-    </div>
     <div class="stat-panel" style="--sc:var(--cyan)">
       <span class="stat-n noam-age">7.5</span>
       <span class="stat-l">גיל<br>נועם</span>
@@ -684,7 +683,7 @@
       <span class="vote-battle-tag">VOTE</span>
       <div>
         <h2>מה הפרק הבא שלנו?</h2>
-        <p>הצביעו — ה-podcast הבא הוא שלכם</p>
+        <p>הצביעו - ה-podcast הבא הוא שלכם</p>
       </div>
     </div>
     <div class="vote-grid" id="vote-grid"></div>
@@ -705,19 +704,18 @@
         <div class="sec-head-box green">
           <span class="sec-cap">NOTIFY</span>
           <h2>תישארו בלופ</h2>
-          <p>עדכון ברגע שיוצא פרק חדש — בלי ספאם</p>
+          <p>עדכון ברגע שיוצא פרק חדש - בלי ספאם</p>
         </div>
       </div>
       <div class="signup-wrap panel">
-        <h2>פרק חדש? תדעו ראשונים.</h2>
-        <p>השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש של גיבורי על. מבטיחים — רק עדכונים על פרקים.</p>
+        <p>השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש של גיבורי על. מבטיחים - רק עדכונים על פרקים.</p>
         <div class="signup-box">
           <div class="signup-ok" id="ok">
             <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">נרשמתם.</p>
             <p>נעדכן כשהפרק הבא יוצא.</p>
           </div>
           <form id="sform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doSignup(event)">
-            <input type="hidden" name="_subject" value="הרשמה חדשה — גיבורי על">
+            <input type="hidden" name="_subject" value="הרשמה חדשה - גיבורי על">
             <input type="hidden" name="_template" value="box">
             <input type="hidden" name="_captcha" value="false">
             <input type="text" name="name" placeholder="שם" required>
@@ -735,26 +733,25 @@
         <div class="sec-head-box purple">
           <span class="sec-cap">REQUEST</span>
           <h2>בקשו פרק</h2>
-          <p>הגיבור שאתם רוצים לשמוע עליו — שלחו לנו</p>
+          <p>הגיבור שאתם רוצים לשמוע עליו - שלחו לנו</p>
         </div>
       </div>
       <div class="req-wrap panel">
-        <h2>איזה גיבור הבא?</h2>
-        <p>הבקשות שלכם הן מה שמניע אותנו. כתבו לנו מה הגיבור או נבל-העל שהכי תרצו לשמוע עליו — ונשתדל להפתיע אתכם בפרק הבא.</p>
+        <p>הבקשות שלכם הן מה שמניע אותנו. כתבו לנו מה הגיבור או נבל-העל שהכי תרצו לשמוע עליו - ונשתדל להפתיע אתכם בפרק הבא.</p>
         <div class="req-box">
           <div class="req-ok" id="req-ok">
             <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">הבקשה התקבלה.</p>
             <p>נעדכן אותך כשהפרק יוצא.</p>
           </div>
           <form id="rform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doRequest(event)">
-            <input type="hidden" name="_subject" value="בקשת פרק חדש — גיבורי על">
+            <input type="hidden" name="_subject" value="בקשת פרק חדש - גיבורי על">
             <input type="hidden" name="_template" value="box">
             <input type="hidden" name="_captcha" value="false">
             <input type="text" name="character" placeholder="שם הגיבור או נבל-העל" required>
             <input type="text" name="child_name" placeholder="שם מלא של הילד המבקש" required>
             <input type="email" name="email" placeholder="מייל לעדכון כשהפרק יוצא" required>
             <button type="submit" class="req-sub">שלחו את הבקשה</button>
-            <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק — מבטיחים להתחשב.</p>
+            <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק, מבטיחים להתחשב.</p>
           </form>
         </div>
       </div>
@@ -789,7 +786,7 @@
         <img src="images/eyal-noam.jpg" alt="נועם פיטר מרקוס ואייל מרקוס">
         <div class="about-photo-caption">
           <div class="name">נועם פיטר מרקוס &amp; אייל מרקוס</div>
-          <div class="role">הסטודיו שלנו — תל אביב</div>
+          <div class="role">הסטודיו שלנו - תל אביב</div>
         </div>
       </div>
       <div class="about-panels">
@@ -797,24 +794,24 @@
           <div class="caption-box">תאילנד · גיל 3</div>
           <h3>הכל התחיל בתאילנד</h3>
           <div class="o-text">
-            היה זה לילה בתאילנד. נועם בן שלוש וחצי, לא מוכן לישון, דורש סיפור.
+            היה זה לילה בתאילנד. נועם בן שלוש וחצי, לא מוכן לישון, דורש סיפור. על מיטה, בווילה על הים, בחוף צ׳לוקלאם שבאי פנגן.
             <br><br>
             אייל, שכבר סיפר את אותם הסיפורים מאה פעם, החליט לנסות משהו אחר:
             <strong>גיבורי על.</strong>
             <br><br>
-            וכך, על ספה בבנגקוק, נולד פרק אחד. אחר כך עוד אחד. עד שנועם ביקש להקליט, כדי שגם חברים יוכלו לשמוע.
+            וכך נולד פרק אחד. אחר כך עוד אחד. עד שנועם ביקש להקליט, כדי שגם חברים יוכלו לשמוע.
           </div>
         </div>
         <div class="cast-row">
           <div class="cast-card">
             <div class="cast-name">נועם פיטר מרקוס</div>
             <div class="cast-title">בן <span class="noam-age">7.5</span> · מומחה ראשי</div>
-            <div class="cast-bio">ביקורת חדה. שאלות שאייל לא תמיד יודע לענות עליהן. יודע לזהות אם הסיפור לא מדויק מגיל שלוש. אוהב: גרוט, פאוור ריינג'רס, כל מי שמשנה צורה.</div>
+            <div class="cast-bio">ביקורת חדה. שאלות שאייל לא תמיד יודע לענות עליהן. יודע לזהות אם הסיפור לא מדויק מגיל שלוש. אוהב את פלאש הכי הרבה. גם גרוט, פאוור ריינג'רס, וכל מי שמשנה צורה.</div>
           </div>
           <div class="cast-card">
             <div class="cast-name">אייל מרקוס</div>
             <div class="cast-title">הידוע בכינויו ״אבא״</div>
-            <div class="cast-bio">מחקר, כתיבה, הקלטה — ושלושה ימים לפני כל פרק שוקע בוויקיפדיה. מאמין שגיבורי על מלמדים על חיים הרבה יותר מכל שיעור מוסר. אוהב: גולש הכסף, שאזאם, כל מי עם אוריג'ין טוב.</div>
+            <div class="cast-bio">מחקר, כתיבה, הקלטה, ושלושה ימים לפני כל פרק שוקע בוויקיפדיה. מאמין שגיבורי על מלמדים על חיים הרבה יותר מכל שיעור מוסר. אוהב את וולברין ותאנוס הכי הרבה. גם גולש הכסף ושאזאם.</div>
           </div>
         </div>
         <div class="contact-panel">
@@ -829,7 +826,7 @@
   <footer class="panel">
     <div class="flogo">
       <img src="images/logo.png" alt="גיבורי על">
-      <span class="flogo-name">גיבורי על — סיפורי המקור</span>
+      <span class="flogo-name">גיבורי על: סיפורי המקור</span>
     </div>
     <div>
       <a href="https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U" target="_blank">ספוטיפיי</a>
@@ -980,7 +977,7 @@ document.getElementById("ticker-content").innerHTML = html+html;
 /* ── VOTE ── */
 const candidates = [
   { id:"spin",  name:"ספין",              req:"6 בקשות", desc:"הספינר המהיר מהסדרה הישראלית הכי אהובה", accent:"#E63946", seeds:43 },
-  { id:"herc",  name:"הרקולס",            req:"4 בקשות", desc:"בן של זאוס — חצי אדם, חצי אלוהות",       accent:"#F4A261", seeds:31 },
+  { id:"herc",  name:"הרקולס",            req:"4 בקשות", desc:"בן של זאוס, חצי אדם וחצי אלוהות",        accent:"#F4A261", seeds:31 },
   { id:"goku",  name:"גוקו / Dragon Ball", req:"4 בקשות", desc:"הלוחם מכוכב ונפוס שנהיה גיבור כדור הארץ", accent:"#3A86FF", seeds:28 },
 ];
 
@@ -1009,7 +1006,7 @@ function renderVote(){
         }
         <div class="vbar-wrap" style="${voted?'':'display:none'}">
           <div class="vbar-track"><div class="vbar-fill" id="fill-${c.id}" style="background:${c.accent};width:${voted?Math.round(counts[c.id]/total*100)+'%':'0%'}"></div></div>
-          <div class="vbar-pct">${Math.round(counts[c.id]/total*100)}% — ${counts[c.id]} הצבעות</div>
+          <div class="vbar-pct">${Math.round(counts[c.id]/total*100)}% · ${counts[c.id]} הצבעות</div>
         </div>
       </div>
     </div>
@@ -1052,6 +1049,12 @@ function doRequest(e){
     .catch(()=>{ f.style.display="none"; ok.style.display="block"; })
     .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
+
+/* ── SCROLL LOGO SHRINK ── */
+const _hdr = document.querySelector('.hdr');
+window.addEventListener('scroll', () => {
+  _hdr.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
 
 /* ── SCROLL REVEAL ── */
 const _ro = new IntersectionObserver(entries => {
@@ -1267,7 +1270,7 @@ document.querySelectorAll('[data-reveal]').forEach(el => _ro.observe(el));
 
   window.rvExport = function(){
     load();
-    const lines = ['# סקירה — גיבורי על', ''];
+    const lines = ['# סקירה: גיבורי על', ''];
     let n = 0;
     Object.entries(data).forEach(([id, d]) => {
       if (d.edit) lines.push(`## עריכה: ${d.label||id}\n\`\`\`\n${d.edit}\n\`\`\``);
