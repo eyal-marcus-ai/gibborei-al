@@ -179,15 +179,6 @@
     .cbtn:hover { opacity: 0.88; transform: translateY(-1px); }
     .cbtn-spotify { background: #1DB954; color: #fff; }
     .cbtn-apple   { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-    .splash-art-badge {
-      position: absolute; bottom: 20px; left: 20px; z-index: 3;
-      background: var(--yellow); border: 3px solid var(--ink); border-radius: 50%;
-      width: 76px; height: 76px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      font-family: 'Bangers', cursive; font-size: 0.88rem; letter-spacing: 0.5px;
-      line-height: 1.2; text-align: center; box-shadow: 4px 4px 0 #111;
-    }
-
     /* ──────── STATS (starburst) ──────── */
     .stats {
       background: var(--paper);
@@ -323,50 +314,21 @@
       font-family: 'Bangers', cursive; font-size: 3.4rem; letter-spacing: 3px;
       color: #fff; line-height: 1; margin: 0;
     }
-    .vote-battle-head p { font-size: 1rem; color: rgba(255,255,255,0.75); font-weight: 700; margin: 5px 0 0; }
-    .vote-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .vc {
-      border: var(--b); box-shadow: var(--sh);
-      background: var(--dark); position: relative;
-      display: flex; flex-direction: column;
-      overflow: hidden; text-align: right;
-      transition: transform .12s, box-shadow .12s;
-    }
-    .vc:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 #111; }
-    .vc-accent { height: 6px; flex-shrink: 0; }
-    .vc-watermark {
-      font-family: 'Bangers', cursive; font-size: 5rem; line-height: 1;
-      position: absolute; top: -4px; left: 8px;
-      pointer-events: none; user-select: none;
-      opacity: 0.1; color: #fff;
-    }
-    .vc-body { padding: 14px 14px; flex: 1; display: flex; flex-direction: column; }
-    .vc-leader {
-      display: none; font-family: 'Bangers', cursive; font-size: 0.72rem; letter-spacing: 3px;
-      background: var(--yellow); color: var(--ink);
-      border: 2px solid rgba(255,255,255,0.2); border-radius: 3px;
-      padding: 2px 8px; width: fit-content; margin-bottom: 12px;
-    }
-    .vc-leader.show { display: block; }
-    .vc-name { font-size: 1.3rem; font-weight: 900; line-height: 1.05; margin-bottom: 5px; color: #fff; }
-    .vc-req { display: inline-block; font-family: 'Bangers', cursive; font-size: 0.75rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.65); padding: 1px 7px; border-radius: 3px; margin-bottom: 8px; background: transparent; }
-    .vc-desc { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.45; margin-bottom: 12px; flex: 1; }
-    .vote-btn {
-      width: 100%; color: #fff; border: var(--b); border-radius: 5px;
-      font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 0.85rem;
-      padding: 9px; cursor: pointer;
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.5); transition: transform .1s, box-shadow .1s;
-      letter-spacing: 0.5px;
-    }
-    .vote-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 rgba(0,0,0,0.5); }
-    .voted-label {
-      font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 3px;
-      color: rgba(255,255,255,0.35); padding: 14px 0; text-align: center;
-    }
-    .vbar-wrap { width: 100%; margin-top: 12px; }
-    .vbar-track { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; height: 10px; overflow: hidden; margin-bottom: 6px; }
-    .vbar-fill { height: 100%; transition: width 1s cubic-bezier(.4,0,.2,1); width: 0%; border-radius: 2px; }
-    .vbar-pct { font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 1px; color: rgba(255,255,255,0.45); }
+    .vote-battle-head p { font-size: 1.3rem; color: rgba(255,255,255,0.75); font-weight: 700; margin: 5px 0 0; }
+    .vote-panel { background: var(--dark); border: var(--b); box-shadow: var(--sh); overflow: hidden; }
+    .vote-option { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-bottom: 2px solid rgba(255,255,255,0.08); position: relative; }
+    .vote-option:last-child { border-bottom: none; }
+    .vote-option-accent { width: 6px; height: 100%; position: absolute; right: 0; top: 0; bottom: 0; }
+    .vote-option-info { flex: 1; padding-right: 14px; }
+    .vote-option-name { font-size: 1.25rem; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 4px; }
+    .vote-option-req { font-family: 'Bangers', cursive; font-size: 0.75rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.65); padding: 1px 7px; border-radius: 3px; display: inline-block; }
+    .vote-option-btn { flex-shrink: 0; color: #fff; border: var(--b); border-radius: 5px; font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 0.85rem; padding: 9px 16px; cursor: pointer; box-shadow: 3px 3px 0 rgba(0,0,0,0.5); transition: transform .1s; white-space: nowrap; }
+    .vote-option-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 rgba(0,0,0,0.5); }
+    .vote-option-bars { flex-shrink: 0; width: 160px; }
+    .vote-option-bar-track { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; height: 10px; overflow: hidden; margin-bottom: 4px; }
+    .vote-option-bar-fill { height: 100%; transition: width 1s cubic-bezier(.4,0,.2,1); border-radius: 2px; }
+    .vote-option-bar-pct { font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 1px; color: rgba(255,255,255,0.65); }
+    .vote-option-voted-tag { font-family: 'Bangers', cursive; font-size: 0.8rem; letter-spacing: 2px; background: var(--yellow); color: #111; padding: 2px 8px; border-radius: 3px; margin-top: 4px; display: inline-block; }
     .vote-total { text-align: center; font-size: 0.85rem; font-weight: 700; color: #666; padding: 6px; display: none; margin-bottom: 14px; }
     .vote-total.show { display: block; }
 
@@ -499,7 +461,6 @@
       .splash-text { padding: 40px 32px 40px 0; width: 65%; }
       .ep-grid { grid-template-columns: repeat(2,1fr); }
       .ep.big { grid-column: span 2; }
-      .vote-grid { grid-template-columns: 1fr; }
       .about-story { grid-template-columns: 1fr; }
       .about-photo { height: 280px; border-left: none; border-bottom: var(--b); }
       .forms-grid { grid-template-columns: 1fr; }
@@ -656,7 +617,6 @@
     </div>
     <div class="splash-art">
       <img src="images/eyal-noam.jpg" alt="נועם ואייל מרקוס">
-      <div class="splash-art-badge">54<br>פרקים!</div>
     </div>
   </div>
 
@@ -683,10 +643,10 @@
       <span class="vote-battle-tag">VOTE</span>
       <div>
         <h2>מה הפרק הבא שלנו?</h2>
-        <p>הצביעו - ה-podcast הבא הוא שלכם</p>
+        <p>הצביעו, ותוכלו להשפיע על הפרק הבא שלנו.</p>
       </div>
     </div>
-    <div class="vote-grid" id="vote-grid"></div>
+    <div id="vote-panel-wrap"></div>
     <div class="vote-total" id="vote-total"></div>
   </section>
 
@@ -700,14 +660,12 @@
 
     <!-- SIGNUP -->
     <section id="signup">
-      <div class="sec-head">
-        <div class="sec-head-box green">
-          <span class="sec-cap">NOTIFY</span>
-          <h2>תישארו בלופ</h2>
-          <p>עדכון ברגע שיוצא פרק חדש - בלי ספאם</p>
-        </div>
-      </div>
       <div class="signup-wrap panel">
+        <div style="margin-bottom:12px;">
+          <div style="font-family:'Bangers',cursive;font-size:0.65rem;letter-spacing:4px;color:rgba(0,0,0,0.4);text-transform:uppercase;margin-bottom:2px;">NOTIFY</div>
+          <h2 style="font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;margin-bottom:2px;">תישארו בלופ</h2>
+          <p style="font-size:0.82rem;color:#444;font-weight:700;">עדכון ברגע שיוצא פרק חדש - בלי ספאם</p>
+        </div>
         <p>השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש של גיבורי על. מבטיחים - רק עדכונים על פרקים.</p>
         <div class="signup-box">
           <div class="signup-ok" id="ok">
@@ -729,14 +687,12 @@
 
     <!-- REQUEST -->
     <section id="request">
-      <div class="sec-head">
-        <div class="sec-head-box purple">
-          <span class="sec-cap">REQUEST</span>
-          <h2>בקשו פרק</h2>
-          <p>הגיבור שאתם רוצים לשמוע עליו - שלחו לנו</p>
-        </div>
-      </div>
       <div class="req-wrap panel">
+        <div style="margin-bottom:12px;">
+          <div style="font-family:'Bangers',cursive;font-size:0.65rem;letter-spacing:4px;color:rgba(0,0,0,0.35);text-transform:uppercase;margin-bottom:2px;">REQUEST</div>
+          <h2 style="font-family:'Bangers',cursive;font-size:2rem;letter-spacing:2px;margin-bottom:2px;">בקשו פרק</h2>
+          <p style="font-size:0.82rem;color:#333;font-weight:700;">הגיבור שאתם רוצים לשמוע עליו - שלחו לנו</p>
+        </div>
         <p>הבקשות שלכם הן מה שמניע אותנו. כתבו לנו מה הגיבור או נבל-העל שהכי תרצו לשמוע עליו - ונשתדל להפתיע אתכם בפרק הבא.</p>
         <div class="req-box">
           <div class="req-ok" id="req-ok">
@@ -765,7 +721,7 @@
       <div class="sec-head-box">
         <span class="sec-cap">EPISODES</span>
         <h2>כל הפרקים</h2>
-        <p>54 פרקים · לחצו על פרק להאזנה</p>
+        <p id="ep-count-label">לחצו על פרק להאזנה</p>
       </div>
     </div>
     <div class="ep-grid" id="ep-grid"></div>
@@ -806,12 +762,12 @@
           <div class="cast-card">
             <div class="cast-name">נועם פיטר מרקוס</div>
             <div class="cast-title">בן <span class="noam-age">7.5</span> · מומחה ראשי</div>
-            <div class="cast-bio">ביקורת חדה. שאלות שאייל לא תמיד יודע לענות עליהן. יודע לזהות אם הסיפור לא מדויק מגיל שלוש. אוהב את פלאש והענק הירוק הכי הרבה. גם גרוט, פאוור ריינג'רס, וכל מי שמשנה צורה.</div>
+            <div class="cast-bio">ביקורת חדה. שאלות שאייל לא תמיד יודע לענות עליהן. יודע לזהות אם הסיפור לא מדויק מגיל שלוש. אוהב את פלאש, שאזאם, איירון-מן, ספיידרמן וספין הכי הרבה. בנבלים: תאנוס, לוקי ואיש החול.</div>
           </div>
           <div class="cast-card">
             <div class="cast-name">אייל מרקוס</div>
             <div class="cast-title">הידוע בכינויו ״אבא״</div>
-            <div class="cast-bio">מחקר, כתיבה, הקלטה, ושלושה ימים לפני כל פרק שוקע בוויקיפדיה. מאמין שגיבורי על מלמדים על חיים הרבה יותר מכל שיעור מוסר. אוהב את וולברין ותאנוס הכי הרבה. גם גולש הכסף ושאזאם.</div>
+            <div class="cast-bio">מחקר, כתיבה, הקלטה, ושלושה ימים לפני כל פרק שוקע בוויקיפדיה. מאמין שגיבורי על מלמדים על חיים הרבה יותר מכל שיעור מוסר. אוהב את וולברין, איירון-מן ותאנוס הכי הרבה. גם גולש הכסף ושאזאם.</div>
           </div>
         </div>
         <div class="contact-panel">
@@ -923,9 +879,9 @@ const _dateStr = MONTHS_HE[_now.getMonth()] + ' ' + _now.getFullYear();
 
 document.querySelectorAll('.noam-age').forEach(el => el.textContent = _age);
 document.querySelectorAll('.spotify-count').forEach(el => el.textContent = _spotifyCount);
+const _epLabel = document.getElementById('ep-count-label');
+if (_epLabel) _epLabel.textContent = _spotifyCount + ' פרקים · לחצו על פרק להאזנה';
 document.querySelectorAll('.stats-current-date').forEach(el => el.textContent = _dateStr);
-const _badge = document.querySelector('.splash-art-badge');
-if (_badge) _badge.innerHTML = _totalCount + '<br>פרקים!';
 const _epSubtitle = document.querySelector('#episodes .sec-head-box p');
 if (_epSubtitle) _epSubtitle.textContent = _totalCount + ' פרקים · לחצו על פרק להאזנה';
 
@@ -935,7 +891,7 @@ const PUB = {
   'Power Rangers':'#E63946','ישראלי':'#FFD166','LEGO Ninjago':'#F4A261','Cartoon Network':'#06D6A0'
 };
 
-document.getElementById("ep-grid").innerHTML = episodes.map((e) => {
+document.getElementById("ep-grid").innerHTML = episodes.filter(e => e.spotify).map((e) => {
   const pubColor = PUB[e.u] || '#111';
   const img = e.img
     ? `<img class="ep-img" src="${e.img}" alt="${e.t}" loading="lazy">`
@@ -976,9 +932,9 @@ document.getElementById("ticker-content").innerHTML = html+html;
 
 /* ── VOTE ── */
 const candidates = [
-  { id:"spin",  name:"ספין",              req:"6 בקשות", desc:"הספינר המהיר מהסדרה הישראלית הכי אהובה", accent:"#E63946", seeds:43 },
-  { id:"herc",  name:"הרקולס",            req:"4 בקשות", desc:"בן של זאוס, חצי אדם וחצי אלוהות",        accent:"#F4A261", seeds:31 },
-  { id:"goku",  name:"גוקו / Dragon Ball", req:"4 בקשות", desc:"הלוחם מכוכב ונפוס שנהיה גיבור כדור הארץ", accent:"#3A86FF", seeds:28 },
+  { id:"spin",  name:"ספין",              req:"6 בקשות", accent:"#E63946", seeds:43 },
+  { id:"herc",  name:"הרקולס",            req:"4 בקשות", accent:"#F4A261", seeds:31 },
+  { id:"goku",  name:"גוקו / Dragon Ball", req:"4 בקשות", accent:"#3A86FF", seeds:28 },
 ];
 
 const VKEY = "shp_vote_v2";
@@ -990,39 +946,32 @@ function save(c){ localStorage.setItem(CKEY,JSON.stringify(c)); }
 
 function renderVote(){
   const counts=getCounts(), myVote=getVote(), total=Object.values(counts).reduce((a,b)=>a+b,0), voted=!!myVote;
-  const maxC=Math.max(...Object.values(counts));
-  document.getElementById("vote-grid").innerHTML = candidates.map((c,i)=>`
-    <div class="vc">
-      <div class="vc-accent" style="background:${c.accent}"></div>
-      <div class="vc-watermark">${i+1}</div>
-      <div class="vc-body">
-        ${voted && counts[c.id]===maxC ? `<div class="vc-leader show">מוביל</div>` : `<div class="vc-leader"></div>`}
-        <div class="vc-name">${c.name}</div>
-        <div class="vc-req">${c.req}</div>
-        <div class="vc-desc">${c.desc}</div>
-        ${!voted
-          ? `<button class="vote-btn" style="background:${c.accent}" onclick="castVote('${c.id}')">אני רוצה את הפרק הזה</button>`
-          : `<div class="voted-label">${myVote===c.id ? 'הצבעתי' : ''}</div>`
-        }
-        <div class="vbar-wrap" style="${voted?'':'display:none'}">
-          <div class="vbar-track"><div class="vbar-fill" id="fill-${c.id}" style="background:${c.accent};width:${voted?Math.round(counts[c.id]/total*100)+'%':'0%'}"></div></div>
-          <div class="vbar-pct">${Math.round(counts[c.id]/total*100)}% · ${counts[c.id]} הצבעות</div>
+  const html=`<div class="vote-panel">
+    ${candidates.map(c=>`
+      <div class="vote-option">
+        <div class="vote-option-accent" style="background:${c.accent}"></div>
+        <div class="vote-option-info">
+          <div class="vote-option-name">${c.name}${voted&&myVote===c.id?' <span class="vote-option-voted-tag">הצבעתי</span>':''}</div>
+          <div class="vote-option-req">${c.req}</div>
         </div>
-      </div>
-    </div>
-  `).join("");
+        ${!voted
+          ? `<button class="vote-option-btn" style="background:${c.accent}" onclick="castVote('${c.id}')">הצבעה</button>`
+          : `<div class="vote-option-bars">
+              <div class="vote-option-bar-track"><div class="vote-option-bar-fill" style="background:${c.accent};width:${Math.round(counts[c.id]/total*100)}%"></div></div>
+              <div class="vote-option-bar-pct">${Math.round(counts[c.id]/total*100)}% · ${counts[c.id]}</div>
+            </div>`
+        }
+      </div>`).join("")}
+  </div>`;
+  document.getElementById("vote-panel-wrap").innerHTML=html;
   const tot=document.getElementById("vote-total");
-  if(voted){ tot.classList.add("show"); tot.textContent=`סה"כ ${total} הצבעות · הצבעת עבור: ${candidates.find(c=>c.id===myVote)?.name}`; }
+  if(voted){ tot.classList.add("show"); tot.textContent=`סה"כ ${total} הצבעות`; }
   else { tot.classList.remove("show"); }
 }
 
 function castVote(id){
   const c=getCounts(); c[id]++; save(c); localStorage.setItem(VKEY,id);
   renderVote();
-  setTimeout(()=>{
-    const tot=Object.values(c).reduce((a,b)=>a+b,0);
-    candidates.forEach(cv=>{ const f=document.getElementById("fill-"+cv.id); if(f) f.style.width=Math.round(c[cv.id]/tot*100)+"%"; });
-  },50);
 }
 
 renderVote();
@@ -1099,7 +1048,7 @@ document.querySelectorAll('[data-reveal]').forEach(el => _ro.observe(el));
 /* ══ REVIEW SYSTEM ══ */
 (function(){
   const STORE = 'rv_v1';
-  const SEL = 'h1,h2,h3,h4,p,.speech-bubble,.stat-n,.stat-l,.vc-name,.vc-desc,.vc-req,.ep-t,.ep-m,.ep-n,.origin-panel .o-text,.cast-name,.cast-title,.cast-bio,.signup-wrap h2,.signup-wrap>p,.req-wrap h2,.req-wrap>p,.sec-head-box h2,.sec-head-box p,.contact-panel p,.splash-by,.splash-h1,.hdr-name,.flogo-name,.caption-box,.stats-note,.splash-art-badge';
+  const SEL = 'h1,h2,h3,h4,p,.speech-bubble,.stat-n,.stat-l,.vote-option-name,.vote-option-req,.ep-t,.ep-m,.ep-n,.origin-panel .o-text,.cast-name,.cast-title,.cast-bio,.signup-wrap h2,.signup-wrap>p,.req-wrap h2,.req-wrap>p,.sec-head-box h2,.sec-head-box p,.contact-panel p,.splash-by,.splash-h1,.hdr-name,.flogo-name,.caption-box,.stats-note';
   let data = {}, editOn = false, sbOn = false, curId = null, curEl = null;
 
   function load(){ try{ const s=localStorage.getItem(STORE); if(s) data=JSON.parse(s); }catch(e){} }
