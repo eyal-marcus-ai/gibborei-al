@@ -672,7 +672,7 @@
             <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">נרשמתם.</p>
             <p>נעדכן כשהפרק הבא יוצא.</p>
           </div>
-          <form id="sform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doSignup(event)">
+          <form id="sform" onsubmit="doSignup(event)">
             <input type="hidden" name="_subject" value="הרשמה חדשה - גיבורי על">
             <input type="hidden" name="_template" value="box">
             <input type="hidden" name="_captcha" value="false">
@@ -982,10 +982,14 @@ function doSignup(e){
   const f=document.getElementById("sform"), ok=document.getElementById("ok");
   const btn=f.querySelector("button");
   btn.disabled=true; btn.textContent="שולח...";
-  fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
-    .then(r=>r.json())
-    .then(()=>{ f.style.display="none"; ok.style.display="block"; })
-    .catch(()=>{ f.style.display="none"; ok.style.display="block"; });
+  const email=f.querySelector('[name="email"]').value;
+  const name=f.querySelector('[name="name"]').value;
+  fetch("https://rest.smoove.io/v1/subscribers?listId=1145138",{
+    method:"POST",
+    headers:{"Content-Type":"application/json","Authorization":"Bearer f6f18050-a83f-42db-9759-8314c3469150"},
+    body:JSON.stringify({Email:email,FirstName:name,isSubscribed:true})
+  })
+  .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
 function doRequest(e){
   e.preventDefault();
