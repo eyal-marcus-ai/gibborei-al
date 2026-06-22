@@ -984,7 +984,7 @@ function doSignup(e){
   btn.disabled=true; btn.textContent="שולח...";
   const email=f.querySelector('[name="email"]').value;
   const name=f.querySelector('[name="name"]').value;
-  fetch("https://rest.smoove.io/v1/subscribers?listId=1145138",{
+  fetch("https://rest.smoove.io/v1/contacts?listId=1145138",{
     method:"POST",
     headers:{"Content-Type":"application/json","Authorization":"Bearer f6f18050-a83f-42db-9759-8314c3469150"},
     body:JSON.stringify({Email:email,FirstName:name,isSubscribed:true})
