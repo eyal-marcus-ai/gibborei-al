@@ -42,10 +42,22 @@
       padding: 0 28px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       position: sticky; top: 0; z-index: 100;
-      height: 90px;
+      height: 180px;
+      transition: height 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hdr.scrolled {
+      height: 72px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     }
     .hdr-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-    .hdr-brand img { height: 84px; width: auto; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.12)); }
+    .hdr-brand img {
+      height: 160px; width: auto; display: block;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+      transition: height 0.3s ease;
+    }
+    .hdr.scrolled .hdr-brand img { height: 60px; }
+    .hdr-brand .hdr-brand-text { transition: opacity 0.25s ease, transform 0.25s ease; }
+    .hdr.scrolled .hdr-brand .hdr-brand-text { opacity: 0; transform: scale(0.85); pointer-events: none; }
     .hdr-nav { display: flex; align-items: center; gap: 2px; }
     .hdr-nav a {
       font-family: 'Heebo', sans-serif;
@@ -121,9 +133,9 @@
 
     /* ──────── SPLASH ──────── */
     .splash {
-      position: relative; min-height: 540px;
+      position: relative; min-height: 600px;
       overflow: hidden; margin-bottom: 14px;
-      background: var(--dark); display: flex; align-items: center;
+      background: var(--dark); display: flex; align-items: flex-end;
     }
     /* speed lines */
     .splash-lines {
@@ -139,22 +151,22 @@
     }
     .splash-art img {
       width: 100%; height: 100%; object-fit: cover;
-      object-position: left center; display: block;
-      filter: brightness(0.68) saturate(0.8);
+      object-position: center 8%; display: block;
+      filter: brightness(0.88) saturate(0.85);
     }
     .splash-art::after {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(
-        to right,
-        rgba(27,27,47,0.05) 0%, rgba(27,27,47,0.4) 30%,
-        rgba(27,27,47,0.88) 58%, rgba(27,27,47,1) 75%
+        to top,
+        rgba(27,27,47,0.97) 0%, rgba(27,27,47,0.65) 38%,
+        rgba(27,27,47,0.08) 68%, transparent 100%
       );
     }
     .splash-text {
       position: relative; z-index: 2;
-      padding: 56px 56px 56px 0;
-      width: 56%; margin-right: 0; margin-left: auto;
-      display: flex; flex-direction: column; justify-content: center;
+      padding: 0 56px 48px;
+      width: 100%; margin: 0;
+      display: flex; flex-direction: column; justify-content: flex-end;
     }
     .action-zap {
       font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 10px;
@@ -457,7 +469,7 @@
 
     /* ──────── RESPONSIVE ──────── */
     @media(max-width:960px){
-      .splash-text { padding: 40px 32px 40px 0; width: 65%; }
+      .splash-text { padding: 0 32px 36px; width: 100%; }
       .ep-grid { grid-template-columns: repeat(2,1fr); }
       .ep.big { grid-column: span 2; }
       .about-story { grid-template-columns: 1fr; }
@@ -469,8 +481,10 @@
       #signup, #request { border-left: none !important; border-top: 4px solid #111; }
     }
     @media(max-width:768px){
-      .hdr { padding: 0 16px; }
-      .hdr-name { font-size: 1.2rem; }
+      .hdr { padding: 0 16px; height: 130px; }
+      .hdr-brand img { height: 118px; }
+      .hdr.scrolled { height: 64px; }
+      .hdr.scrolled .hdr-brand img { height: 52px; }
       .hdr-nav a { padding: 6px 10px; font-size: 0.82rem; }
       .hdr-nav .hdr-cta { padding: 6px 14px; }
     }
@@ -478,17 +492,17 @@
       .ep-grid { grid-template-columns: 1fr; }
       .ep.big { grid-column: span 1; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
-      .hdr { padding: 0 12px; height: 72px; }
-      .hdr-brand { gap: 8px; }
-      .hdr-brand img { height: 64px; }
+      .hdr { padding: 0 12px; height: 110px; }
+      .hdr-brand img { height: 98px; }
+      .hdr.scrolled { height: 58px; }
+      .hdr.scrolled .hdr-brand img { height: 48px; }
       .hdr-nav a:not(.hdr-cta) { display: none; }
       .hdr-nav .hdr-cta { margin-right: 0; font-size: 0.85rem; padding: 6px 14px; }
       .cast-row { flex-direction: column; }
-      .splash-text { width: 100%; padding: 40px 20px; }
-      .splash-art { opacity: 0.3; }
-      .splash-art::after { background: rgba(27,27,47,0.5); }
-      .stats { gap: 8px; }
-      .stat-n { font-size: 2.8rem; }
+      .splash-text { width: 100%; padding: 0 20px 32px; }
+    }
+    @media(max-width:600px){
+      #signup, #request { border-left: none !important; border-top: 4px solid #111; }
     }
     @media(max-width:400px){
       .stats { grid-template-columns: 1fr; }
@@ -737,7 +751,7 @@
           <div class="caption-box">תאילנד · גיל 3</div>
           <h3>הכל התחיל בתאילנד</h3>
           <div class="o-text">
-            לילה אחד בתאילנד. נועם בן שלוש וחצי, לא מוכן לישון.
+            לילה אחד בתאילנד. נועם בן שלוש וחצי, בתחפושת סופרמן, לא מוכן לישון.
             <br><br>
             "אבא, ספר לי סיפור." הסיפורים הרגילים נגמרו לי, אז פתחתי פה ואמרתי: ספיידרמן. מאיפה הגיע. מה קרה לו. מה הוא למד.
             <br><br>
