@@ -997,10 +997,10 @@ function doSignup(e){
   btn.disabled=true; btn.textContent="שולח...";
   const email=f.querySelector('[name="email"]').value;
   const name=f.querySelector('[name="name"]').value;
-  fetch("https://rest.smoove.io/v1/contacts?listId=1145138",{
+  fetch("https://rest.smoove.io/v1/Contacts?listId=1145138",{
     method:"POST",
-    headers:{"Content-Type":"application/json","Authorization":"Bearer f6f18050-a83f-42db-9759-8314c3469150"},
-    body:JSON.stringify({Email:email,FirstName:name,isSubscribed:true})
+    headers:{"Content-Type":"application/json","Authorization":"Bearer 1c5b06b6-ef5a-4a19-8b26-ad13bf63b00b"},
+    body:JSON.stringify({Email:email,FirstName:name})
   })
   .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
