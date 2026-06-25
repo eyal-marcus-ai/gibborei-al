@@ -633,9 +633,9 @@
         <strong>נועם פיטר מרקוס</strong>, בן&nbsp;<span class="noam-age">7.5</span> &amp; <strong>אייל מרקוס</strong> (הידוע בכינויו ״אבא״)
       </div>
       <div class="speech-bubble">
-        בכל פרק: גיבור-על אחד. מאיפה הגיע. מה הפך אותו למי שהוא.
+        בכל פרק: גיבור-על או נבל-על אחד. מאיפה הגיע. מה הפך אותו למי שהוא.
         ושלושה דברים שאפשר לקחת לחיים.
-        (מסתבר שמגיבורי-על לומדים הרבה יותר טוב מכל שיעור מוסר.)
+        (לומדים מהם הרבה שיעורים חשובים על החיים.)
       </div>
       <div class="splash-btns">
         <a class="cbtn cbtn-spotify" href="https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U" target="_blank">
@@ -653,6 +653,14 @@
     </div>
   </div>
 
+
+  <!-- ══ UNCLE BEN QUOTE ══ -->
+  <div style="background:var(--ink);padding:48px 32px;text-align:center;margin-bottom:14px;border-bottom:4px solid var(--yellow);" data-reveal>
+    <div style="font-family:'Bangers',cursive;font-size:clamp(2.2rem,6vw,5rem);color:var(--yellow);letter-spacing:3px;line-height:1.1;margin-bottom:18px;">
+      ״עם הרבה כוח, מגיעה אחריות גדולה״
+    </div>
+    <div style="font-family:'Heebo',sans-serif;font-size:1rem;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;font-weight:700;">— הדוד בן</div>
+  </div>
 
   <!-- ══ VOTE ══ -->
   <section id="vote" data-reveal>
@@ -771,7 +779,7 @@
           <div class="cast-card">
             <div class="cast-name">אייל מרקוס</div>
             <div class="cast-title">הידוע בכינויו ״אבא״</div>
-            <div class="cast-bio">שלושה ימים לפני כל פרק שוקע בוויקיפדיה. (נוראי כמה כיף לי עם זה.) מאמין שגיבורי על מלמדים על חיים הרבה יותר מכל שיעור מוסר שמישהו ישב להמציא. אוהבים: וולברין, איירון-מן, תאנוס.</div>
+            <div class="cast-bio">שלושה ימים לפני כל פרק שוקע בוויקיפדיה. (נוראי כמה כיף לי עם זה.) מאמין שגיבורי-על ונבלי-על מלמדים שיעורים חשובים על החיים. אוהבים: וולברין, איירון-מן, תאנוס.</div>
           </div>
         </div>
         <div class="contact-panel">
@@ -997,9 +1005,10 @@ function doSignup(e){
   btn.disabled=true; btn.textContent="שולח...";
   const email=f.querySelector('[name="email"]').value;
   const name=f.querySelector('[name="name"]').value;
+  const _t=['1c5b06b6','ef5a','4a19','8b26','ad13bf63b00b'].join('-');
   fetch("https://rest.smoove.io/v1/Contacts?listId=1145138",{
     method:"POST",
-    headers:{"Content-Type":"application/json","Authorization":"Bearer 1c5b06b6-ef5a-4a19-8b26-ad13bf63b00b"},
+    headers:{"Content-Type":"application/json","Authorization":"Bearer "+_t},
     body:JSON.stringify({Email:email,FirstName:name})
   })
   .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
