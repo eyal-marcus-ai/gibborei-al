@@ -49,24 +49,25 @@
       height: 72px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     }
-    .hdr-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    .hdr-brand { display: flex; align-items: flex-start; text-decoration: none; flex-shrink: 0; overflow: hidden; height: 280px; transition: height 0.3s ease; }
     .hdr-brand img {
-      height: 280px; width: auto; display: block;
+      height: 405px; width: auto; display: block;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
       transition: height 0.3s ease;
     }
-    .hdr.scrolled .hdr-brand img { height: 60px; }
+    .hdr.scrolled .hdr-brand { height: 60px; }
+    .hdr.scrolled .hdr-brand img { height: 87px; }
     .hdr-brand .hdr-brand-text { transition: opacity 0.25s ease, transform 0.25s ease; }
     .hdr-nav { display: flex; align-items: center; gap: 2px; }
     .hdr-nav a {
       font-family: 'Heebo', sans-serif;
-      font-size: 0.88rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: rgba(0,0,0,0.6);
       text-decoration: none;
-      padding: 7px 14px;
+      padding: 10px 20px;
       border-radius: 5px;
-      transition: color .15s, background .15s;
+      transition: color .15s, background .15s, font-size .25s ease, padding .25s ease;
       display: inline-block;
       white-space: nowrap;
     }
@@ -75,9 +76,11 @@
       background: var(--red);
       color: #fff;
       margin-right: 6px;
-      padding: 7px 18px;
+      padding: 10px 24px;
     }
     .hdr-nav .hdr-cta:hover { background: #c7303b; color: #fff; }
+    .hdr.scrolled .hdr-nav a { font-size: 0.88rem; padding: 7px 14px; }
+    .hdr.scrolled .hdr-nav .hdr-cta { padding: 7px 18px; }
 
     /* ──────── PAGE ──────── */
     .page { max-width: 1200px; margin: 0 auto; padding: 14px 14px 0; }
@@ -150,7 +153,7 @@
     }
     .splash-art img {
       width: 100%; height: 100%; object-fit: cover;
-      object-position: center 8%; display: block;
+      object-position: 42% 5%; display: block;
       filter: brightness(0.88) saturate(0.85);
     }
     .splash-art::after {
@@ -481,9 +484,11 @@
     }
     @media(max-width:768px){
       .hdr { padding: 0 16px; height: 200px; }
-      .hdr-brand img { height: 185px; }
+      .hdr-brand { height: 185px; }
+      .hdr-brand img { height: 268px; }
       .hdr.scrolled { height: 64px; }
-      .hdr.scrolled .hdr-brand img { height: 52px; }
+      .hdr.scrolled .hdr-brand { height: 52px; }
+      .hdr.scrolled .hdr-brand img { height: 75px; }
       .hdr-nav a { padding: 6px 10px; font-size: 0.82rem; }
       .hdr-nav .hdr-cta { padding: 6px 14px; }
     }
@@ -492,9 +497,11 @@
       .ep.big { grid-column: span 1; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
       .hdr { padding: 0 12px; height: 170px; }
-      .hdr-brand img { height: 155px; }
+      .hdr-brand { height: 155px; }
+      .hdr-brand img { height: 224px; }
       .hdr.scrolled { height: 58px; }
-      .hdr.scrolled .hdr-brand img { height: 48px; }
+      .hdr.scrolled .hdr-brand { height: 48px; }
+      .hdr.scrolled .hdr-brand img { height: 69px; }
       .hdr-nav a:not(.hdr-cta) { display: none; }
       .hdr-nav .hdr-cta { margin-right: 0; font-size: 0.85rem; padding: 6px 14px; }
       .cast-row { flex-direction: column; }
@@ -681,7 +688,7 @@
       <div id="signup" style="background:var(--yellow);padding:14px 18px;border-left:4px solid #111;">
         <div style="margin-bottom:8px;">
           <div style="font-family:'Bangers',cursive;font-size:0.6rem;letter-spacing:4px;color:rgba(0,0,0,0.4);text-transform:uppercase;margin-bottom:2px;">NOTIFY</div>
-          <h2 style="font-family:'Bangers',cursive;font-size:2.4rem;letter-spacing:2px;margin-bottom:3px;">תישארו בלופ</h2>
+          <h2 style="font-family:'Bangers',cursive;font-size:3.5rem;letter-spacing:2px;margin-bottom:3px;">תישארו בלופ</h2>
           <p style="font-size:0.78rem;color:#444;line-height:1.4;margin-bottom:10px;">השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש.</p>
         </div>
         <div class="signup-box">
@@ -705,7 +712,7 @@
       <div id="request" style="background:var(--cyan);padding:14px 18px;">
         <div style="margin-bottom:8px;">
           <div style="font-family:'Bangers',cursive;font-size:0.6rem;letter-spacing:4px;color:rgba(0,0,0,0.35);text-transform:uppercase;margin-bottom:2px;">REQUEST</div>
-          <h2 style="font-family:'Bangers',cursive;font-size:2.4rem;letter-spacing:2px;margin-bottom:3px;">בקשו פרק</h2>
+          <h2 style="font-family:'Bangers',cursive;font-size:3.5rem;letter-spacing:2px;margin-bottom:3px;">בקשו פרק</h2>
           <p style="font-size:0.78rem;color:#333;line-height:1.4;margin-bottom:10px;">כתבו לנו מה הגיבור (או הנבל) שאתם הכי רוצים לשמוע עליו.</p>
         </div>
         <div class="req-box">
@@ -752,15 +759,11 @@
           <div class="caption-box">תאילנד · גיל 3</div>
           <h3>הכל התחיל בתאילנד</h3>
           <div class="o-text">
-            לילה אחד בתאילנד. נועם בן שלוש וחצי, בתחפושת סופרמן, לא מוכן לישון.
+            בתאילנד, כשהוא היה בן 3.5, הצעתי לנועם שבמקום להקריא לו סיפור לפני השינה, שאמציא לו סיפור מהראש. אז התחלתי להמציא לו סיפורים מומצאים על גיבורי-על (שאני מאוד אוהב).
             <br><br>
-            "אבא, ספר לי סיפור." הסיפורים הרגילים נגמרו לי, אז פתחתי פה ואמרתי: ספיידרמן. מאיפה הגיע. מה קרה לו. מה הוא למד.
+            באיזשהו שלב נמאס לי להמציא, והתחלתי לספר לו סיפורים על איך נולדו וכיצד נוצרו. ואז כדי להכזיר התחלתי לראות יותר ויותר סרטים מהיקום של מארוול ו-DC — השלמתי את כל אלה שלא ראיתי בעבר וראיתי שוב את אלה שכבר ראיתי.
             <br><br>
-            זה עבד. (באופן מטורף.)
-            <br><br>
-            פרק אחד, עוד פרק, ועוד. עד שנועם הכריז: "אבא, בואו נקליט את זה - כדי שגם לחברים יהיה."
-            <br><br>
-            הוא צדק. ולכן אנחנו כאן.
+            יותר ויותר סיפורים. ואז הצעתי לנועם שנקליט. שלחתי לחברים, ומשם הכל התגלגל לפודקאסט — כי הפרקים הלכו ותפסו תאוצה, עד שהגענו להיכן שהגענו היום...
           </div>
         </div>
         <div class="cast-row">
@@ -798,8 +801,7 @@
   <!-- ══ FOOTER ══ -->
   <footer class="panel">
     <div class="flogo">
-      <img src="images/logo.png" alt="גיבורי על">
-      <span class="flogo-name">גיבורי על: סיפורי המקור</span>
+      <img src="images/logo.png" alt="גיבורי על: סיפורי המקור">
     </div>
     <div>
       <a href="https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U" target="_blank">ספוטיפיי</a>
@@ -1020,8 +1022,11 @@ function doRequest(e){
 
 /* ── SCROLL LOGO SHRINK ── */
 const _hdr = document.querySelector('.hdr');
+let _scrolled = false;
 window.addEventListener('scroll', () => {
-  _hdr.classList.toggle('scrolled', window.scrollY > 80);
+  const y = window.scrollY;
+  if (!_scrolled && y > 80) { _scrolled = true; _hdr.classList.add('scrolled'); }
+  else if (_scrolled && y < 50) { _scrolled = false; _hdr.classList.remove('scrolled'); }
 }, { passive: true });
 
 /* ── SCROLL REVEAL ── */
