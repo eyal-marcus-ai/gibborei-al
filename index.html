@@ -49,14 +49,13 @@
       height: 72px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     }
-    .hdr-brand { display: flex; align-items: flex-start; text-decoration: none; flex-shrink: 0; overflow: hidden; height: 280px; transition: height 0.3s ease; }
+    .hdr-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
     .hdr-brand img {
-      height: 405px; width: auto; display: block;
+      height: 280px; width: auto; display: block;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
       transition: height 0.3s ease;
     }
-    .hdr.scrolled .hdr-brand { height: 60px; }
-    .hdr.scrolled .hdr-brand img { height: 87px; }
+    .hdr.scrolled .hdr-brand img { height: 60px; }
     .hdr-brand .hdr-brand-text { transition: opacity 0.25s ease, transform 0.25s ease; }
     .hdr-nav { display: flex; align-items: center; gap: 2px; }
     .hdr-nav a {
@@ -484,11 +483,9 @@
     }
     @media(max-width:768px){
       .hdr { padding: 0 16px; height: 200px; }
-      .hdr-brand { height: 185px; }
-      .hdr-brand img { height: 268px; }
+      .hdr-brand img { height: 185px; }
       .hdr.scrolled { height: 64px; }
-      .hdr.scrolled .hdr-brand { height: 52px; }
-      .hdr.scrolled .hdr-brand img { height: 75px; }
+      .hdr.scrolled .hdr-brand img { height: 52px; }
       .hdr-nav a { padding: 6px 10px; font-size: 0.82rem; }
       .hdr-nav .hdr-cta { padding: 6px 14px; }
     }
@@ -497,11 +494,9 @@
       .ep.big { grid-column: span 1; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
       .hdr { padding: 0 12px; height: 170px; }
-      .hdr-brand { height: 155px; }
-      .hdr-brand img { height: 224px; }
+      .hdr-brand img { height: 155px; }
       .hdr.scrolled { height: 58px; }
-      .hdr.scrolled .hdr-brand { height: 48px; }
-      .hdr.scrolled .hdr-brand img { height: 69px; }
+      .hdr.scrolled .hdr-brand img { height: 48px; }
       .hdr-nav a:not(.hdr-cta) { display: none; }
       .hdr-nav .hdr-cta { margin-right: 0; font-size: 0.85rem; padding: 6px 14px; }
       .cast-row { flex-direction: column; }
@@ -613,7 +608,7 @@
 <!-- ══ HEADER ══ -->
 <header class="hdr">
   <a class="hdr-brand" href="#top">
-    <img src="images/logo.png" alt="גיבורי על: סיפורי המקור">
+    <img src="images/logo-icon.png" alt="גיבורי על: סיפורי המקור">
   </a>
   <nav class="hdr-nav">
     <a href="#vote">הצבעה</a>
