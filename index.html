@@ -1026,9 +1026,14 @@ function renderVote(){
 function toggleVote(id){
   const counts=getCounts(), myVotes=getMyVotes();
   const idx=myVotes.indexOf(id);
+  const action=idx>=0?'unvote':'vote';
   if(idx>=0){ myVotes.splice(idx,1); if(counts[id]>0) counts[id]--; }
   else { myVotes.push(id); counts[id]=(counts[id]||0)+1; }
   saveCounts(counts); saveVotes(myVotes);
+  if(GAS_URL){
+    const cand=candidates.find(c=>c.id===id);
+    fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({type:'vote',candidate:cand?cand.name:id,action:action})}).catch(()=>{});
+  }
   renderVote();
 }
 
@@ -1060,6 +1065,7 @@ function doRequest(e){
   const show=()=>{ f.style.display="none"; ok.style.display="block"; };
   if(GAS_URL){
     fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({
+      type:'request',
       character:f.querySelector('[name="character"]').value,
       child_name:f.querySelector('[name="child_name"]').value,
       email:f.querySelector('[name="email"]').value
