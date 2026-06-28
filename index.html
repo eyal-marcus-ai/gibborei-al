@@ -308,51 +308,6 @@
     .req-ok .big { font-size: 3rem; display: block; margin-bottom: 8px; }
     .req-ok p { font-weight: 700; font-size: 1.1rem; }
 
-    /* ──────── VOTE ──────── */
-    #vote { margin-bottom: 14px; }
-    /* battle header */
-    .vote-battle-head {
-      background: var(--red); border: var(--b); box-shadow: var(--sh);
-      padding: 28px 36px; margin-bottom: 14px;
-      display: flex; align-items: center; gap: 20px; overflow: hidden;
-      position: relative;
-    }
-    .vote-battle-head::before {
-      content: 'BATTLE!';
-      font-family: 'Bangers', cursive; font-size: 9rem;
-      color: rgba(255,255,255,0.07); position: absolute;
-      right: 20px; top: -10px; line-height: 1; letter-spacing: 4px;
-      pointer-events: none; user-select: none;
-    }
-    .vote-battle-tag {
-      font-family: 'Bangers', cursive; font-size: 0.75rem; letter-spacing: 4px;
-      background: var(--yellow); color: var(--ink);
-      border: 3px solid rgba(255,255,255,0.3); padding: 3px 12px;
-      display: inline-block; flex-shrink: 0;
-    }
-    .vote-battle-head h2 {
-      font-family: 'Bangers', cursive; font-size: 5rem; letter-spacing: 3px;
-      color: #fff; line-height: 1; margin: 0;
-    }
-    .vote-battle-head p { font-size: 1.6rem; color: rgba(255,255,255,0.75); font-weight: 700; margin: 8px 0 0; }
-    .vote-option-name { font-size: 2rem !important; }
-    .vote-panel { background: var(--dark); border: var(--b); box-shadow: var(--sh); overflow: hidden; }
-    .vote-option { display: flex; align-items: center; gap: 18px; padding: 22px 24px; border-bottom: 2px solid rgba(255,255,255,0.08); position: relative; }
-    .vote-option:last-child { border-bottom: none; }
-    .vote-option-accent { width: 6px; height: 100%; position: absolute; right: 0; top: 0; bottom: 0; }
-    .vote-option-info { flex: 1; padding-right: 14px; }
-    .vote-option-name { font-size: 1.25rem; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 4px; }
-    .vote-option-req { font-family: 'Bangers', cursive; font-size: 0.75rem; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.65); padding: 1px 7px; border-radius: 3px; display: inline-block; }
-    .vote-option-btn { flex-shrink: 0; color: #fff; border: var(--b); border-radius: 5px; font-family: 'Heebo', sans-serif; font-weight: 900; font-size: 1.1rem; padding: 13px 24px; cursor: pointer; box-shadow: 3px 3px 0 rgba(0,0,0,0.5); transition: transform .1s; white-space: nowrap; }
-    .vote-option-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 rgba(0,0,0,0.5); }
-    .vote-option-bars { flex-shrink: 0; width: 160px; }
-    .vote-option-bar-track { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; height: 10px; overflow: hidden; margin-bottom: 4px; }
-    .vote-option-bar-fill { height: 100%; transition: width 1s cubic-bezier(.4,0,.2,1); border-radius: 2px; }
-    .vote-option-bar-pct { font-family: 'Bangers', cursive; font-size: 1rem; letter-spacing: 1px; color: rgba(255,255,255,0.65); }
-    .vote-option-voted-tag { font-family: 'Bangers', cursive; font-size: 0.8rem; letter-spacing: 2px; background: var(--yellow); color: #111; padding: 2px 8px; border-radius: 3px; margin-top: 4px; display: inline-block; }
-    .vote-total { text-align: center; font-size: 0.85rem; font-weight: 700; color: #666; padding: 6px; display: none; margin-bottom: 14px; }
-    .vote-total.show { display: block; }
-
     /* ──────── TICKER ──────── */
     .ticker {
       background: var(--ink); border-top: var(--b); border-bottom: var(--b);
@@ -494,9 +449,6 @@
       .about-photo { height: 280px; border-left: none; border-bottom: var(--b); }
       .forms-grid { grid-template-columns: 1fr; }
       #forms-combined-inner { grid-template-columns: 1fr !important; }
-      .vote-battle-head h2 { font-size: clamp(2.8rem, 6vw, 5rem); }
-      .vote-battle-head p { font-size: 1.1rem; }
-      .vote-battle-head::before { font-size: 6rem; }
     }
     @media(max-width:768px){
       .hdr { padding: 0 16px; height: 200px; }
@@ -506,7 +458,6 @@
       .hdr.scrolled .hdr-brand img { height: 52px; }
       .hdr-nav a { padding: 6px 10px; font-size: 0.82rem; }
       .hdr-nav .hdr-cta { padding: 6px 14px; }
-      .vote-battle-head { padding: 20px 24px; }
       #signup, #request { padding: 20px 18px 18px !important; }
     }
     @media(max-width:600px){
@@ -523,17 +474,10 @@
       .cast-row { flex-direction: column; }
       .splash-text { width: 100%; padding: 0 20px 32px; }
       #signup, #request { border-left: none !important; border-top: 4px solid #111; padding: 16px 14px 14px !important; }
-      .vote-battle-head { padding: 16px 18px; gap: 12px; }
-      .vote-battle-head h2 { font-size: 2.6rem; }
-      .vote-battle-head p { font-size: 0.95rem; }
-      .vote-battle-head::before { display: none; }
-      .vote-option { padding: 16px 14px; gap: 12px; }
-      .vote-option-bars { width: 110px; }
     }
     @media(max-width:400px){
       .stats { grid-template-columns: 1fr; }
       .hdr-brand-text { display: none; }
-      .vote-battle-head h2 { font-size: 2.2rem; }
       .forms-h2 { font-size: 2.4rem; }
     }
 
@@ -638,7 +582,6 @@
     <img src="images/logo.png" alt="">
   </a>
   <nav class="hdr-nav">
-    <a href="#vote">הצבעה</a>
     <a href="#episodes">כל הפרקים</a>
     <a href="#about">מי אנחנו</a>
     <a href="#signup" class="hdr-cta">התראות</a>
@@ -745,19 +688,6 @@
   <div class="ticker">
     <div class="ticker-in" id="ticker-content"></div>
   </div>
-
-  <!-- ══ VOTE ══ -->
-  <section id="vote" data-reveal>
-    <div class="vote-battle-head">
-      <span class="vote-battle-tag">VOTE</span>
-      <div>
-        <h2>מה הפרק הבא שלנו?</h2>
-        <p style="font-size:1.4rem;font-weight:900;">הצביעו, ותוכלו להשפיע על הפרק הבא שלנו.</p>
-      </div>
-    </div>
-    <div id="vote-panel-wrap"></div>
-    <div class="vote-total" id="vote-total"></div>
-  </section>
 
   <!-- ══ ABOUT ══ -->
   <section id="about" style="margin-bottom:14px;" data-reveal>
@@ -978,66 +908,6 @@ renderEpisodes();
 const reqs = ["Spin (6 בקשות)","גוקו / Dragon Ball (4)","הרקולס (4)","איש הכלב (4)","אלקטרו (3)","רפאית / Ghost-Spider (3)","חתול שחור (2)","מיס מארוול (2)","דוקטור דום (2)","הענק האדום (2)","וור משין (2)","תאנוס (2)","קרנאג' (2)","רובין (2)","נייטווינג (2)","Jedi (2)","גלקטוס (2)","X-Men (2)","קפטן מארוול (2)","Winter Soldier","הפאנישר","אנטמן","טאסקמאסטר","אוואטר אנג","פרסי ג'קסון","פרופסור X","מגנטו","ויז'ן","גוסט ריידר","סופה","Darth Vader","שר הטבעות"];
 const html = reqs.map(r=>`<span class="ti"><span class="ts">✦</span> ${r}</span>`).join("");
 document.getElementById("ticker-content").innerHTML = html+html;
-
-/* ── VOTE ── */
-const candidates = [
-  { id:"spin",  name:"ספין",               req:"6 בקשות", accent:"#E63946", seeds:0 },
-  { id:"herc",  name:"הרקולס",             req:"4 בקשות", accent:"#F4A261", seeds:0 },
-  { id:"goku",  name:"גוקו / Dragon Ball",  req:"4 בקשות", accent:"#3A86FF", seeds:0 },
-];
-
-const VKEY = "shp_votes_v3";
-const CKEY = "shp_cnts_v3";
-
-function getMyVotes(){ try{ const r=localStorage.getItem(VKEY); if(r) return JSON.parse(r); }catch(e){} return []; }
-function getCounts(){ try{ const r=localStorage.getItem(CKEY); if(r) return JSON.parse(r); }catch(e){} const o={}; candidates.forEach(c=>o[c.id]=c.seeds); return o; }
-function saveVotes(v){ localStorage.setItem(VKEY,JSON.stringify(v)); }
-function saveCounts(c){ localStorage.setItem(CKEY,JSON.stringify(c)); }
-
-function renderVote(){
-  const counts=getCounts(), myVotes=getMyVotes();
-  const hasVote=myVotes.length>0;
-  const total=Object.values(counts).reduce((a,b)=>a+b,0);
-  const html=`<div class="vote-panel">
-    ${candidates.map(c=>{
-      const voted=myVotes.includes(c.id);
-      const pct=total>0?Math.round(counts[c.id]/total*100):0;
-      return `<div class="vote-option">
-        <div class="vote-option-accent" style="background:${c.accent}"></div>
-        <div class="vote-option-info">
-          <div class="vote-option-name">${c.name}${voted?' <span class="vote-option-voted-tag">הצבעתי</span>':''}</div>
-          <span class="vote-option-req">${c.req}</span>
-        </div>
-        ${hasVote?`<div class="vote-option-bars">
-          <div class="vote-option-bar-track"><div class="vote-option-bar-fill" style="background:${c.accent};width:${pct}%"></div></div>
-          <div class="vote-option-bar-pct">${pct}% · ${counts[c.id]}</div>
-        </div>`:''}
-        <button class="vote-option-btn" style="${voted?'background:#3a3a4a;border-color:rgba(255,255,255,0.25);color:#aaa;':'background:'+c.accent}"
-          onclick="toggleVote('${c.id}')">${voted?'בטל הצבעה':'הצבעה'}</button>
-      </div>`;
-    }).join('')}
-  </div>`;
-  document.getElementById("vote-panel-wrap").innerHTML=html;
-  const tot=document.getElementById("vote-total");
-  if(hasVote){ tot.classList.add("show"); tot.textContent=`סה"כ ${total} הצבעות`; }
-  else tot.classList.remove("show");
-}
-
-function toggleVote(id){
-  const counts=getCounts(), myVotes=getMyVotes();
-  const idx=myVotes.indexOf(id);
-  const action=idx>=0?'unvote':'vote';
-  if(idx>=0){ myVotes.splice(idx,1); if(counts[id]>0) counts[id]--; }
-  else { myVotes.push(id); counts[id]=(counts[id]||0)+1; }
-  saveCounts(counts); saveVotes(myVotes);
-  if(GAS_URL){
-    const cand=candidates.find(c=>c.id===id);
-    fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({type:'vote',candidate:cand?cand.name:id,action:action})}).catch(()=>{});
-  }
-  renderVote();
-}
-
-renderVote();
 
 /* ── SIGNUP ── */
 function doSignup(e){
