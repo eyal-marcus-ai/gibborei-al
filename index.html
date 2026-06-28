@@ -37,8 +37,10 @@
 
     /* ──────── HEADER ──────── */
     .hdr {
-      background: #fff;
-      border-bottom: 2px solid rgba(0,0,0,0.08);
+      background-color: #fff;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.045) 1.5px, transparent 1.5px);
+      background-size: 11px 11px;
+      border-bottom: 4px solid var(--ink);
       padding: 0 28px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -49,6 +51,20 @@
     .hdr.scrolled {
       height: 72px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      background-image: none;
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+    }
+
+    /* ── HEADER COMIC DECORATION ── */
+    .hdr-deco {
+      flex: 1; height: 100%; position: relative;
+      overflow: hidden; pointer-events: none; user-select: none;
+      transition: opacity 0.25s ease;
+    }
+    .hdr.scrolled .hdr-deco { opacity: 0; }
+    .hdr-sfx {
+      font-family: 'Bangers', cursive;
+      position: absolute; line-height: 1; letter-spacing: 3px;
     }
     .hdr-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
     .hdr-brand img {
@@ -570,6 +586,13 @@
   <a class="hdr-brand" href="#top" aria-label="גיבורי על: סיפורי המקור - לדף הראשי">
     <img src="images/logo.png" alt="">
   </a>
+  <div class="hdr-deco" aria-hidden="true">
+    <span class="hdr-sfx" style="top:18px;right:18%;font-size:4rem;color:var(--red);transform:rotate(-8deg);-webkit-text-stroke:2px #111;">POW!</span>
+    <span class="hdr-sfx" style="bottom:28px;right:42%;font-size:2.4rem;color:#fff;background:var(--blue);padding:4px 14px;border:3px solid #111;box-shadow:3px 3px 0 #111;transform:rotate(4deg);">ZAP!</span>
+    <span class="hdr-sfx" style="top:38%;left:28%;font-size:3rem;color:var(--yellow);transform:rotate(-5deg);-webkit-text-stroke:2px #111;">BAM!</span>
+    <span class="hdr-sfx" style="bottom:22px;left:12%;font-size:2rem;color:var(--orange);transform:rotate(9deg);-webkit-text-stroke:1.5px #111;">BOOM!</span>
+    <span class="hdr-sfx" style="top:14px;left:10%;font-size:1.4rem;color:var(--ink);letter-spacing:6px;">★ ★ ★</span>
+  </div>
   <nav class="hdr-nav">
     <a href="#episodes">כל הפרקים</a>
     <a href="#about">מי אנחנו</a>
@@ -698,9 +721,9 @@
           <div class="o-text">
             בתאילנד, כשהוא היה בן 3.5, הצעתי לנועם שבמקום להקריא לו סיפור לפני השינה, שאמציא לו סיפור מהראש. אז התחלתי להמציא לו סיפורים מומצאים על גיבורי-על (שאני מאוד אוהב).
             <br><br>
-            באיזשהו שלב נמאס לי להמציא, והתחלתי לספר לו סיפורים על איך נולדו וכיצד נוצרו. ואז כדי להכזיר התחלתי לראות יותר ויותר סרטים מהיקום של מארוול ו-DC — השלמתי את כל אלה שלא ראיתי בעבר וראיתי שוב את אלה שכבר ראיתי.
+            באיזשהו שלב נמאס לי להמציא, והתחלתי לספר לו סיפורים על איך הם נולדו וכיצד נוצרו. ואז, כדי להכזיר, התחלתי לראות יותר ויותר סרטים מהיקום של מארוול ו-DC. השלמתי את כל אלה שלא ראיתי בעבר, וראיתי שוב את אלה שכבר ראיתי.
             <br><br>
-            יותר ויותר סיפורים. ואז הצעתי לנועם שנקליט. שלחתי לחברים, ומשם הכל התגלגל לפודקאסט — כי הפרקים הלכו ותפסו תאוצה, עד שהגענו להיכן שהגענו היום...
+            יותר ויותר סיפורים. ואז הצעתי לנועם שנקליט. שלחתי לחברים, ומשם הכל התגלגל לפודקאסט - כי הפרקים הלכו ותפסו תאוצה, עד שהגענו להיכן שהגענו היום...
           </div>
         </div>
         <div class="cast-row">
@@ -712,7 +735,7 @@
           <div class="cast-card">
             <div class="cast-name">אייל מרקוס</div>
             <div class="cast-title">הידוע בכינויו ״אבא״</div>
-            <div class="cast-bio">שלושה ימים לפני כל פרק שוקע בוויקיפדיה. (נוראי כמה כיף לי עם זה.) מאמין שגיבורי-על ונבלי-על מלמדים שיעורים חשובים על החיים. הכי אוהב: וולברין, איירון-מן ותאנוס.</div>
+            <div class="cast-bio">לפני כל פרק לומד הכל על הגיבור או הנבל - ביוגרפיה, כוחות, עלילות. וחושב מה אפשר ללמוד מהם. כיף אדיר. הכי אוהב: וולברין, איירון-מן ותאנוס.</div>
           </div>
         </div>
         <div class="contact-panel">
