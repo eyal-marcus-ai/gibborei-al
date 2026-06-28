@@ -242,6 +242,15 @@
     }
     .forms-grid section { margin: 0 !important; }
 
+    /* ──────── FORMS BIG HEADING (matches vote heading size) ──────── */
+    .forms-h2 {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
     /* ──────── SIGNUP ──────── */
     .signup-wrap {
       background: var(--yellow); border: var(--b); box-shadow: var(--sh);
@@ -477,9 +486,9 @@
       .about-photo { height: 280px; border-left: none; border-bottom: var(--b); }
       .forms-grid { grid-template-columns: 1fr; }
       #forms-combined-inner { grid-template-columns: 1fr !important; }
-    }
-    @media(max-width:600px){
-      #signup, #request { border-left: none !important; border-top: 4px solid #111; }
+      .vote-battle-head h2 { font-size: clamp(2.8rem, 6vw, 5rem); }
+      .vote-battle-head p { font-size: 1.1rem; }
+      .vote-battle-head::before { font-size: 6rem; }
     }
     @media(max-width:768px){
       .hdr { padding: 0 16px; height: 200px; }
@@ -489,6 +498,8 @@
       .hdr.scrolled .hdr-brand img { height: 52px; }
       .hdr-nav a { padding: 6px 10px; font-size: 0.82rem; }
       .hdr-nav .hdr-cta { padding: 6px 14px; }
+      .vote-battle-head { padding: 20px 24px; }
+      #signup, #request { padding: 20px 18px 18px !important; }
     }
     @media(max-width:600px){
       .ep-grid { grid-template-columns: 1fr; }
@@ -503,13 +514,19 @@
       .hdr-nav .hdr-cta { margin-right: 0; font-size: 0.85rem; padding: 6px 14px; }
       .cast-row { flex-direction: column; }
       .splash-text { width: 100%; padding: 0 20px 32px; }
-    }
-    @media(max-width:600px){
-      #signup, #request { border-left: none !important; border-top: 4px solid #111; }
+      #signup, #request { border-left: none !important; border-top: 4px solid #111; padding: 16px 14px 14px !important; }
+      .vote-battle-head { padding: 16px 18px; gap: 12px; }
+      .vote-battle-head h2 { font-size: 2.6rem; }
+      .vote-battle-head p { font-size: 0.95rem; }
+      .vote-battle-head::before { display: none; }
+      .vote-option { padding: 16px 14px; gap: 12px; }
+      .vote-option-bars { width: 110px; }
     }
     @media(max-width:400px){
       .stats { grid-template-columns: 1fr; }
       .hdr-brand-text { display: none; }
+      .vote-battle-head h2 { font-size: 2.2rem; }
+      .forms-h2 { font-size: 2.4rem; }
     }
 
     /* ══ REVIEW SYSTEM ══ */
@@ -660,34 +677,16 @@
     <div style="font-family:'Heebo',sans-serif;font-size:1rem;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;font-weight:700;">- הדוד בן</div>
   </div>
 
-  <!-- ══ VOTE ══ -->
-  <section id="vote" data-reveal>
-    <div class="vote-battle-head">
-      <span class="vote-battle-tag">VOTE</span>
-      <div>
-        <h2>מה הפרק הבא שלנו?</h2>
-        <p style="font-size:1.4rem;font-weight:900;">הצביעו, ותוכלו להשפיע על הפרק הבא שלנו.</p>
-      </div>
-    </div>
-    <div id="vote-panel-wrap"></div>
-    <div class="vote-total" id="vote-total"></div>
-  </section>
-
-  <!-- ══ TICKER ══ -->
-  <div class="ticker">
-    <div class="ticker-in" id="ticker-content"></div>
-  </div>
-
   <!-- ══ FORMS COMBINED ══ -->
   <div class="panel" style="margin-bottom:14px;overflow:hidden;" data-reveal>
     <div id="forms-combined-inner" style="display:grid;grid-template-columns:1fr 1fr;">
 
       <!-- SIGNUP -->
-      <div id="signup" style="background:var(--yellow);padding:14px 18px;border-left:4px solid #111;">
-        <div style="margin-bottom:8px;">
+      <div id="signup" style="background:var(--yellow);padding:28px 28px 24px;border-left:4px solid #111;">
+        <div style="margin-bottom:12px;">
           <div style="font-family:'Bangers',cursive;font-size:0.6rem;letter-spacing:4px;color:rgba(0,0,0,0.4);text-transform:uppercase;margin-bottom:2px;">NOTIFY</div>
-          <h2 style="font-family:'Bangers',cursive;font-size:3.5rem;letter-spacing:2px;margin-bottom:3px;">תישארו בלופ</h2>
-          <p style="font-size:0.78rem;color:#444;line-height:1.4;margin-bottom:10px;">השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש.</p>
+          <h2 class="forms-h2">תישארו בלופ</h2>
+          <p style="font-size:0.92rem;color:#444;line-height:1.4;margin-bottom:14px;">השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש.</p>
         </div>
         <div class="signup-box">
           <div class="signup-ok" id="ok">
@@ -707,11 +706,11 @@
       </div>
 
       <!-- REQUEST -->
-      <div id="request" style="background:var(--cyan);padding:14px 18px;">
-        <div style="margin-bottom:8px;">
+      <div id="request" style="background:var(--cyan);padding:28px 28px 24px;">
+        <div style="margin-bottom:12px;">
           <div style="font-family:'Bangers',cursive;font-size:0.6rem;letter-spacing:4px;color:rgba(0,0,0,0.35);text-transform:uppercase;margin-bottom:2px;">REQUEST</div>
-          <h2 style="font-family:'Bangers',cursive;font-size:3.5rem;letter-spacing:2px;margin-bottom:3px;">בקשו פרק</h2>
-          <p style="font-size:0.78rem;color:#333;line-height:1.4;margin-bottom:10px;">כתבו לנו מה הגיבור (או הנבל) שאתם הכי רוצים לשמוע עליו.</p>
+          <h2 class="forms-h2">בקשו פרק</h2>
+          <p style="font-size:0.92rem;color:#333;line-height:1.4;margin-bottom:14px;">כתבו לנו מה הגיבור (או הנבל) שאתם הכי רוצים לשמוע עליו.</p>
         </div>
         <div class="req-box">
           <div class="req-ok" id="req-ok">
@@ -733,6 +732,24 @@
 
     </div>
   </div>
+
+  <!-- ══ TICKER ══ -->
+  <div class="ticker">
+    <div class="ticker-in" id="ticker-content"></div>
+  </div>
+
+  <!-- ══ VOTE ══ -->
+  <section id="vote" data-reveal>
+    <div class="vote-battle-head">
+      <span class="vote-battle-tag">VOTE</span>
+      <div>
+        <h2>מה הפרק הבא שלנו?</h2>
+        <p style="font-size:1.4rem;font-weight:900;">הצביעו, ותוכלו להשפיע על הפרק הבא שלנו.</p>
+      </div>
+    </div>
+    <div id="vote-panel-wrap"></div>
+    <div class="vote-total" id="vote-total"></div>
+  </section>
 
   <!-- ══ ABOUT ══ -->
   <section id="about" style="margin-bottom:14px;" data-reveal>
