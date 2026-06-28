@@ -308,17 +308,6 @@
     .req-ok .big { font-size: 3rem; display: block; margin-bottom: 8px; }
     .req-ok p { font-weight: 700; font-size: 1.1rem; }
 
-    /* ──────── TICKER ──────── */
-    .ticker {
-      background: var(--ink); border-top: var(--b); border-bottom: var(--b);
-      padding: 8px 0; overflow: hidden; white-space: nowrap; margin-bottom: 14px;
-    }
-    .ticker-in { display: inline-block; animation: tick 34s linear infinite; }
-    .ticker:hover .ticker-in { animation-play-state: paused; }
-    @keyframes tick { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-    .ti { display: inline-block; color: rgba(255,255,255,.8); font-size: .85rem; font-weight: 700; margin: 0 14px; }
-    .ts { color: var(--yellow); }
-
     /* ──────── EPISODES ──────── */
     #episodes { margin-bottom: 14px; }
     .ep-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -684,11 +673,6 @@
     </div>
   </div>
 
-  <!-- ══ TICKER ══ -->
-  <div class="ticker">
-    <div class="ticker-in" id="ticker-content"></div>
-  </div>
-
   <!-- ══ ABOUT ══ -->
   <section id="about" style="margin-bottom:14px;" data-reveal>
     <div class="sec-head">
@@ -903,11 +887,6 @@ function renderEpisodes(){
   }
 }
 renderEpisodes();
-
-/* ── TICKER ── */
-const reqs = ["Spin (6 בקשות)","גוקו / Dragon Ball (4)","הרקולס (4)","איש הכלב (4)","אלקטרו (3)","רפאית / Ghost-Spider (3)","חתול שחור (2)","מיס מארוול (2)","דוקטור דום (2)","הענק האדום (2)","וור משין (2)","תאנוס (2)","קרנאג' (2)","רובין (2)","נייטווינג (2)","Jedi (2)","גלקטוס (2)","X-Men (2)","קפטן מארוול (2)","Winter Soldier","הפאנישר","אנטמן","טאסקמאסטר","אוואטר אנג","פרסי ג'קסון","פרופסור X","מגנטו","ויז'ן","גוסט ריידר","סופה","Darth Vader","שר הטבעות"];
-const html = reqs.map(r=>`<span class="ti"><span class="ts">✦</span> ${r}</span>`).join("");
-document.getElementById("ticker-content").innerHTML = html+html;
 
 /* ── SIGNUP ── */
 function doSignup(e){
