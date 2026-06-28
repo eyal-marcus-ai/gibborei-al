@@ -53,20 +53,19 @@
     .hdr-brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
     .hdr-brand img {
       height: 280px; width: auto; display: block;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
       transition: height 0.3s ease;
     }
     .hdr.scrolled .hdr-brand img { height: 60px; }
     .hdr-brand .hdr-brand-text { transition: opacity 0.25s ease, transform 0.25s ease; }
-    .hdr-nav { display: flex; align-items: center; gap: 2px; }
+    .hdr-nav { display: flex; align-items: center; gap: 6px; }
     .hdr-nav a {
       font-family: 'Heebo', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: rgba(0,0,0,0.6);
       text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 13px 26px;
+      border-radius: 6px;
       transition: color .15s, background .15s, font-size .25s ease, padding .25s ease;
       display: inline-block;
       white-space: nowrap;
@@ -76,7 +75,7 @@
       background: var(--red);
       color: #fff;
       margin-right: 6px;
-      padding: 10px 24px;
+      padding: 13px 32px;
     }
     .hdr-nav .hdr-cta:hover { background: #c7303b; color: #fff; }
     .hdr.scrolled .hdr-nav a { font-size: 0.88rem; padding: 7px 14px; }
@@ -1007,16 +1006,24 @@ function doSignup(e){
   })
   .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
+const GAS_URL = ''; // הדבק כאן את ה-Web App URL אחרי ה-Deploy
+
 function doRequest(e){
   e.preventDefault();
   const f=document.getElementById("rform"), ok=document.getElementById("req-ok");
   const btn=f.querySelector("button");
   btn.disabled=true; btn.textContent="שולח...";
-  fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
-    .then(r=>r.json())
-    .then(()=>{ f.style.display="none"; ok.style.display="block"; })
-    .catch(()=>{ f.style.display="none"; ok.style.display="block"; })
-    .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
+  const show=()=>{ f.style.display="none"; ok.style.display="block"; };
+  if(GAS_URL){
+    fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({
+      character:f.querySelector('[name="character"]').value,
+      child_name:f.querySelector('[name="child_name"]').value,
+      email:f.querySelector('[name="email"]').value
+    })}).finally(show);
+  } else {
+    fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
+      .catch(()=>{}).finally(show);
+  }
 }
 
 /* ── SCROLL LOGO SHRINK ── */
