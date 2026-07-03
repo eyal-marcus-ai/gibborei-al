@@ -12,7 +12,7 @@
 const REQUESTS_SHEET_GID = 1783764722; // הטאב הקיים של בקשות הפרקים
 const SIGNUPS_SHEET_NAME = "נרשמים לעדכונים";
 const NOTIFY_EMAIL = "eyal@eyalmarcus.com";
-const SMOOVE_KEY = "94974feb-950c-4af1-afdf-34d61ba6ca22";
+const SMOOVE_KEY = "30018ed0-8f29-49a1-9d5f-160efeafb499";
 const SMOOVE_LIST_ID = 1145138; // רשימת Superheros בסמוב
 
 function doPost(e) {
