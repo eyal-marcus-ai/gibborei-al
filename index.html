@@ -914,22 +914,19 @@ function renderEpisodes(){
 renderEpisodes();
 
 /* ── SIGNUP ── */
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzfsxQG8WH1ypKbJvZj_dfQd3cQWVA2CipvbhjEoJOBBH-mbQtH2J1NPvUnou6kr3RP/exec';
+
 function doSignup(e){
   e.preventDefault();
   const f=document.getElementById("sform"), ok=document.getElementById("ok");
   const btn=f.querySelector("button");
   btn.disabled=true; btn.textContent="שולח...";
-  const email=f.querySelector('[name="email"]').value;
-  const name=f.querySelector('[name="name"]').value;
-  const _t=['94974feb','950c','4af1','afdf','34d61ba6ca22'].join('-');
-  fetch("https://rest.smoove.io/v1/Contacts?listId=1145138",{
-    method:"POST",
-    headers:{"Content-Type":"application/json","Authorization":"Bearer "+_t},
-    body:JSON.stringify({Email:email,FirstName:name})
-  })
-  .finally(()=>{ f.style.display="none"; ok.style.display="block"; });
+  fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({
+    type:'signup',
+    name:f.querySelector('[name="name"]').value,
+    email:f.querySelector('[name="email"]').value
+  })}).finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
-const GAS_URL = ''; // הדבק כאן את ה-Web App URL אחרי ה-Deploy
 
 function doRequest(e){
   e.preventDefault();
