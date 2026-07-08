@@ -891,10 +891,12 @@ function doSubscribe(e){
   const f=document.getElementById("sform"), ok=document.getElementById("ok");
   const btn=f.querySelector("button");
   btn.disabled=true; btn.textContent="שולח...";
+  const _msg=f.querySelector('[name="message"]').value;
   fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({
-    type:'subscribe',
+    type:'signup',            /* GAS הפרוס מטפל ב-signup; ה-GAS החדש (כשיפרס) יטפל גם ב-subscribe */
     email:f.querySelector('[name="email"]').value,
-    message:f.querySelector('[name="message"]').value
+    message:_msg,             /* ה-GAS החדש קורא message לעמודה נפרדת */
+    name:_msg                 /* ה-GAS הישן קורא name — כך הבקשה נלכדת בהתראה+גיליון גם עכשיו */
   })}).finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
 
