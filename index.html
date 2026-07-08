@@ -278,14 +278,15 @@
       background: #fff; border: var(--b); border-radius: 6px;
       padding: 12px; box-shadow: 3px 3px 0 #111;
     }
-    .signup-box input, .req-box input {
+    .signup-box input, .req-box input, .signup-box textarea {
       width: 100%; padding: 8px 11px;
       border: var(--b); border-radius: 5px;
       font-family: 'Heebo', sans-serif; font-size: 0.95rem;
       margin-bottom: 10px; direction: rtl;
       background: var(--paper);
     }
-    .signup-box input:focus { outline: none; border-color: var(--red); background: #fff; }
+    .signup-box textarea { resize: vertical; min-height: 66px; line-height: 1.4; }
+    .signup-box input:focus, .signup-box textarea:focus { outline: none; border-color: var(--red); background: #fff; }
     .signup-sub {
       width: 100%; background: var(--red); color: #fff;
       border: var(--b); border-radius: 5px;
@@ -643,61 +644,26 @@
 
   <!-- ══ FORMS COMBINED ══ -->
   <div class="panel" style="margin-bottom:14px;overflow:hidden;" data-reveal>
-    <div id="forms-combined-inner" style="display:grid;grid-template-columns:1fr 1fr;">
-
-      <!-- SIGNUP -->
-      <div id="signup" style="background:var(--yellow);padding:28px 28px 24px;border-left:4px solid #111;">
+    <div id="forms-combined-inner">
+      <div id="signup" style="background:var(--yellow);padding:28px 28px 24px;">
         <div style="margin-bottom:12px;">
-          <div style="font-family:'Bangers',cursive;font-size:0.6rem;letter-spacing:4px;color:rgba(0,0,0,0.4);text-transform:uppercase;margin-bottom:2px;">NOTIFY</div>
-          <h2 class="forms-h2">תישארו בלופ</h2>
-          <p style="font-size:0.92rem;color:#444;line-height:1.4;margin-bottom:14px;">השאירו מייל ונעדכן אתכם ברגע שיצא פרק חדש.</p>
+          <div style="font-family:'Bangers',cursive;font-size:0.6rem;letter-spacing:4px;color:rgba(0,0,0,0.4);text-transform:uppercase;margin-bottom:2px;">JOIN</div>
+          <h2 class="forms-h2">רוצים להירשם לעדכונים? לבקש פרק מיוחד?</h2>
+          <p style="font-size:0.95rem;color:#333;line-height:1.45;margin-bottom:14px;">תכניסו את המייל ואת הבקשה שלכם לפרק (או סתם מילה טובה) ותקבלו עדכונים על כל פרק שיוצא.</p>
         </div>
         <div class="signup-box">
           <div class="signup-ok" id="ok">
-            <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">נרשמתם.</p>
-            <p>נעדכן כשהפרק הבא יוצא.</p>
+            <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">נרשמתם!</p>
+            <p>נעדכן אתכם על כל פרק חדש שיוצא. תודה על הבקשה - קוראים כל אחת.</p>
           </div>
-          <form id="sform" onsubmit="doSignup(event)">
-            <input type="hidden" name="_subject" value="הרשמה חדשה - גיבורי על">
-            <input type="hidden" name="_template" value="box">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="name" placeholder="שם" required>
+          <form id="sform" onsubmit="doSubscribe(event)">
             <input type="email" name="email" placeholder="כתובת מייל" required>
+            <textarea name="message" placeholder="הבקשה שלכם לפרק (או סתם מילה טובה)" rows="3"></textarea>
             <button type="submit" class="signup-sub">קבלו עדכונים</button>
-            <p class="signup-priv">לא מוכרים. לא מציקים. רק עדכון כשיוצא פרק חדש.</p>
+            <p class="signup-priv">לא מוכרים. לא מציקים. רק עדכון כשיוצא פרק חדש. אפשר להסיר את עצמכם בכל רגע, בקליק.</p>
           </form>
         </div>
       </div>
-
-      <!-- REQUEST -->
-      <div id="request" style="background:var(--cyan);padding:28px 28px 24px;">
-        <div style="margin-bottom:12px;">
-          <div style="font-family:'Bangers',cursive;font-size:0.6rem;letter-spacing:4px;color:rgba(0,0,0,0.35);text-transform:uppercase;margin-bottom:2px;">REQUEST</div>
-          <h2 class="forms-h2">בקשו פרק</h2>
-          <p style="font-size:0.92rem;color:#333;line-height:1.4;margin-bottom:14px;">כתבו לנו מה הגיבור (או הנבל) שאתם הכי רוצים לשמוע עליו.</p>
-        </div>
-        <div class="req-box">
-          <div class="req-ok" id="req-ok">
-            <p style="font-size:1.5rem;font-weight:900;margin-bottom:8px;">הבקשה התקבלה.</p>
-            <p>נעדכן אותך כשהפרק יוצא.</p>
-          </div>
-          <form id="rform" action="https://formsubmit.co/ajax/eyal@eyalmarcus.com" method="POST" onsubmit="doRequest(event)">
-            <input type="hidden" name="_subject" value="בקשת פרק חדש - גיבורי על">
-            <input type="hidden" name="_template" value="box">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="character" placeholder="שם הגיבור או נבל-העל" required>
-            <input type="text" name="child_name" placeholder="שם מלא של הילד המבקש" required>
-            <input type="email" name="email" placeholder="מייל לעדכון כשהפרק יוצא" required>
-            <label class="req-updates" style="display:flex;align-items:flex-start;gap:8px;font-size:0.86rem;color:#1a1a1a;line-height:1.35;margin:2px 0 6px;cursor:pointer;">
-              <input type="checkbox" name="wants_updates" checked style="width:auto;margin:3px 0 0;accent-color:#111;flex:none;">
-              <span>אשמח לקבל עדכונים כשיוצא פרק חדש</span>
-            </label>
-            <button type="submit" class="req-sub">שלחו את הבקשה</button>
-            <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק, מבטיחים להתחשב. אפשר להסיר את עצמכם בכל רגע, בקליק.</p>
-          </form>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -917,39 +883,19 @@ function renderEpisodes(){
 }
 renderEpisodes();
 
-/* ── SIGNUP ── */
+/* ── SUBSCRIBE (unified: updates + request in one box) ── */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzfsxQG8WH1ypKbJvZj_dfQd3cQWVA2CipvbhjEoJOBBH-mbQtH2J1NPvUnou6kr3RP/exec';
 
-function doSignup(e){
+function doSubscribe(e){
   e.preventDefault();
   const f=document.getElementById("sform"), ok=document.getElementById("ok");
   const btn=f.querySelector("button");
   btn.disabled=true; btn.textContent="שולח...";
   fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({
-    type:'signup',
-    name:f.querySelector('[name="name"]').value,
-    email:f.querySelector('[name="email"]').value
+    type:'subscribe',
+    email:f.querySelector('[name="email"]').value,
+    message:f.querySelector('[name="message"]').value
   })}).finally(()=>{ f.style.display="none"; ok.style.display="block"; });
-}
-
-function doRequest(e){
-  e.preventDefault();
-  const f=document.getElementById("rform"), ok=document.getElementById("req-ok");
-  const btn=f.querySelector("button");
-  btn.disabled=true; btn.textContent="שולח...";
-  const show=()=>{ f.style.display="none"; ok.style.display="block"; };
-  if(GAS_URL){
-    fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({
-      type:'request',
-      character:f.querySelector('[name="character"]').value,
-      child_name:f.querySelector('[name="child_name"]').value,
-      email:f.querySelector('[name="email"]').value,
-      wants_updates:f.querySelector('[name="wants_updates"]').checked
-    })}).finally(show);
-  } else {
-    fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
-      .catch(()=>{}).finally(show);
-  }
 }
 
 /* ── SCROLL LOGO SHRINK ── */
