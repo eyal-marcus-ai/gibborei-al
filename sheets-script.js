@@ -1,6 +1,7 @@
 // ══ Google Apps Script — גיבורי על: שני הטפסים מהאתר ══
 // מה זה עושה:
 //   בקשת פרק  → שורה בטאב הבקשות הקיים + מייל התראה לאייל
+//               (אם סומן wants_updates → נרשם גם לעדכונים: סמוב + טאב נרשמים)
 //   הרשמה     → שורה בטאב "נרשמים לעדכונים" + הוספה לסמוב + מייל התראה לאייל
 // איך מתקינים (חד-פעמי):
 //   1. פותחים את הגיליון "רשימת בקשות פרקים"
@@ -36,18 +37,40 @@ function handleRequest(data) {
   const lastNum = Number(sheet.getRange(lastRow, 1).getValue()) || 0;
   const num = lastNum + 1;
   sheet.appendRow([num, data.child_name || "", data.character || "", data.email || ""]);
+
+  // אם המבקש סימן "רוצה לקבל עדכונים" → נרשם גם לרשימת העדכונים (סמוב + טאב נרשמים)
+  let updatesLine = "";
+  if (data.wants_updates && data.email) {
+    const status = subscribeToUpdates(data.child_name, data.email);
+    updatesLine = "\nסימן/ה לקבל עדכונים → נכנס לסמוב? " + status + "\n";
+  }
+
   MailApp.sendEmail(NOTIFY_EMAIL,
     "בקשת פרק חדשה (#" + num + ") - " + (data.character || "בלי שם"),
     "בקשה חדשה מהאתר גיבורי על!\n\n" +
     "גיבור/נבל: " + (data.character || "") + "\n" +
     "שם הילד: " + (data.child_name || "") + "\n" +
-    "מייל: " + (data.email || "") + "\n\n" +
+    "מייל: " + (data.email || "") + "\n" +
+    updatesLine + "\n" +
     "נוספה לגיליון כשורה מספר " + num + ":\n" +
     "https://docs.google.com/spreadsheets/d/16Sv2Y5FGL_2kvtlQN7_iFhhwha0-B1Q5YRKi08gDUcI/edit#gid=" + REQUESTS_SHEET_GID);
 }
 
 // ── הרשמה לעדכונים: טאב נרשמים + סמוב + מייל ──
 function handleSignup(data) {
+  const status = subscribeToUpdates(data.name, data.email);
+  MailApp.sendEmail(NOTIFY_EMAIL,
+    "נרשם חדש לעדכוני גיבורי על - " + (data.name || data.email || ""),
+    "מישהו נרשם לעדכונים באתר!\n\n" +
+    "שם: " + (data.name || "") + "\n" +
+    "מייל: " + (data.email || "") + "\n" +
+    "נכנס לסמוב? " + status + "\n\n" +
+    "הגיליון:\n" +
+    "https://docs.google.com/spreadsheets/d/16Sv2Y5FGL_2kvtlQN7_iFhhwha0-B1Q5YRKi08gDUcI/edit");
+}
+
+// ── הוספה לרשימת העדכונים: סמוב 1145138 + שורה בטאב נרשמים. מחזיר סטטוס סמוב ("כן"/"לא - ...") ──
+function subscribeToUpdates(name, email) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName(SIGNUPS_SHEET_NAME);
   if (!sheet) {
@@ -60,13 +83,13 @@ function handleSignup(data) {
 
   let smooveStatus = "כן";
   try {
-    const res = UrlFetchApp.fetch("https://rest.smoove.io/v1/Contacts?listId=" + SMOOVE_LIST_ID, {
+    const res = UrlFetchApp.fetch("https://rest.smoove.io/v1/Contacts?listId=" + SMOOVE_LIST_ID + "&updateIfExists=true", {
       method: "post",
       contentType: "application/json",
       headers: { Authorization: "Bearer " + SMOOVE_KEY },
       payload: JSON.stringify({
-        email: data.email,
-        firstName: data.name || "",
+        email: email,
+        firstName: name || "",
         lists_ToSubscribe: [SMOOVE_LIST_ID]
       }),
       muteHttpExceptions: true
@@ -78,16 +101,8 @@ function handleSignup(data) {
     smooveStatus = "לא - " + err;
   }
 
-  sheet.appendRow([new Date().toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" }), data.name || "", data.email || "", smooveStatus]);
-
-  MailApp.sendEmail(NOTIFY_EMAIL,
-    "נרשם חדש לעדכוני גיבורי על - " + (data.name || data.email || ""),
-    "מישהו נרשם לעדכונים באתר!\n\n" +
-    "שם: " + (data.name || "") + "\n" +
-    "מייל: " + (data.email || "") + "\n" +
-    "נכנס לסמוב? " + smooveStatus + "\n\n" +
-    "הגיליון:\n" +
-    "https://docs.google.com/spreadsheets/d/16Sv2Y5FGL_2kvtlQN7_iFhhwha0-B1Q5YRKi08gDUcI/edit");
+  sheet.appendRow([new Date().toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" }), name || "", email || "", smooveStatus]);
+  return smooveStatus;
 }
 
 function getSheetByGid(gid) {

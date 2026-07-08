@@ -688,8 +688,12 @@
             <input type="text" name="character" placeholder="שם הגיבור או נבל-העל" required>
             <input type="text" name="child_name" placeholder="שם מלא של הילד המבקש" required>
             <input type="email" name="email" placeholder="מייל לעדכון כשהפרק יוצא" required>
+            <label class="req-updates" style="display:flex;align-items:flex-start;gap:8px;font-size:0.86rem;color:#1a1a1a;line-height:1.35;margin:2px 0 6px;cursor:pointer;">
+              <input type="checkbox" name="wants_updates" checked style="width:auto;margin:3px 0 0;accent-color:#111;flex:none;">
+              <span>אשמח לקבל עדכונים כשיוצא פרק חדש</span>
+            </label>
             <button type="submit" class="req-sub">שלחו את הבקשה</button>
-            <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק, מבטיחים להתחשב.</p>
+            <p class="req-note">נקרא כל בקשה. לא מבטיחים פרק, מבטיחים להתחשב. אפשר להסיר את עצמכם בכל רגע, בקליק.</p>
           </form>
         </div>
       </div>
@@ -939,7 +943,8 @@ function doRequest(e){
       type:'request',
       character:f.querySelector('[name="character"]').value,
       child_name:f.querySelector('[name="child_name"]').value,
-      email:f.querySelector('[name="email"]').value
+      email:f.querySelector('[name="email"]').value,
+      wants_updates:f.querySelector('[name="wants_updates"]').checked
     })}).finally(show);
   } else {
     fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
