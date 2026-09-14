@@ -489,6 +489,10 @@
     }
 
     /* ══ REVIEW SYSTEM ══ */
+    /* מערכת הסקירה היא כלי פנימי של אייל בלבד. הכפתור מוסתר לכל מבקר,
+       ונדלק רק כשנכנסים עם superheroes.co.il/#review (ראו גייט ב-JS למטה). */
+    #rv-toggle { display: none; }
+    html.rv-gate #rv-toggle { display: block; }
     #rv-toggle {
       position: fixed; bottom: 22px; left: 22px; z-index: 9990;
       background: var(--yellow); color: var(--ink);
@@ -967,6 +971,15 @@ document.querySelectorAll('[data-reveal]').forEach(el => _ro.observe(el));
 
 <script>
 /* ══ REVIEW SYSTEM ══ */
+/* גייט: כלי הסקירה הוא פנימי. הוא נדלק רק כשה-URL מסתיים ב-#review.
+   מבקר רגיל לא רואה את הכפתור ולא יכול להיכנס למצב עריכה. */
+(function(){
+  function rvGate(){
+    document.documentElement.classList.toggle('rv-gate', location.hash === '#review');
+  }
+  rvGate();
+  window.addEventListener('hashchange', rvGate);
+})();
 (function(){
   const STORE = 'rv_v1';
   const SEL = 'h1,h2,h3,h4,p,.speech-bubble,.stat-n,.stat-l,.vote-option-name,.vote-option-req,.ep-t,.ep-m,.ep-n,.origin-panel .o-text,.cast-name,.cast-title,.cast-bio,.signup-wrap h2,.signup-wrap>p,.req-wrap h2,.req-wrap>p,.sec-head-box h2,.sec-head-box p,.contact-panel p,.splash-by,.splash-h1,.hdr-name,.flogo-name,.caption-box,.stats-note';
