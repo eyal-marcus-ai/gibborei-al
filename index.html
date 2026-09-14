@@ -896,7 +896,7 @@ function renderEpisodes(){
 renderEpisodes();
 
 /* ── SUBSCRIBE (unified: updates + request in one box) ── */
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzfsxQG8WH1ypKbJvZj_dfQd3cQWVA2CipvbhjEoJOBBH-mbQtH2J1NPvUnou6kr3RP/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyd9jxU-_xN34mTgWxq4iJPFU7ytcv-cbqZQfHxeq6f--A6KeMALevr14-ia5wmvsxF/exec';
 
 function doSubscribe(e){
   e.preventDefault();
@@ -905,10 +905,9 @@ function doSubscribe(e){
   btn.disabled=true; btn.textContent="שולח...";
   const _msg=f.querySelector('[name="message"]').value;
   fetch(GAS_URL,{method:"POST",mode:"no-cors",body:JSON.stringify({
-    type:'signup',            /* GAS הפרוס מטפל ב-signup; ה-GAS החדש (כשיפרס) יטפל גם ב-subscribe */
+    type:'subscribe',         /* ה-GAS החדש (פרוס 14/09/2026) מטפל ב-subscribe */
     email:f.querySelector('[name="email"]').value,
-    message:_msg,             /* ה-GAS החדש קורא message לעמודה נפרדת */
-    name:_msg,                /* ה-GAS הישן קורא name — כך הבקשה נלכדת בהתראה+גיליון גם עכשיו */
+    message:_msg,             /* נוחת בעמודה "בקשה / הודעה" בגיליון */
     website:f.querySelector('[name="website"]').value   /* honeypot: חייב להישאר ריק. מלא = בוט */
   })}).finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
