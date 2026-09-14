@@ -662,6 +662,7 @@
           </div>
           <form id="sform" onsubmit="doSubscribe(event)">
             <input type="email" name="email" placeholder="כתובת מייל" required>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" placeholder="">
             <textarea name="message" placeholder="הבקשה שלכם לפרק (או סתם מילה טובה)" rows="3"></textarea>
             <button type="submit" class="signup-sub">קבלו עדכונים</button>
             <p class="signup-priv">לא מוכרים. לא מציקים. רק עדכון כשיוצא פרק חדש. אפשר להסיר את עצמכם בכל רגע, בקליק.</p>
@@ -907,7 +908,8 @@ function doSubscribe(e){
     type:'signup',            /* GAS הפרוס מטפל ב-signup; ה-GAS החדש (כשיפרס) יטפל גם ב-subscribe */
     email:f.querySelector('[name="email"]').value,
     message:_msg,             /* ה-GAS החדש קורא message לעמודה נפרדת */
-    name:_msg                 /* ה-GAS הישן קורא name — כך הבקשה נלכדת בהתראה+גיליון גם עכשיו */
+    name:_msg,                /* ה-GAS הישן קורא name — כך הבקשה נלכדת בהתראה+גיליון גם עכשיו */
+    website:f.querySelector('[name="website"]').value   /* honeypot: חייב להישאר ריק. מלא = בוט */
   })}).finally(()=>{ f.style.display="none"; ok.style.display="block"; });
 }
 

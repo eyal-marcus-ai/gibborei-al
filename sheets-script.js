@@ -6,17 +6,32 @@
 //     3. נשלח מייל התראה לאייל (עם הבקשה)
 //   (type:'signup' ו-type:'request' נשמרים לתאימות לאחור עם גרסאות אתר ישנות)
 // התקנה: הגיליון > Extensions > Apps Script > הדבק > Deploy (New version) לאותו /exec.
+// לפני הפעלה: Project Settings > Script Properties > הוסף SMOOVE_KEY עם ערך המפתח (server-side, לא בקוד).
+//
+// ══ הגנה מפני הצפה (14/09/2026) ══
+// כתובת ה-/exec גלויה בקוד העמוד - זה בלתי נמנע באתר סטטי. שלוש שכבות חוסמות ניצול:
+//   1. honeypot - שדה "website" מוסתר בטופס. בן אדם משאיר ריק, בוט ממלא. מלא = נזרק בשקט.
+//   2. אימות מייל - כתובת לא תקינה לא נכנסת לסמוב, לא לגיליון ולא למייל.
+//   3. הגבלת קצב - עד MAX_PER_HOUR פניות בשעה בסך הכל, ופנייה אחת לכל מייל ב-10 דקות.
 
 const REQUESTS_SHEET_GID = 1783764722; // טאב בקשות הפרקים (legacy)
 const SIGNUPS_SHEET_NAME = "נרשמים לעדכונים";
 const NOTIFY_EMAIL = "eyal@eyalmarcus.com";
-const SMOOVE_KEY = "30018ed0-8f29-49a1-9d5f-160efeafb499";
+// מפתח סמוב נשמר ב-Script Properties (Project Settings > Script Properties, key בשם SMOOVE_KEY) - לא חשוף בקוד.
+const SMOOVE_KEY = PropertiesService.getScriptProperties().getProperty("SMOOVE_KEY");
 const SMOOVE_LIST_ID = 1145138; // רשימת Superheros בסמוב
+const MAX_PER_HOUR = 60;        // תקרת פניות לשעה מכל האתר יחד
+const EMAIL_COOLDOWN_SEC = 600; // אותו מייל לא נקלט שוב בתוך 10 דקות
 
 function doPost(e) {
   let data = {};
   try { data = JSON.parse(e.postData.contents); } catch (err) { data = (e && e.parameter) || {}; }
   try {
+    if (!passesGate(data)) {
+      // נזרק בשקט: מחזירים success כדי לא לתת לבוט משוב על מה נחסם
+      return ContentService.createTextOutput(JSON.stringify({ success: true }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
     if (data.type === "subscribe" || data.type === "signup") handleSubscribe(data);
     else if (data.type === "request") handleRequest(data); // legacy
   } catch (err) {
@@ -25,6 +40,27 @@ function doPost(e) {
   }
   return ContentService.createTextOutput(JSON.stringify({ success: true }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+// ── שער כניסה: honeypot + מייל תקין + הגבלת קצב. true = ממשיכים, false = זורקים בשקט ──
+function passesGate(data) {
+  if (data.website) return false; // honeypot מלא = בוט
+
+  const email = String(data.email || "").trim();
+  if (!/^[^@\s]+@[^@\s.]+\.[^@\s]{2,}$/.test(email)) return false;
+
+  const cache = CacheService.getScriptCache();
+
+  const perEmailKey = "seen_" + Utilities.base64Encode(email.toLowerCase());
+  if (cache.get(perEmailKey)) return false; // כבר נשלח מהמייל הזה לאחרונה
+  cache.put(perEmailKey, "1", EMAIL_COOLDOWN_SEC);
+
+  const hourKey = "rate_" + Math.floor(Date.now() / 3600000);
+  const count = Number(cache.get(hourKey) || 0) + 1;
+  cache.put(hourKey, String(count), 3700);
+  if (count > MAX_PER_HOUR) return false;
+
+  return true;
 }
 
 // ── הטופס המאוחד: מייל + בקשה/מילה טובה → סמוב + גיליון נרשמים + מייל ──
