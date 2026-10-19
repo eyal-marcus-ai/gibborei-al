@@ -427,8 +427,16 @@
     footer {
       background: var(--ink); border: var(--b); box-shadow: var(--sh);
       padding: 16px 28px;
-      display: flex; align-items: center; justify-content: space-between;
       margin-bottom: 24px;
+    }
+    .frow {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .fdisclaimer {
+      margin-top: 14px; padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: .72rem; line-height: 1.6;
+      color: rgba(255,255,255,.3);
     }
     .flogo { display: flex; align-items: center; gap: 14px; }
     .flogo img { height: 90px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
@@ -470,7 +478,8 @@
     @media(max-width:600px){
       .ep-grid { grid-template-columns: 1fr; }
       .ep.big { grid-column: span 1; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .frow { flex-direction: column; gap: 12px; text-align: center; }
+      .fdisclaimer { text-align: center; }
       .hdr { padding: 0 12px; height: 110px; }
       #hdr-spacer { height: 110px; }
       .hdr-brand img { height: 96px; }
@@ -740,15 +749,20 @@
 
   <!-- ══ FOOTER ══ -->
   <footer class="panel">
-    <div class="flogo">
-      <img src="images/logo.png" alt="גיבורי על: סיפורי המקור">
+    <div class="frow">
+      <div class="flogo">
+        <img src="images/logo.png" alt="גיבורי על: סיפורי המקור">
+      </div>
+      <div>
+        <a href="https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U" target="_blank">ספוטיפיי</a>
+        <a href="mailto:themarcuss@gmail.com">צרו קשר</a>
+        <a href="#top">למעלה ↑</a>
+      </div>
+      <div class="fcopy">© 2026 נועם ואייל מרקוס</div>
     </div>
-    <div>
-      <a href="https://open.spotify.com/show/5YkuE0DFx4yseY10aLgg4U" target="_blank">ספוטיפיי</a>
-      <a href="mailto:themarcuss@gmail.com">צרו קשר</a>
-      <a href="#top">למעלה ↑</a>
+    <div class="fdisclaimer">
+      הפודקאסט הזה הוא יצירה עצמאית שלנו. הוא לא רשמי ולא קשור למארוול, ל-DC, לדיסני או לכל בעל זכויות אחר. שמות הדמויות והסימנים שייכים לבעליהם, ואנחנו רק מספרים את הסיפורים שלהם.
     </div>
-    <div class="fcopy">© 2026 נועם ואייל מרקוס</div>
   </footer>
 
 </div><!-- /page -->
